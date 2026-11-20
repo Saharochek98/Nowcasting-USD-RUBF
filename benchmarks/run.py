@@ -12,6 +12,7 @@ import pandas as pd
 
 from .core import (generate_forecasts, load_calendar, load_config, load_data,
                    make_splits, metrics_by_horizon, score_forecasts)
+from .calendar import audit_calendars, calendar_report
 
 
 def audit(data, raw_path, calendar, config):
@@ -55,7 +56,16 @@ def audit(data, raw_path, calendar, config):
     if config["calendar_mode"] == "independent":
         missing = calendar.difference(data.index[data.price.notna()])
         lines += [f"Source: {config['calendar_source']}",
-                  f"Sessions without valid price: {len(missing)}: {list(missing.astype(str))}"]
+                  f"Sessions without valid price: {len(missing)}: {list(missing.astype(str))}",
+                  "The supplied calendar is a PROVISIONAL reconstruction from production-calendar",
+                  "rules and MOEX notices; mode independent is a loader mode, not a verification claim.",
+                  "See calendar_quality_report.md for full-calendar/expected-date/raw-date checks.",
+                  "Completeness is assessed only relative to this reconstruction, not an independently",
+                  "verified archive of every USDRUBF session. Known working Saturdays are retained."]
+        for name, start, end in [(name, *pd.to_datetime(bounds)) for name, bounds in config["splits"].items()]:
+            sessions = calendar[(calendar >= start) & (calendar <= end)]
+            gaps_in_split = sessions.difference(data.index[data.price.notna()])
+            lines.append(f"- {name}: {len(sessions)} expected sessions; {len(gaps_in_split)} without valid price.")
     else:
         lines += ["Repository inspection found only raw candles and a derived baseline;",
                   "neither supplies an independent calendar including sessions without candles.",
@@ -70,15 +80,15 @@ def audit(data, raw_path, calendar, config):
               "Threshold fixed in config; flagged observations retained.", ""]
     lines += [f"- {day.date()}: {move:.4%}" for day, move in moves.items()]
     lines += ["", "## Open semantics, provenance and protocol issues", "",
-              "Processed README calls price original MOEX CANDLE_CLOSE and not settlement;",
-              "research charter/benchmark spec leave this conditional on external verification.",
-              "Raw/processed equality supports field provenance but does not independently prove",
-              "market-close semantics or historical publication timing. No external confirmation",
-              "was established in this implementation. Q01/Q02/Q03 remain open; primary experiment blocked.",
-              "README mentions session-day attribution changing on 2026-03-23; historical availability",
-              "and attribution require a source audit. No exact forecast timestamp is fabricated.",
-              "Minimal clarification: retain conditional CLOSE semantics across documents until",
-              "Data Engineer supplies field documentation, availability evidence and an independent calendar.",
+              "Per the A2 task agreement, target is the original MOEX ISS daily CANDLE_CLOSE,",
+              "not CBR or clearing settlement. Raw/processed equality verifies the retained field.",
+              "Existing protocol documents still condition semantics on external evidence; they are",
+              "preserved. No new independent external field/session audit was performed in A2.",
+              "Historical candle publication timestamps, end-label interpretation, and session-day",
+              "attribution remain unverified. Data README documents atypical end labels and weekend",
+              "session attribution; end is not assumed to be a precise last-trade or availability time.",
+              "Q02 remains open; Q03 has a provisional reconstruction, not final independent closure.",
+              "No exact forecast timestamp is fabricated; conditional EOD / pseudo-PIT remains.",
               "A1 bounds, minimum 100 AR pairs and every-origin expanding refit are fixed in config",
               "before validation scoring. Final-test metrics require explicit --include-final-test;",
               "final-test outcomes must never choose models, preprocessing or hyperparameters."]
@@ -87,10 +97,15 @@ def audit(data, raw_path, calendar, config):
     return "\n".join(lines) + "\n", bool(invalid.any() or integrity.any() or mismatch or volume_mismatch)
 
 
+def evaluation_data(data, config, split):
+    """Audit may inspect full input integrity; forecasting/scoring receives no later prices."""
+    return data.loc[:pd.Timestamp(config["splits"][split][1])].copy()
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", default="configs/benchmark_config.yaml")
-    parser.add_argument("--output", default="results/benchmark_run")
+    parser.add_argument("--output", default="results/benchmark_calendar_v2")
     parser.add_argument("--evaluation-split", choices=["validation", "final_test"], default="validation")
     parser.add_argument("--include-final-test", action="store_true")
     args = parser.parse_args()
@@ -99,7 +114,21 @@ def main():
     root = Path(__file__).resolve().parents[1]
     config_path = root / args.config
     config = load_config(config_path)
+    git_status_at_start = subprocess.check_output(["git", "status", "--porcelain"], cwd=root, text=True)
     data_path, raw_path = root / config["data_path"], root / config["raw_path"]
+    output = root / args.output
+    # Historical A1 artifacts are the immutable reference for A2 comparison.
+    if output.resolve() == (root / "results/benchmark_run").resolve():
+        parser.error("Choose a new output directory; results/benchmark_run is the A1 reference")
+    output.mkdir(parents=True, exist_ok=True)
+    if config.get("full_calendar_path"):
+        calendar_audit = audit_calendars(root / config["full_calendar_path"],
+                                        root / config["calendar_path"], raw_path)
+        (root / "reports").mkdir(exist_ok=True)
+        (root / "reports/calendar_quality_report.md").write_text(calendar_report(calendar_audit), encoding="utf-8")
+        (output / "calendar_checks.json").write_text(json.dumps(calendar_audit, indent=2), encoding="utf-8")
+        if calendar_audit["errors"]:
+            raise ValueError("Calendar consistency failed; see reports/calendar_quality_report.md")
     data = load_data(data_path)
     calendar = load_calendar(data, config, root)
     report, blocked = audit(data, raw_path, calendar, config)
@@ -107,15 +136,14 @@ def main():
     (root / "reports/data_quality_report.md").write_text(report, encoding="utf-8")
     if blocked:
         raise ValueError("Audit failed; see reports/data_quality_report.md")
-    output = root / args.output
-    output.mkdir(parents=True, exist_ok=True)
-    predictions = generate_forecasts(data, calendar, config)
+    restricted = evaluation_data(data, config, args.evaluation_split)
+    predictions = generate_forecasts(restricted, calendar, config)
     # Persist forecasts BEFORE attaching any future actuals.
     for model, name in (("B0", "rw"), ("B1", "ar1")):
         predictions.loc[predictions.model_id.eq(model)].to_parquet(
             output / f"predictions_{name}.parquet", index=False)
     allowed = [args.evaluation_split]
-    scored = score_forecasts(predictions, data, allowed)
+    scored = score_forecasts(predictions, restricted, allowed)
     scored.to_parquet(output / "scored_predictions.parquet", index=False)
     metrics = metrics_by_horizon(scored)
     metrics.to_csv(output / f"metrics_{args.evaluation_split}.csv", index=False)
@@ -123,16 +151,23 @@ def main():
                             dropna=False).size().rename("n").reset_index()
     counts.to_csv(output / "pair_counts.csv", index=False)
     (output / "benchmark_config.yaml").write_bytes(config_path.read_bytes())
-    sources = [data_path, raw_path, config_path, root / "benchmarks/core.py", root / "benchmarks/run.py"]
+    sources = [data_path, raw_path, config_path, root / "requirements.txt", *sorted((root / "benchmarks").glob("*.py"))]
     if config.get("calendar_path"):
         sources.append(root / config["calendar_path"])
+    if config.get("full_calendar_path"):
+        sources.append(root / config["full_calendar_path"])
     manifest = {
         "git_commit": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=root, text=True).strip(),
-        "git_status": subprocess.check_output(["git", "status", "--porcelain"], cwd=root, text=True),
+        "git_status": git_status_at_start,
+        "implementation_state": "uncommitted_changes" if git_status_at_start else "committed",
+        "reproducibility_note": "If uncommitted, hashes identify implementation; repeat after authorized commit to record its SHA.",
         "python": platform.python_version(),
         "packages": {name: version(name) for name in ("numpy", "pandas", "PyYAML", "pyarrow")},
         "sha256": {str(p.relative_to(root)): hashlib.sha256(p.read_bytes()).hexdigest() for p in sources},
-        "calendar_mode": config["calendar_mode"], "pit_status": config["pit_status"],
+        "calendar_mode": config["calendar_mode"], "calendar_source": config.get("calendar_source"),
+        "calendar_verification": "provisional", "pit_status": config["pit_status"],
+        "forecast_history_end": str(restricted.index.max().date()),
+        "final_test_used_for_fitting_or_scoring": args.evaluation_split == "final_test",
         "result_status": "preliminary", "scored_splits": allowed,
         "error_convention": "prediction - actual",
     }

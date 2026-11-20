@@ -1,0 +1,58 @@
+{
+  "status": "passed",
+  "calendar_source": "reconstructed_moex_calendar_provisional",
+  "verification_status": "provisional_not_independently_verified",
+  "checks": {
+    "dates_unique_sorted_valid": true,
+    "full_calendar_contiguous": true,
+    "weekday_labels_match": true,
+    "evidence_present": true,
+    "sessions_within_full_calendar": true,
+    "sessions_equal_expected_dates": true,
+    "has_candle_matches_raw": true,
+    "raw_dates_within_full_calendar": true,
+    "known_saturdays_preserved": true
+  },
+  "counts": {
+    "calendar_dates": 1668,
+    "expected_trading_dates": 1160,
+    "listed_trading_dates": 1160,
+    "raw_candles": 1160,
+    "missing_expected_candles": 0,
+    "unexpected_candles": 0
+  },
+  "errors": [],
+  "missing_expected_dates": [],
+  "unexpected_candle_dates": [],
+  "known_saturdays": {
+    "2024-04-27": true,
+    "2024-11-02": true,
+    "2024-12-28": true,
+    "2025-11-01": true
+  },
+  "known_saturday_candles": {
+    "2024-04-27": true,
+    "2024-11-02": true,
+    "2024-12-28": true,
+    "2025-11-01": true
+  },
+  "range": [
+    "2022-04-26",
+    "2026-11-18"
+  ],
+  "evidence_counts": {
+    "STANDARD_RULE_BASED_PROVISIONAL": 1625,
+    "MOEX_HOLIDAY_TRADE_NOTICE": 28,
+    "MOEX_UPDATED_CLOSURE_NOTICE": 11,
+    "MOEX_DSVD_NO_SEPARATE_TRADE_DATE": 4
+  },
+  "readme_claims_match": true,
+  "readme_claims": {
+    "calendar_dates": 1668,
+    "expected_trading_dates": 1160,
+    "listed_trading_dates": 1160,
+    "raw_candles": 1160,
+    "missing_expected_candles": 0,
+    "unexpected_candles": 0
+  }
+}

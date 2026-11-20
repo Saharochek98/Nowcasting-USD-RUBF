@@ -1,0 +1,37 @@
+{
+  "git_commit": "774634e56edc8c807f2741c885ea1705a5c5ee17",
+  "git_status": " M README.md\n M benchmarks/core.py\n M benchmarks/run.py\n M configs/benchmark_config.yaml\n M reports/benchmark_summary.md\n M reports/data_quality_report.md\n?? benchmarks/calendar.py\n?? benchmarks/compare.py\n?? reports/calendar_quality_report.md\n?? results/benchmark_calendar_v2/\n?? tests/test_calendar_integration.py\n",
+  "implementation_state": "uncommitted_changes",
+  "reproducibility_note": "If uncommitted, hashes identify implementation; repeat after authorized commit to record its SHA.",
+  "python": "3.13.5",
+  "packages": {
+    "numpy": "2.1.3",
+    "pandas": "2.3.3",
+    "PyYAML": "6.0.2",
+    "pyarrow": "20.0.0"
+  },
+  "sha256": {
+    "data\\processed\\USDRUBF_baseline_2026-11-18.csv": "0f87d1e573ba85f859a27628e25f1fbc07c4d585f9ab7ba3ec4e05cd76ad9c05",
+    "data\\raw\\USDRUBF_daily_2026-11-18.csv": "f5cf5fbe0c9556b956f07a39b2e190288f415ee375d242b493bb5a7359d98015",
+    "configs\\benchmark_config.yaml": "8cdd0618bdfca7d74d7043074f62d0b72dfbe652469af11ff426992ed9510f33",
+    "requirements.txt": "1a5d78a528de1d8e20e82023fc18b73d7a7c6ffe850770fca3ff182c409f5f18",
+    "benchmarks\\__init__.py": "d3ae8229b007e285a65129aeb93f4ce6fed99ff889418b27f5deb9cdc0a4267d",
+    "benchmarks\\calendar.py": "b2855ebfaf7e3cc0d66c3371ee56595d8294198a9fd66563a421c58359aa61ad",
+    "benchmarks\\compare.py": "d58c1266c3a6b9b40bf2ca26699b0259e64ee28fa1ac820429c017f319aaa41a",
+    "benchmarks\\core.py": "822204737dbdec14703a4b2b899bcabca323263853603e1b8a6ae2fd14f9bfce",
+    "benchmarks\\run.py": "b38e7c3d36a00131f63bf3de9637073499aee165283b91ee3ff63cf32f79b819",
+    "data\\processed\\usdrubf_trading_days.csv": "deb6c6ffecfb267e31f7bb8d50a2d32684f67f061e70fbd285fede5032ea86f5",
+    "data\\processed\\trading_calendar.csv": "3a0baab58501ebfdea5adcc399873062a775d4269dd4c99243f5c93c8babedff"
+  },
+  "calendar_mode": "independent",
+  "calendar_source": "reconstructed_moex_calendar_provisional",
+  "calendar_verification": "provisional",
+  "pit_status": "pseudo-PIT",
+  "forecast_history_end": "2025-12-30",
+  "final_test_used_for_fitting_or_scoring": false,
+  "result_status": "preliminary",
+  "scored_splits": [
+    "validation"
+  ],
+  "error_convention": "prediction - actual"
+}
