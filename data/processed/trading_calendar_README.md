@@ -1,69 +1,83 @@
-# USDRUBF trading calendar (preliminary)
+# Торговый календарь USDRUBF (предварительная версия)
 
-This note describes the two calendar files in this directory. For OHLCV data, field definitions of `CANDLE_CLOSE` and candle `end` timestamps, see [README.md](README.md). No raw price series, baseline data, benchmark source or existing reports were modified.
+Документ описывает два календарных файла, расположенных в папке `data/processed/`. Сведения об исходных дневных свечах, значении `CANDLE_CLOSE` и особенностях временных меток `end` приведены в [основном README](README.md). Исходные цены, таблица для бейзлайнов, код моделей и уже подготовленные отчёты не изменялись.
 
-## Scope and files
+## 1. Период и состав данных
 
-Period: **2022-04-26 through 2026-11-18**, inclusive.
+**Период:** с 26 апреля 2022 года по 18 ноября 2026 года включительно.
 
-- [`trading_calendar.csv`](trading_calendar.csv): **1,668 calendar dates**, including weekends, Russian public holidays and days with no daily candle; 5 columns.
-- [`usdrubf_trading_days.csv`](usdrubf_trading_days.csv): **1,160 expected trading-date labels**, one `date` column, in chronological order. This is a derivative of the full calendar, not another independently maintained source.
+- [`trading_calendar.csv`](trading_calendar.csv) — полный календарь из **1 668 календарных дат** (включая выходные, праздники и даты без дневных свечей); содержит пять столбцов.
+- [`usdrubf_trading_days.csv`](usdrubf_trading_days.csv) — список из **1 160 ожидаемых торговых дат**, отсортированных по возрастанию; содержит один столбец `date`. Формируется из полного календаря и не является отдельным независимым источником.
 
-The original prices are in [`../raw/USDRUBF_daily_2026-11-18.csv`](../raw/USDRUBF_daily_2026-11-18.csv). No missing candles were forward-filled or fabricated.
+Исходные свечи MOEX ISS сохранены в [`data/raw/USDRUBF_daily_2026-11-18.csv`](../raw/USDRUBF_daily_2026-11-18.csv). Пропущенные свечи не восстанавливались, а цены не заполнялись предыдущими значениями.
 
-## Columns of trading_calendar.csv
+## 2. Структура `trading_calendar.csv`
 
-| Field | Meaning |
+| Столбец | Описание |
 |---|---|
-| `date` | Calendar date in YYYY-MM-DD format; when a candle exists, also the MOEX daily candle's date label |
-| `weekday` | Day of week in English (`Monday`–`Sunday`) |
-| `is_trading_day_expected` | 1 if the **reconstructed market-date schedule** expects a distinct daily USDRUBF trading-date label; 0 otherwise |
-| `has_candle` | 1 if `date` appears in the unchanged MOEX ISS daily-candle dataset; 0 otherwise |
-| `moex_evidence` | Type of evidence or rule used to determine the expected market-date status |
+| `date` | Календарная дата в формате `YYYY-MM-DD`. При наличии свечи совпадает с датой, указанной в её дневной метке MOEX. |
+| `weekday` | День недели на английском языке: от `Monday` до `Sunday`. |
+| `is_trading_day_expected` | `1` — по восстановленному расписанию ожидается отдельная торговая дата USDRUBF; `0` — отдельная дневная свеча не ожидается. |
+| `has_candle` | `1` — дата присутствует в исходной выгрузке дневных свечей USDRUBF; `0` — соответствующей строки нет. |
+| `moex_evidence` | Основание, по которому дата отнесена к торговым или неторговым. |
 
-`moex_evidence` values:
-- `STANDARD_RULE_BASED_PROVISIONAL` — Russian five-day production calendar plus the conventional market schedule; **not individually instrument-verified**.
-- `MOEX_HOLIDAY_TRADE_NOTICE` — additional trading date inferred from a published MOEX holiday schedule.
-- `MOEX_UPDATED_CLOSURE_NOTICE` — subsequent MOEX closure notice overrides an earlier holiday schedule (notably 2022).
-- `MOEX_DSVD_NO_SEPARATE_TRADE_DATE` — supplementary weekend/holiday session is not a separate daily trading-date label. Exact historical instrument eligibility still needs confirmation.
+Возможные значения `moex_evidence`:
 
-## Construction method and sources
+- `STANDARD_RULE_BASED_PROVISIONAL` — дата определена по производственному календарю РФ с пятидневной рабочей неделей и общим расписанием срочного рынка. Проверка именно по USDRUBF для каждой такой даты не проводилась.
+- `MOEX_HOLIDAY_TRADE_NOTICE` — торговая дата учтена на основании опубликованного биржей расписания праздничных торгов.
+- `MOEX_UPDATED_CLOSURE_NOTICE` — учтено более позднее сообщение MOEX об отмене торгов, изменившее первоначальное расписание (в частности, в 2022 году).
+- `MOEX_DSVD_NO_SEPARATE_TRADE_DATE` — дополнительная сессия выходного или праздничного дня не образует самостоятельную торговую дату дневной свечи. Историческая доступность таких сессий для USDRUBF требует отдельного подтверждения.
 
-The expected dates were reconstructed **without using the observed candle dates as a rule for whether trading was scheduled**. The method starts from the Russian five-day production calendar (federal holidays and transferred working days, 2022–2026), then applies published MOEX futures-market holiday sessions and subsequent changes. The `has_candle` flag is computed **separately** from the raw USDRUBF daily candles obtained from MOEX ISS (`interval=24`).
+## 3. Методика формирования и источники
 
-Production calendars:
-- 2022: https://www.consultant.ru/law/ref/calendar/proizvodstvennye/2022/
-- 2023: https://www.consultant.ru/law/ref/calendar/proizvodstvennye/2023/
-- 2024: https://www.consultant.ru/law/ref/calendar/proizvodstvennye/2024b/
-- 2025: https://www.consultant.ru/law/ref/calendar/proizvodstvennye/2025/
-- 2026: https://www.consultant.ru/law/ref/calendar/proizvodstvennye/2026/
+Календарь построен **независимо от наличия строк в датасете USDRUBF** в том смысле, что признак ожидаемого торгового дня не выводился из дат существующих свечей.
 
-MOEX references for the futures-market schedule and exceptions:
-- Trading calendar: https://www.moex.com/s3346
-- Holiday schedules: https://www.moex.com/n36780 ; https://www.moex.com/n51887 ; https://www.moex.com/n64121 ; https://www.moex.com/n73701 ; https://www.moex.com/n96571
-- Revised closures in 2022: https://www.moex.com/n47095 ; https://www.moex.com/n48076 ; https://www.moex.com/n51250
-- Official futures-calendar API (full history for this instrument not independently retrieved): https://iss.moex.com/iss/calendars/futures.json
+Сначала формировался производственный календарь РФ за 2022–2026 годы с учётом официальных праздников и переносов рабочих и выходных дней. Затем в него вносились изменения на основании опубликованных расписаний срочного рынка MOEX и последующих сообщений биржи. Признак `has_candle` рассчитывался отдельно по исходной выгрузке дневных свечей MOEX ISS (`interval=24`).
 
-The exchange's accounting of evening and supplementary weekend sessions has changed over time. In particular, weekend supplementary sessions may belong to the **next exchange trading-date label** rather than generating separate Saturday/Sunday rows. Do not treat physical session dates and trading-date labels as interchangeable.
+**Производственный календарь РФ:**
 
-## Audit findings (provisional)
+- [2022 год](https://www.consultant.ru/law/ref/calendar/proizvodstvennye/2022/)
+- [2023 год](https://www.consultant.ru/law/ref/calendar/proizvodstvennye/2023/)
+- [2024 год](https://www.consultant.ru/law/ref/calendar/proizvodstvennye/2024b/)
+- [2025 год](https://www.consultant.ru/law/ref/calendar/proizvodstvennye/2025/)
+- [2026 год](https://www.consultant.ru/law/ref/calendar/proizvodstvennye/2026/)
 
-| Measure | Count |
+**Источники Московской биржи:**
+
+- [Торговый календарь MOEX](https://www.moex.com/s3346).
+- Расписания праздничных торгов: [источник 1](https://www.moex.com/n36780), [источник 2](https://www.moex.com/n51887), [источник 3](https://www.moex.com/n64121), [источник 4](https://www.moex.com/n73701), [источник 5](https://www.moex.com/n96571).
+- Сообщения об изменении расписания в 2022 году: [источник 1](https://www.moex.com/n47095), [источник 2](https://www.moex.com/n48076), [источник 3](https://www.moex.com/n51250).
+- [MOEX ISS API — календарь срочного рынка](https://iss.moex.com/iss/calendars/futures.json). Полная историческая выгрузка именно для USDRUBF из этого источника пока не подтверждена.
+
+**Особенность торговых дат:** в разные периоды биржа по-разному относила вечерние и дополнительные сессии выходного дня к торговым датам. В частности, сделки дополнительной сессии выходного дня могут относиться к следующему торговому дню, не создавая отдельной строки за субботу или воскресенье. Поэтому фактическую календарную дату проведения сессии нельзя автоматически считать отдельной торговой датой дневной свечи.
+
+## 4. Результаты сверки (предварительные)
+
+| Показатель | Значение |
 |---|---:|
-| Calendar dates in range | 1,668 |
-| Dates expected to have a distinct daily candle | 1,160 |
-| Observed distinct daily-candle dates | 1,160 |
-| Expected date without a candle | **0** |
-| Candle on a date not expected by the reconstructed calendar | **0** |
+| Всего календарных дат за рассматриваемый период | **1 668** |
+| Ожидаемых дат с отдельной дневной свечой | **1 160** |
+| Фактически представленных дат дневных свечей | **1 160** |
+| Ожидаемых торговых дат без свечи | **0** |
+| Свечей за даты, не предусмотренные восстановленным расписанием | **0** |
 
-The counts above establish agreement **only with the reconstructed schedule**, not full proof that every historical USDRUBF trading date has been verified. Most dates were inferred using `STANDARD_RULE_BASED_PROVISIONAL`. Do not assert instrument-level complete coverage or a confirmed real-time / point-in-time trading calendar on this basis.
+Для поиска потенциальных пропусков используются условия:
 
-To review candidates for omissions, filter `is_trading_day_expected == 1` and `has_candle == 0`. For unexpected candles, filter `is_trading_day_expected == 0` and `has_candle == 1`. Both sets are empty in this version.
+- `is_trading_day_expected == 1` и `has_candle == 0` — ожидаемая торговая дата без свечи;
+- `is_trading_day_expected == 0` и `has_candle == 1` — свеча за дату, не предусмотренную восстановленным расписанием.
 
-## Using the calendar in benchmarks
+В текущей версии обе выборки пусты.
 
-`benchmarks/core.py` expects a **sorted unique `date` column containing trading dates only**. Use `usdrubf_trading_days.csv`, **not** all rows of `trading_calendar.csv`, for a calendar-aware run.
+**Ограничение:** полное совпадение дат подтверждено **только относительно восстановленного расписания**, а не путём проверки каждой исторической сессии непосредственно по инструменту USDRUBF. Большая часть дат определена по правилу `STANDARD_RULE_BASED_PROVISIONAL`. Поэтому нельзя считать полноту торговой истории и реальную доступность данных окончательно подтверждёнными.
 
-**Do not change `configs/benchmark_config.yaml` or label the model's outcomes as fully verified without agreement from A.** The calendar is preliminary; the team's documented `conditional EOD / pseudo-PIT` limitations and absence of validated candle-publication timestamps remain in force. Do not use this finite historical file to invent future trading dates beyond 2026-11-18.
+## 5. Использование календаря в моделях
 
-For a complete formal audit, confirm the historical instrument-level FORTS sessions against an official archive or equivalent independent MOEX records.
+Код [`benchmarks/core.py`](../../benchmarks/core.py) ожидает CSV с **одним столбцом `date`**, содержащим упорядоченные уникальные торговые даты.
+
+Для расчёта горизонтов прогнозирования следует использовать **`usdrubf_trading_days.csv`**, а не все строки полного `trading_calendar.csv`: последний содержит также выходные и праздники, для которых отдельная дневная свеча не ожидается.
+
+**Настройки `configs/benchmark_config.yaml` самостоятельно не изменялись.** Решение о подключении предварительного календаря к бэктестингу принимает участник A после проверки его источников и ограничений. Режим `conditional EOD / pseudo-PIT` сохраняется: точные исторические моменты публикации дневных свечей пока не подтверждены.
+
+Календарь заканчивается 18 ноября 2026 года и не определяет будущие торговые даты за пределами этого периода.
+
+Для завершения независимого аудита необходимо дополнительно сверить исторические торговые сессии USDRUBF с официальным архивом срочного рынка MOEX либо другим независимым биржевым источником.
