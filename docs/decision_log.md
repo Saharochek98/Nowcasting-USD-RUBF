@@ -1,6 +1,6 @@
 # Decision Log / Open Questions — USDRUBF
 
-**Версия:** 1.2 · 2026-11-19 · **Владелец:** A
+**Версия:** 1.3 · 2026-11-20 · **Владелец:** A
 
 ## Принятые решения
 
@@ -47,3 +47,29 @@
 `YYYY-MM-DD | ID | Решение | Альтернативы | Источник | Кто согласовал | Влияние | Статус`
 
 Не помечать Q01–Q04 как закрытые до первичного аудита фактических дневных данных.
+
+## Status update — 2026-11-20 (после PR #1–#6)
+
+| ID | Решение / состояние | Основание | Статус |
+|---|---|---|---|
+| D13 | Каноническая рабочая версия baseline — `results/benchmark_calendar_v2/`; предыдущую A1 оставить неизменной для replay | `reports/benchmark_summary.md`, `comparison.json` | ACCEPTED |
+| D14 | B0 RW и B1 AR(1) реализованы и оценены на validation 2025, не final test | код + сохранённые метрики | DONE_VALIDATION |
+| D15 | Календарь `reconstructed_moex_calendar_provisional` согласован со всеми 1160 raw-свечами, но не сертифицирован независимым архивом | `reports/calendar_quality_report.md` | PROVISIONAL |
+| D16 | Эксперименты остаются `conditional EOD / pseudo-PIT`; точное историческое `available_at` дневного CLOSE не подтверждено | Data README / manifest | OPEN_LIMITATION |
+| D17 | AR(1) уступает RW по validation RMSE для h=1…7; HAC+Holm не подтверждает семейно-значимого различия на 5% | `reports/ar1_diagnostics.md` | OBSERVED_VALIDATION |
+| D18 | Перспективное направление — оценка неопределённости; волатильность демонстрирует зависимость, но интервальные модели пока не реализованы | ACF/Ljung–Box diagnostics | RESEARCH_HYPOTHESIS |
+| D19 | Повторить `benchmark_calendar_v2` и diagnostics на чистом `main` с manifest Git SHA (прошлые запуски на uncommitted tree) | `run_manifest.json`, `diagnostics_manifest.json` | TODO |
+| D20 | Финальный test 2026 не открывать до регистрации модели, факторной панели и calibration policy | предотвращение selection bias | ACCEPTED |
+
+### Состояние прежних Q01–Q08
+
+- **Q01 (CLOSE):** источник и исходное поле **идентифицированы**: MOEX ISS `candles interval=24`, `close` → `CANDLE_CLOSE`; raw/processed совпадают. **Момент появления свечи и точная репрезентативность как «закрытия» остаются ограничениями**, это не settlement-цена из отдельного поля.
+- **Q02 (timestamp):** OPEN; `conditional EOD / pseudo-PIT`.
+- **Q03 (календарь):** PROVISIONAL DONE — восстановленный список сессий, четыре рабочие субботы, 0 несовпадений относительно реконструкции; архивное подтверждение OPEN.
+- **Q04 (качество OHLC):** DONE для внутреннего аудита, 1160 свечей, 0 OHLC-нарушений и дубликатов; отчёт в `reports/data_quality_report.md`.
+- **Q05 (split, AR):** DONE: train/validation/test по target-дате, AR expanding, 100 pairs, `configs/benchmark_config.yaml`.
+- **Q06 (CBR/funding):** OPEN — готовой PIT-панели нет.
+- **Q07 (interval calibration):** OPEN — договориться об уровнях 90%/95% и истории созревших OOS-ошибок, не тестировать на финальном test.
+- **Q08 (расхождение с PDF):** OPEN — согласовать с наставниками trading-day и смену официального курса на USDRUBF.
+
+**Для распределения задач A/B/C/D на следующие два дня:** [two_day_plan.md](two_day_plan.md). Статус выполнения — [project_status.md](project_status.md).
