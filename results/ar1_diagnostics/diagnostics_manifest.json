@@ -1,0 +1,86 @@
+{
+  "git_commit": "774634e56edc8c807f2741c885ea1705a5c5ee17",
+  "git_status_at_start": " M README.md\n A benchmarks/calendar.py\n A benchmarks/compare.py\n M benchmarks/core.py\n M benchmarks/run.py\n M configs/benchmark_config.yaml\n M reports/benchmark_summary.md\n A reports/calendar_quality_report.md\n M reports/data_quality_report.md\n A results/benchmark_calendar_v2/benchmark_config.yaml\n A results/benchmark_calendar_v2/calendar_checks.json\n A results/benchmark_calendar_v2/comparison.json\n A results/benchmark_calendar_v2/metrics_comparison.csv\n A results/benchmark_calendar_v2/metrics_validation.csv\n A results/benchmark_calendar_v2/pair_counts.csv\n A results/benchmark_calendar_v2/predictions_ar1.parquet\n A results/benchmark_calendar_v2/predictions_rw.parquet\n A results/benchmark_calendar_v2/run_manifest.json\n A results/benchmark_calendar_v2/scored_predictions.parquet\n A tests/test_calendar_integration.py\n?? benchmarks/diagnostics.py\n?? benchmarks/diagnostics_run.py\n?? configs/ar1_diagnostics.yaml\n?? reports/ar1_diagnostics.md\n?? requirements-diagnostics.txt\n?? results/ar1_diagnostics/\n?? tests/test_ar1_diagnostics.py\n",
+  "implementation_state": "uncommitted_changes",
+  "python": "3.13.5",
+  "packages": {
+    "numpy": "2.1.3",
+    "pandas": "2.3.3",
+    "PyYAML": "6.0.2",
+    "pyarrow": "20.0.0",
+    "statsmodels": "0.14.4",
+    "matplotlib": "3.10.0",
+    "scipy": "1.15.3",
+    "pytest": "8.3.4"
+  },
+  "sha256": {
+    "configs/ar1_diagnostics.yaml": "824cf10e30c0e9f8f6818e708c51c18bd47775173c1badcfb653ae4d03f63beb",
+    "configs/benchmark_config.yaml": "8cdd0618bdfca7d74d7043074f62d0b72dfbe652469af11ff426992ed9510f33",
+    "data/processed/USDRUBF_baseline_2026-11-18.csv": "0f87d1e573ba85f859a27628e25f1fbc07c4d585f9ab7ba3ec4e05cd76ad9c05",
+    "data/processed/usdrubf_trading_days.csv": "deb6c6ffecfb267e31f7bb8d50a2d32684f67f061e70fbd285fede5032ea86f5",
+    "data/processed/trading_calendar.csv": "3a0baab58501ebfdea5adcc399873062a775d4269dd4c99243f5c93c8babedff",
+    "requirements-diagnostics.txt": "1b5327a62b226eb5989234ee7e9d6c0b09b24fcf64856c7d7c949d3fe1c8ed49",
+    "benchmarks/__init__.py": "d3ae8229b007e285a65129aeb93f4ce6fed99ff889418b27f5deb9cdc0a4267d",
+    "benchmarks/calendar.py": "b2855ebfaf7e3cc0d66c3371ee56595d8294198a9fd66563a421c58359aa61ad",
+    "benchmarks/compare.py": "d58c1266c3a6b9b40bf2ca26699b0259e64ee28fa1ac820429c017f319aaa41a",
+    "benchmarks/core.py": "822204737dbdec14703a4b2b899bcabca323263853603e1b8a6ae2fd14f9bfce",
+    "benchmarks/diagnostics.py": "6a27fb8953633b97307f2719531e81db4a77f247d7f6f547221a25abc3aab6ae",
+    "benchmarks/diagnostics_run.py": "12f16da989b96a149a83a14c44ba1948f3c3ae44e5022bbd66b925fcb3b84146",
+    "benchmarks/run.py": "b38e7c3d36a00131f63bf3de9637073499aee165283b91ee3ff63cf32f79b819",
+    "tests/test_ar1_diagnostics.py": "529a71d941455c9aec618a460b243a03b5335049b74b42cdab55549df0495aaa",
+    "tests/test_benchmarks.py": "176e4e42d9495c2557362d667ba55b74313f43bae34213878fe11706a9c61e7e",
+    "tests/test_calendar_integration.py": "b04cf64d3ce86c645065fe321cc9e3b29efa8112dad05f93cd56b4c5d005d6cc"
+  },
+  "preserved_benchmark_sha256": {
+    "results/benchmark_calendar_v2/benchmark_config.yaml": "8cdd0618bdfca7d74d7043074f62d0b72dfbe652469af11ff426992ed9510f33",
+    "results/benchmark_calendar_v2/calendar_checks.json": "087cf308101eae7b258219a95cbd133556bcc63ebe826a0d5d6831350aeefa94",
+    "results/benchmark_calendar_v2/comparison.json": "7492b72963bc400300a50341662025bf3759b46601d57a8df49fa13c9c511b50",
+    "results/benchmark_calendar_v2/metrics_comparison.csv": "09cc2f9e26fa0499c89ad84ca18a58c2495521ad8790c3d9567b14ffdbb7e154",
+    "results/benchmark_calendar_v2/metrics_validation.csv": "95a894af412c933a446c74dc537dc4b22f368158a481aa1bfbd65e0c0e6bfffc",
+    "results/benchmark_calendar_v2/pair_counts.csv": "425e9137f6d2095cc6475fc2e5d0c5fd0e08b3ce28b42da514aafcafe954c9ab",
+    "results/benchmark_calendar_v2/predictions_ar1.parquet": "643c65ded2ba877ac8b723d081fdd1afbc55427840f400ee2eb0a49d1b4185bb",
+    "results/benchmark_calendar_v2/predictions_rw.parquet": "04c0f5931dd0e5f73f8a01896a589074abfde026dec87fe6f0cc38e69f292d17",
+    "results/benchmark_calendar_v2/run_manifest.json": "d10d3bc2d82a8be8860bdf08ffc9b251c217da11c6f5021c8beb6f3a0ee6244c",
+    "results/benchmark_calendar_v2/scored_predictions.parquet": "87ca1f0f3de069bc24ad17c2971715102aa9276b451586e478e625c4b915c988",
+    "results/benchmark_run/benchmark_config.yaml": "e07e27ee516fa515ac0f6c1c514c90931958c5dc11628fc78ff11b6c5793087c",
+    "results/benchmark_run/metrics_validation.csv": "95a894af412c933a446c74dc537dc4b22f368158a481aa1bfbd65e0c0e6bfffc",
+    "results/benchmark_run/pair_counts.csv": "a89709aed904a11fa61b564f151c4e453836558350aa9af2f14961a7c2ba1e81",
+    "results/benchmark_run/predictions_ar1.parquet": "25a60b932381faa474b222d4efecba3d0acc9a01289a136a01e871d8da624979",
+    "results/benchmark_run/predictions_rw.parquet": "d3fe596163f5f7abb05cdcd6b5b3c141dfbec0d28c6e6b3a2ef95b3a89b51247",
+    "results/benchmark_run/run_manifest.json": "3b61a071bd691b6bc546bd4388b2c0f9f46e965b1002204d98001d7683ede67e",
+    "results/benchmark_run/scored_predictions.parquet": "f77961e19c77fe50fd68abe7e7874f4751128af8e21736982e0ef0cee2490de8"
+  },
+  "diagnostic_splits": [
+    "train",
+    "validation"
+  ],
+  "final_test_used": false,
+  "history_end": "2025-12-30",
+  "figures": [
+    "ar1_coefficients.png",
+    "autocorrelation_train.png",
+    "autocorrelation_validation.png",
+    "errors_h1.png",
+    "errors_h3.png",
+    "errors_h5.png",
+    "errors_h7.png",
+    "hac_loss_intervals.png",
+    "volatility_regimes.png",
+    "drift_decomposition.png",
+    "drift_summary.png"
+  ],
+  "volatility_thresholds": {
+    "low": 0.007067084191331379,
+    "high": 0.009654573169652854,
+    "train_n": 663,
+    "train_end": "2024-12-31",
+    "available_from": "2024-12-30",
+    "excluded_precalibration_pairs": 21,
+    "quantiles": [
+      0.3333333333333333,
+      0.6666666666666666
+    ]
+  },
+  "coefficient_source": "saved_origin_specific_walk_forward_estimates_no_refitting",
+  "result_status": "exploratory_conditional_EOD_pseudo_PIT_provisional_calendar"
+}

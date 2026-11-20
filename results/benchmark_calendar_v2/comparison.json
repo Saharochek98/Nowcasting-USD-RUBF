@@ -1,0 +1,58 @@
+{
+  "previous_run": "D:\\Nowcasting-USD-RUBF\\results\\benchmark_run",
+  "current_run": "D:\\Nowcasting-USD-RUBF\\results\\benchmark_calendar_v2",
+  "checks": {
+    "previous_is_observed_session_proxy": true,
+    "current_validation_only": true,
+    "rw_validation_pair_dates_equal": true,
+    "rw_validation_predictions_equal": true,
+    "rw_all_retained_forecasts_equal": true,
+    "rw_no_final_test_origins": true,
+    "rw_no_actuals_before_scoring": true,
+    "ar1_validation_pair_dates_equal": true,
+    "ar1_validation_predictions_equal": true,
+    "ar1_all_retained_forecasts_equal": true,
+    "ar1_no_final_test_origins": true,
+    "ar1_no_actuals_before_scoring": true,
+    "validation_scoring_equal": true,
+    "final_test_actuals_and_errors_sealed": true,
+    "metric_groups_equal": true,
+    "n_equal": true,
+    "mae_equal": true,
+    "rmse_equal": true,
+    "bias_equal": true,
+    "rmse_ratio_vs_rw_equal": true,
+    "origin_min_equal": true,
+    "origin_max_equal": true,
+    "target_min_equal": true,
+    "target_max_equal": true
+  },
+  "forecast_counts": {
+    "rw": {
+      "previous_all": 8120,
+      "current_all": 6559,
+      "previous_validation": 1778,
+      "current_validation": 1778
+    },
+    "ar1": {
+      "previous_all": 8120,
+      "current_all": 6559,
+      "previous_validation": 1778,
+      "current_validation": 1778
+    }
+  },
+  "previous_sha256": {
+    "benchmark_config.yaml": "e07e27ee516fa515ac0f6c1c514c90931958c5dc11628fc78ff11b6c5793087c",
+    "metrics_validation.csv": "95a894af412c933a446c74dc537dc4b22f368158a481aa1bfbd65e0c0e6bfffc",
+    "pair_counts.csv": "a89709aed904a11fa61b564f151c4e453836558350aa9af2f14961a7c2ba1e81",
+    "predictions_ar1.parquet": "25a60b932381faa474b222d4efecba3d0acc9a01289a136a01e871d8da624979",
+    "predictions_rw.parquet": "d3fe596163f5f7abb05cdcd6b5b3c141dfbec0d28c6e6b3a2ef95b3a89b51247",
+    "run_manifest.json": "3b61a071bd691b6bc546bd4388b2c0f9f46e965b1002204d98001d7683ede67e",
+    "scored_predictions.parquet": "f77961e19c77fe50fd68abe7e7874f4751128af8e21736982e0ef0cee2490de8"
+  },
+  "passed": true,
+  "metric_tolerance": {
+    "rtol": 1e-12,
+    "atol": 1e-12
+  }
+}

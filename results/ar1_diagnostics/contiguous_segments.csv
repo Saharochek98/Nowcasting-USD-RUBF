@@ -1,0 +1,7 @@
+split,series,segment,n,first_date,last_date,status
+train,change,1,682,2022-04-27,2024-12-30,used
+train,log_return,1,682,2022-04-27,2024-12-30,used
+train,abs_log_return,1,682,2022-04-27,2024-12-30,used
+validation,change,1,254,2025-01-03,2025-12-30,used
+validation,log_return,1,254,2025-01-03,2025-12-30,used
+validation,abs_log_return,1,254,2025-01-03,2025-12-30,used

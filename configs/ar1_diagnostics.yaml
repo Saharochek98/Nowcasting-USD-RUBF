@@ -1,0 +1,21 @@
+diagnostics_version: '1.0'
+benchmark_config: configs/benchmark_config.yaml
+benchmark_run: results/benchmark_calendar_v2
+output: results/ar1_diagnostics
+allowed_splits: [train, validation]
+acf_max_lag: 20
+pacf_method: ywm
+ljung_box_lags: [5, 10, 20]
+minimum_contiguous_segment: 42
+hac_base_lag: 20
+hac_lag_rule: max(base_lag, horizon - 1)
+hac_kernel: Bartlett
+hac_small_sample_correction: true
+confidence_level: 0.95
+volatility_window: 20
+volatility_ddof: 1
+volatility_quantiles: [0.3333333333333333, 0.6666666666666666]
+minimum_regime_count: 30
+plot_horizons: [1, 3, 5, 7]
+histogram_bins: 25
+figure_dpi: 150

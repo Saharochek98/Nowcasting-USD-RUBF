@@ -24,13 +24,17 @@ Status: PRELIMINARY; conditional EOD / pseudo-PIT.
 
 ## Session calendar
 
-Mode: `observed_session_proxy`.
-Repository inspection found only raw candles and a derived baseline;
-neither supplies an independent calendar including sessions without candles.
-The ISS candles endpoint in the README supplies candles, not independent sessions.
-Calendar completeness is UNKNOWN, including in each split. Horizons are observed
-session steps only; this is not a final seven-trading-day backtest.
-No weekends-only calendar is synthesized. Unknown future target dates remain null.
+Mode: `independent`.
+Source: reconstructed_moex_calendar_provisional
+Sessions without valid price: 0: []
+The supplied calendar is a PROVISIONAL reconstruction from production-calendar
+rules and MOEX notices; mode independent is a loader mode, not a verification claim.
+See calendar_quality_report.md for full-calendar/expected-date/raw-date checks.
+Completeness is assessed only relative to this reconstruction, not an independently
+verified archive of every USDRUBF session. Known working Saturdays are retained.
+- train: 683 expected sessions; 0 without valid price.
+- validation: 254 expected sessions; 0 without valid price.
+- final_test: 223 expected sessions; 0 without valid price.
 
 Calendar-day gaps above 4 days (diagnostic, not evidence of missing sessions):
 {'2022-05-04': 5, '2022-05-11': 5, '2024-01-03': 5, '2026-01-05': 6}
@@ -42,15 +46,15 @@ Threshold fixed in config; flagged observations retained.
 
 ## Open semantics, provenance and protocol issues
 
-Processed README calls price original MOEX CANDLE_CLOSE and not settlement;
-research charter/benchmark spec leave this conditional on external verification.
-Raw/processed equality supports field provenance but does not independently prove
-market-close semantics or historical publication timing. No external confirmation
-was established in this implementation. Q01/Q02/Q03 remain open; primary experiment blocked.
-README mentions session-day attribution changing on 2026-03-23; historical availability
-and attribution require a source audit. No exact forecast timestamp is fabricated.
-Minimal clarification: retain conditional CLOSE semantics across documents until
-Data Engineer supplies field documentation, availability evidence and an independent calendar.
+Per the A2 task agreement, target is the original MOEX ISS daily CANDLE_CLOSE,
+not CBR or clearing settlement. Raw/processed equality verifies the retained field.
+Existing protocol documents still condition semantics on external evidence; they are
+preserved. No new independent external field/session audit was performed in A2.
+Historical candle publication timestamps, end-label interpretation, and session-day
+attribution remain unverified. Data README documents atypical end labels and weekend
+session attribution; end is not assumed to be a precise last-trade or availability time.
+Q02 remains open; Q03 has a provisional reconstruction, not final independent closure.
+No exact forecast timestamp is fabricated; conditional EOD / pseudo-PIT remains.
 A1 bounds, minimum 100 AR pairs and every-origin expanding refit are fixed in config
 before validation scoring. Final-test metrics require explicit --include-final-test;
 final-test outcomes must never choose models, preprocessing or hyperparameters.

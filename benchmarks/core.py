@@ -157,6 +157,7 @@ def generate_forecasts(data, calendar, config, models=None):
                     "source": data.loc[origin, "source"] if origin in data.index else None,
                     "pit_status": config["pit_status"],
                     "calendar_mode": config["calendar_mode"], "result_status": "preliminary",
+                    "calendar_source": config.get("calendar_source"),
                     "split": splits.get(target, "unknown"), **meta,
                 })
     return pd.DataFrame(rows)

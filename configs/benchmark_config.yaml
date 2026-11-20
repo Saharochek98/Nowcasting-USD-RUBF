@@ -1,12 +1,13 @@
-config_version: '1.0'
+config_version: '2.0'
 instrument: USDRUBF
 target_field: CLOSE
 frequency: daily
 forecast_origin_mode: conditional_EOD
 pit_status: pseudo-PIT
-calendar_mode: observed_session_proxy
-calendar_path: null
-calendar_source: null
+calendar_mode: independent
+calendar_path: data/processed/usdrubf_trading_days.csv
+calendar_source: reconstructed_moex_calendar_provisional
+full_calendar_path: data/processed/trading_calendar.csv
 raw_path: data/raw/USDRUBF_daily_2026-11-18.csv
 data_path: data/processed/USDRUBF_baseline_2026-11-18.csv
 data_version: '2026-11-18'
