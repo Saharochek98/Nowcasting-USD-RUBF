@@ -1,7 +1,7 @@
 # Backtesting Protocol — USDRUBF
 
-**Версия:** 1.2 · **Дата:** 2026-11-19 · **Владелец:** A  
-**Статус:** условный daily EOD протокол; источник/значение CLOSE и доступность свечи на момент прогноза должны быть подтверждены.
+**Версия:** 1.3 · **Дата:** 2026-11-20 · **Владелец:** A  
+**Статус:** RW/AR(1) validation реализован и сохранён; источник `MOEX ISS CANDLE_CLOSE` документирован, время доступности свечи всё ещё не подтверждено (conditional EOD / pseudo-PIT).
 
 ## 1. Определение target и origin
 
@@ -71,3 +71,19 @@ B0 RW: `C_hat[d+h|d]=C_d`. **B1 AR(1) на дневных разностях CLO
 Оценка отдельно после возникновения факта: `actual, scored_status, error`. Дополнительно интервал: `alpha, lower, upper, calibration_end_date`.
 
 Сохранять raw OHLC, определения поля CLOSE, торговый календарь, отчет качества, конфигурации, версию Git и все предсказания (включая `unscored`). Если timestamp неизвестен, хранить `forecast_origin_mode=conditional_EOD` вместо выдуманного времени.
+
+## 9. Текущее состояние реализации и воспроизводимости (20.11.2026)
+
+- Текущий runnable pipeline: `benchmarks/core.py`, `benchmarks/run.py`, `benchmarks/calendar.py`, `benchmarks/compare.py`; tests — `tests/`.
+- Канонические предварительные validation-артефакты: `results/benchmark_calendar_v2/`; исторический `results/benchmark_run/` хранится для проверки воспроизведения A1→A2, **не** заменяет v2.
+- Train / validation / final test (по **дате target**, включительно): 2022-04-26—2024-12-31 / 2025-01-01—2025-12-31 / 2026-01-01—2026-11-18. Наблюдений соответственно 683 / 254 / 223. На validation каждая из 7 метрик сформирована по 254 общим scored парам.
+- B1: expanding-window OLS на изменениях `CLOSE`, `min_ar_pairs=100`, refit each origin; missing adjacent pair не заполняется. B0: последнее известное `CLOSE`.
+- `comparison.json` фиксирует `passed=true` на сравнениях A1→A2; `calendar_checks.json` фиксирует `verification_status=provisional_not_independently_verified`.
+- Сохранённые A2 и diagnostics manifests отражают `uncommitted_changes` в момент расчёта. **Требуется контрольный rerun из чистого checkout актуального `main`, не переписывая исходные артефакты**. Наличие Git-коммита с исходниками не заменяет повторного вычисления.
+- По умолчанию scoring ограничен validation; final test 2026 **не использовать для выбора модели, порогов, признаков и калибровки**. Заключительные ограничения и текущие выводы — [project_status.md](project_status.md).
+
+## 10. Extension contract для моделей и интервалов
+
+Новые модели получают **только историю до текущего `origin_date`**, возвращают прогнозы `h=1…7` и метаданные fit; сохранение прогнозов выполняется до scoring. Новые признаки требуют `published_at/available_at` либо явно зафиксированного консервативного лага; `target_date` определяется календарём. Для supervised `h`-шаговых регрессий обучающая метка созревает только после доступности `C_{t+h}`.
+
+Interval API: `origin_date,target_date,horizon,alpha,lower,upper,calibration_end_date,model_id,pit_status`. Coverage, width и interval score считать на тех же разрешённых target, независимо от RMSE. При добавлении DFM и ML не переиспользовать test для подбора.
