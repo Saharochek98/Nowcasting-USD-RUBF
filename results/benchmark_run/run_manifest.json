@@ -1,0 +1,25 @@
+{
+  "git_commit": "518787b5d5037662b5539628fb60b7e45271e2bb",
+  "git_status": " A .gitignore\n A README.md\n A benchmarks/__init__.py\n A benchmarks/core.py\n A benchmarks/run.py\n A configs/benchmark_config.yaml\n A reports/benchmark_summary.md\n A reports/data_quality_report.md\n A requirements.txt\n A results/benchmark_run/benchmark_config.yaml\n A results/benchmark_run/metrics_validation.csv\n A results/benchmark_run/pair_counts.csv\n A results/benchmark_run/predictions_ar1.parquet\n A results/benchmark_run/predictions_rw.parquet\n A results/benchmark_run/run_manifest.json\n A results/benchmark_run/scored_predictions.parquet\n A tests/test_benchmarks.py\n",
+  "python": "3.13.5",
+  "packages": {
+    "numpy": "2.1.3",
+    "pandas": "2.3.3",
+    "PyYAML": "6.0.2",
+    "pyarrow": "20.0.0"
+  },
+  "sha256": {
+    "data\\processed\\USDRUBF_baseline_2026-11-18.csv": "0f87d1e573ba85f859a27628e25f1fbc07c4d585f9ab7ba3ec4e05cd76ad9c05",
+    "data\\raw\\USDRUBF_daily_2026-11-18.csv": "f5cf5fbe0c9556b956f07a39b2e190288f415ee375d242b493bb5a7359d98015",
+    "configs\\benchmark_config.yaml": "bdb9457fcfc1f16de6d6b75af25bd1b3804c4ba87e0a38f05b394627c2f9c646",
+    "benchmarks\\core.py": "9756b476e995eedf562ed4964305048cbb1857f19ddc2c76ee2f3854a3ea75c8",
+    "benchmarks\\run.py": "e99892df14183f0c97909bf22ee7bff378009fd596cc8ac989a0c0b9056d5439"
+  },
+  "calendar_mode": "observed_session_proxy",
+  "pit_status": "pseudo-PIT",
+  "result_status": "preliminary",
+  "scored_splits": [
+    "validation"
+  ],
+  "error_convention": "prediction - actual"
+}
