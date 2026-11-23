@@ -1,0 +1,12 @@
+﻿regime,regime_start,regime_end,grouping_basis,column,n_rows,observed,missing,observed_zero,observed_nonzero,missing_fraction,zero_fraction_observed,first_observed_date,last_observed_date,first_zero_date,last_zero_date,first_missing_date,last_missing_date,zero_strings
+pre_stabilizing_component,0001-01-01,2022-12-04,source_trade_date,swaprate_current,153,0,153,0,0,1.00000000,,,,,,2022-04-26,2022-12-02,{}
+stabilizing_component_spot,2022-12-05,2024-06-23,source_trade_date,swaprate_current,393,393,0,69,324,0.00000000,0.17557252,2022-12-05,2024-06-21,2022-12-19,2024-06-21,,,"{""0.00000"": 69}"
+cbr_vwap,2024-06-24,2024-12-19,source_trade_date,swaprate_current,129,129,0,20,109,0.00000000,0.15503876,2024-06-24,2024-12-19,2024-07-02,2024-12-16,,,"{""0.00000"": 20}"
+cbr_holiday_clarification,2024-12-20,2026-03-22,source_trade_date,swaprate_current,315,315,0,53,262,0.00000000,0.16825397,2024-12-20,2026-03-20,2025-02-03,2026-03-12,,,"{""0.00000"": 53}"
+unified_session,2026-03-23,9999-12-31,source_trade_date,swaprate_current,170,170,0,56,114,0.00000000,0.32941176,2026-03-23,2026-11-18,2026-03-25,2026-11-12,,,"{""0.00000"": 56}"
+pre_stabilizing_component,0001-01-01,2022-12-04,source_trade_date,swaprate_prev_session,153,0,153,0,0,1.00000000,,,,,,2022-04-27,2022-12-05,{}
+stabilizing_component_spot,2022-12-05,2024-06-23,source_trade_date,swaprate_prev_session,393,393,0,69,324,0.00000000,0.17557252,2022-12-06,2024-06-24,2022-12-20,2024-06-24,,,"{""0.00000"": 69}"
+cbr_vwap,2024-06-24,2024-12-19,source_trade_date,swaprate_prev_session,129,129,0,20,109,0.00000000,0.15503876,2024-06-25,2024-12-20,2024-07-03,2024-12-17,,,"{""0.00000"": 20}"
+cbr_holiday_clarification,2024-12-20,2026-03-22,source_trade_date,swaprate_prev_session,315,315,0,53,262,0.00000000,0.16825397,2024-12-23,2026-03-23,2025-02-04,2026-03-13,,,"{""0.00000"": 53}"
+unified_session,2026-03-23,9999-12-31,source_trade_date,swaprate_prev_session,169,169,0,56,113,0.00000000,0.33136095,2026-03-24,2026-11-18,2026-03-26,2026-11-13,,,"{""0.00000"": 56}"
+no_predecessor,,,source_trade_date,swaprate_prev_session,1,0,1,0,0,1.00000000,,,,,,2022-04-26,2022-04-26,{}

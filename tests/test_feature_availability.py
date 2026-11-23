@@ -116,7 +116,12 @@ class CatalogTests(unittest.TestCase):
         def content_digest(path):
             return hashlib.sha256(path.read_bytes().replace(b'\r\n', b'\n')).hexdigest()
         for path, expected in hashes.items():
-            if path not in {'docs/feature_availability_catalog.csv', 'scripts/build_external_features.py'}:
+            # A may revise the protocol after B2 (PR #10). The B2 receipt hashes
+            # remain historical provenance, not a permanent freeze of live docs.
+            # Data/export snapshots below remain checked against frozen hashes;
+            # B3/B4 separately check that their runs never mutate the protocol.
+            if path not in {'docs/feature_availability_catalog.csv', 'scripts/build_external_features.py',
+                            'docs/backtest_protocol.md'}:
                 self.assertEqual(content_digest(ROOT / path), expected, path)
         self.assertEqual(content_digest(ROOT / 'results/feature_pit_audit/catalog_b1_snapshot.csv'),
                          hashes['docs/feature_availability_catalog.csv'])

@@ -1,0 +1,258 @@
+{
+  "all_trading_session_checks_passed": true,
+  "archive_checks": [
+    {
+      "result": "Page confirms first circulation date 2022-04-26; historical export values not retrieved.",
+      "url": "https://www.moex.com/ru/derivatives/contractresults.aspx?code=USDRUBF"
+    },
+    {
+      "result": "Not accessible through web tool on 2026-11-23; no historical values verified.",
+      "url": "https://iss.moex.com/iss/history/engines/futures/markets/forts/boards/RFUD/securities/USDRUBF.json?from=2022-11-28&till=2022-12-07&iss.only=history&history.columns=TRADEDATE,SECID,BOARDID,SWAPRATE"
+    },
+    {
+      "result": "Not accessible through web tool; historical field migration unknown.",
+      "url": "https://iss.moex.com/iss/history/engines/futures/markets/forts/columns.json"
+    }
+  ],
+  "artifact_sha256_bytes": {
+    "missing_segments.csv": "13b57e8288563243545c6ca18944da449aaebfeb40e29a882940605fe7fb1366",
+    "monthly_summary.csv": "35618353c6916a25c3ffabccaaca4d14424abf7a5a611f29cf596e650761e907",
+    "yearly_summary.csv": "44ed411b53e708df99bd2f9b15ace2b4bc55f7f6989fcaba43f74fd32a1b691a",
+    "zero_funding_summary.csv": "1736a54a1320121f71ad5fb77619dd3906bfea3bbf64153a17f9b67374dbe375"
+  },
+  "b3_funding_linkage_passed": true,
+  "checks": {
+    "lag_matches": 0,
+    "presence_flag_matches": 0,
+    "representation_differences": 0,
+    "source_date_matches": 0
+  },
+  "first_date": "2022-04-26",
+  "forecast_metrics_computed": false,
+  "funding": {
+    "swaprate_current": {
+      "column": "swaprate_current",
+      "continuous_covered_suffix_rows": 1007,
+      "continuous_covered_suffix_start": "2022-12-05",
+      "first_missing_date": "2022-04-26",
+      "first_observed_date": "2022-12-05",
+      "first_zero_date": "2022-12-19",
+      "last_missing_date": "2022-12-02",
+      "last_observed_date": "2026-11-18",
+      "last_zero_date": "2026-11-12",
+      "missing": 153,
+      "missing_after_first_observed": 0,
+      "missing_fraction": "0.13189655",
+      "n_rows": 1160,
+      "observed": 1007,
+      "observed_nonzero": 809,
+      "observed_zero": 198,
+      "zero_fraction_observed": "0.19662363"
+    },
+    "swaprate_prev_session": {
+      "column": "swaprate_prev_session",
+      "continuous_covered_suffix_rows": 1006,
+      "continuous_covered_suffix_start": "2022-12-06",
+      "first_missing_date": "2022-04-26",
+      "first_observed_date": "2022-12-06",
+      "first_zero_date": "2022-12-20",
+      "last_missing_date": "2022-12-05",
+      "last_observed_date": "2026-11-18",
+      "last_zero_date": "2026-11-13",
+      "missing": 154,
+      "missing_after_first_observed": 0,
+      "missing_fraction": "0.13275862",
+      "n_rows": 1160,
+      "observed": 1006,
+      "observed_nonzero": 808,
+      "observed_zero": 198,
+      "zero_fraction_observed": "0.19681909"
+    }
+  },
+  "input_sha256_lf_normalized": {
+    "configs/benchmark_config.yaml": "028bb81a3116c171fe12f72caa52483aea08b72dd4a632e4c62cd66c4c8392fb",
+    "configs/feature_scenarios_v1.json": "5511440a790aa2ac5dc7f8d4d7d5bf2aa477e3397c2af19c8747ba7effa92bc9",
+    "data/processed/features_daily_v1.csv": "95ff7cc95f3cbd08db994bbc6e098b12d06019cfc5e8b593fd647cd9606df792",
+    "data/processed/features_daily_v1_metadata.csv": "3e398df07ee63852b43752082364a03082b81997bab217c6740b5c2eae24c92f",
+    "data/processed/model_dataset_usdrubf_all_features_v2.csv": "5ad96b50d867b6b2bde16cd0d7823ecda55c3f2031a07cc1f4dfeaa835203835",
+    "data/processed/trading_calendar.csv": "9b683fd60d469fc83de56466b621bc561f68e58d7de66b9894cc5e5a5c117abc",
+    "data/raw/USDRUBF_daily_2026-11-18.csv": "692d42757e4a2566b8ae77cb58bab20442bb41a707d73d415510f621f4b8d366",
+    "docs/backtest_protocol.md": "9b7055ee3229b3de7164757cb8334e65b3fa73c076afc84d7a0a722bbb73a207",
+    "docs/feature_availability_catalog.csv": "e075fa1e683d1ec71eec83fba816a50b49dd74466a46bb922661282e9cc828d3"
+  },
+  "last_date": "2026-11-18",
+  "limitations": [
+    "Coverage is not historical available_at verification.",
+    "Descriptive split counts use origin labels, not horizon-specific scored target pairs.",
+    "Observed source-date regime grouping does not identify publication times.",
+    "No early SWAPRATE archive/schema migration history retrieved; do not assert economic absence before 2022-12-05."
+  ],
+  "models_fitted": false,
+  "n_rows": 1160,
+  "official_evidence": [
+    {
+      "effective_date": "2022-04-26",
+      "fact": "Trading launch; not first SWAPRATE release.",
+      "published_date": "2022-04-20",
+      "url": "https://www.moex.com/n47096"
+    },
+    {
+      "effective_date": "2022-12-05",
+      "fact": "Evening VM replaces swap points with a stabilizing price-gap component. Economic regime change verified; exact historical database publication start unknown.",
+      "published_date": "2022-10-20",
+      "url": "https://www.moex.com/n52418"
+    },
+    {
+      "effective_date": "2024-06-24",
+      "fact": "Current undated page distinguishes old spot-gap and newer CBR/VWAP formula; zero is possible in the tolerance band, and pre-release displayed zero is also documented. Individual historical zeros not certified.",
+      "published_date": null,
+      "url": "https://www.moex.com/a8141"
+    },
+    {
+      "effective_date": "2024-12-20",
+      "fact": "Holiday funding uses last published CBR rate.",
+      "published_date": "2024-12-18",
+      "url": "https://www.moex.com/n75925"
+    },
+    {
+      "effective_date": "2026-03-23",
+      "fact": "Unified session changes trade-date attribution and clearing; not proof of candle/history equivalence.",
+      "published_date": "2026-03-13",
+      "url": "https://www.moex.com/n98363?nt=101"
+    }
+  ],
+  "official_evidence_checked_on": "2026-11-23",
+  "pit_status": "conditional EOD / pseudo-PIT",
+  "previous_missing_reasons": {
+    "first_row_no_predecessor": 1,
+    "previous_source_missing": 153
+  },
+  "publication_history_status": "unknown",
+  "raw_external_export": {
+    "filename": "contractresults-USDRUBF-26042022-20112026.csv",
+    "inspected_in_b4": false,
+    "limitation": "Absent from repository; original export content and historical first publication not verified."
+  },
+  "schema_version": "funding_missingness_audit_v1",
+  "segments_are_trading_steps": true,
+  "source_sha256_bytes": "da5b582e622ce5d3efb6fb619c0b9258dc15fc7d18b6d76860ce5fb021107103",
+  "split_bounds": {
+    "final_test": [
+      "2026-01-01",
+      "2026-11-18"
+    ],
+    "train": [
+      "2022-04-26",
+      "2024-12-31"
+    ],
+    "validation": [
+      "2025-01-01",
+      "2025-12-31"
+    ]
+  },
+  "split_coverage": [
+    {
+      "column": "swaprate_current",
+      "first_missing_date": "2022-04-26",
+      "first_observed_date": "2022-12-05",
+      "first_zero_date": "2022-12-19",
+      "last_missing_date": "2022-12-02",
+      "last_observed_date": "2024-12-30",
+      "last_zero_date": "2024-12-16",
+      "missing": 153,
+      "missing_fraction": "0.22401171",
+      "n_rows": 683,
+      "observed": 530,
+      "observed_nonzero": 441,
+      "observed_zero": 89,
+      "split": "train",
+      "zero_fraction_observed": "0.16792453"
+    },
+    {
+      "column": "swaprate_prev_session",
+      "first_missing_date": "2022-04-26",
+      "first_observed_date": "2022-12-06",
+      "first_zero_date": "2022-12-20",
+      "last_missing_date": "2022-12-05",
+      "last_observed_date": "2024-12-30",
+      "last_zero_date": "2024-12-17",
+      "missing": 154,
+      "missing_fraction": "0.22547584",
+      "n_rows": 683,
+      "observed": 529,
+      "observed_nonzero": 440,
+      "observed_zero": 89,
+      "split": "train",
+      "zero_fraction_observed": "0.16824197"
+    },
+    {
+      "column": "swaprate_current",
+      "first_missing_date": "",
+      "first_observed_date": "2025-01-03",
+      "first_zero_date": "2025-02-03",
+      "last_missing_date": "",
+      "last_observed_date": "2025-12-30",
+      "last_zero_date": "2025-12-22",
+      "missing": 0,
+      "missing_fraction": "0.00000000",
+      "n_rows": 254,
+      "observed": 254,
+      "observed_nonzero": 215,
+      "observed_zero": 39,
+      "split": "validation",
+      "zero_fraction_observed": "0.15354331"
+    },
+    {
+      "column": "swaprate_prev_session",
+      "first_missing_date": "",
+      "first_observed_date": "2025-01-03",
+      "first_zero_date": "2025-02-04",
+      "last_missing_date": "",
+      "last_observed_date": "2025-12-30",
+      "last_zero_date": "2025-12-23",
+      "missing": 0,
+      "missing_fraction": "0.00000000",
+      "n_rows": 254,
+      "observed": 254,
+      "observed_nonzero": 215,
+      "observed_zero": 39,
+      "split": "validation",
+      "zero_fraction_observed": "0.15354331"
+    },
+    {
+      "column": "swaprate_current",
+      "first_missing_date": "",
+      "first_observed_date": "2026-01-05",
+      "first_zero_date": "2026-01-22",
+      "last_missing_date": "",
+      "last_observed_date": "2026-11-18",
+      "last_zero_date": "2026-11-12",
+      "missing": 0,
+      "missing_fraction": "0.00000000",
+      "n_rows": 223,
+      "observed": 223,
+      "observed_nonzero": 153,
+      "observed_zero": 70,
+      "split": "final_test",
+      "zero_fraction_observed": "0.31390135"
+    },
+    {
+      "column": "swaprate_prev_session",
+      "first_missing_date": "",
+      "first_observed_date": "2026-01-05",
+      "first_zero_date": "2026-01-23",
+      "last_missing_date": "",
+      "last_observed_date": "2026-11-18",
+      "last_zero_date": "2026-11-13",
+      "missing": 0,
+      "missing_fraction": "0.00000000",
+      "n_rows": 223,
+      "observed": 223,
+      "observed_nonzero": 153,
+      "observed_zero": 70,
+      "split": "final_test",
+      "zero_fraction_observed": "0.31390135"
+    }
+  ],
+  "zero_validity": "Observed numeric zero in frozen CSV, not independently certified final funding; never converted to missing."
+}

@@ -2,3 +2,4 @@
 /data/processed/features_daily_v1.csv text eol=lf
 /data/processed/features_daily_v1_metadata.csv text eol=lf
 /reports/features_daily_v1_coverage.md text eol=lf
+/results/funding_missingness_audit/* text eol=lf
