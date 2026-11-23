@@ -1,0 +1,3 @@
+﻿column,start_date,end_date,trading_steps,start_row_1based,end_row_1based,touches_start,touches_end,first_row_no_predecessor,previous_source_missing,unexpected_missing
+swaprate_current,2022-04-26,2022-12-02,153,1,153,true,false,0,0,0
+swaprate_prev_session,2022-04-26,2022-12-05,154,1,154,true,false,1,153,0
