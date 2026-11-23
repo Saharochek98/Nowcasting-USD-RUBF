@@ -1,49 +1,41 @@
 # USDRUBF — Research Documentation
 
-**Версия комплекта:** 1.3 · 2026-11-20
+**Актуально:** 2026-11-23, после B1/B2/B3 merge.  
+**Режим исследования:** `conditional EOD / pseudo-PIT`; финальный test 2026 закрыт для выбора моделей.
 
-Канонические документы проекта — эта папка `docs/`. Изменения фиксируем в Git и `decision_log.md`.
+## С чего начать
 
-## Актуальное состояние (20.11.2026)
+1. [Project Status](project_status.md) — подтверждённые артефакты, ограничения, следующие задачи A/B/C/D.
+2. [План ближайших двух дней](two_day_plan.md) — **актуальный** roadmap: B4 funding missingness, B5 календарь/handoff, параллельно A/C/D.
+3. [Backtest Protocol](backtest_protocol.md) и [Research Charter](research_charter.md) — научные правила, target и оценки.
+4. [Features v1 — инструкция C](features_daily_v1.md) — загрузка, сценарии и ограниченная PIT-достоверность.
 
-**Этап RW/AR(1) и validation-диагностики завершён; финальный test не открыт.** На validation 2025 года AR(1) не улучшила RW по RMSE ни на одном горизонте 1–7; по HAC с Holm-коррекцией семейно-значимого отличия на уровне 5% нет. Доказательств OOS-превосходства новой модели пока нет.
+## Источники, данные и B1–B3
 
-**В первую очередь читать:** [Project Status](project_status.md) (выполненные задачи и цифры), [Two-day Plan](two_day_plan.md) (ответственные, следующие два дня), затем протокол и спецификации.
+- **Target:** рыночный `CANDLE_CLOSE` дневной свечи USDRUBF, MOEX ISS `interval=24`, **не** официальный USD/RUB ЦБ и **не** расчётная цена клиринга.
+- **Горизонт:** h=1…7 следующих **торговых** дат USDRUBF. `forecast_origin` после доступности полной свечи, но исторический час неизвестен; время `end` не заменяет `available_at`.
+- **Календарь:** 1160 сессий/свечей 26.04.2022–18.11.2026. Проверен на внутреннюю согласованность, **PROVISIONAL** до независимого архива.
+- **B1:** [forecast origin / candle audit](forecast_origin_pit_proposal.md), [ручной монитор MOEX](moex_candle_monitoring.md); 35 свечей `end≈19:30` исследованы, но техническая причина меток и время финальной публикации не доказаны.
+- **B2:** [полный словарь 30 столбцов](feature_data_dictionary.md), [каталог доступности](feature_availability_catalog.csv), [политика лагов](feature_lag_policy_proposal.md), [отчёт](../reports/feature_pit_audit.md). Research Lead A согласовал группы A/B/C; это **не** означает verified record-level PIT.
+- **B3:** `data/processed/features_daily_v1.csv` — `date` + 12 экономических полей; `features_daily_v1_metadata.csv` — provenance. [Сценарии](../configs/feature_scenarios_v1.json): **core 9** (default), **core+RUONIA+Brent 11**, **core+RUONIA+Brent+USD/CNH 12** (последние два sensitivity only).
+- **Пропуски:** `swaprate_prev_session` — 154/1160 (13.275862%); без подмены нулями или удаления строк. `swaprate_current` исключён.
+- **Воспроизводимость:** `python scripts/build_model_features.py --compare`, [покрытие и контрольные суммы](../reports/features_daily_v1_coverage.md). Пользовательский прогон: **3 MATCH; 49 tests OK, 1 skipped** (полный rebuild v2 требует внешних frozen exports).
 
-## Файлы
+## Передача C
 
-- [Project Status](project_status.md) — проверенный статус задач, validation-метрики, ограничения.
-- [Two-day Plan](two_day_plan.md) — конкретные задачи A–D и контрольные точки.
-- [Research Charter](research_charter.md) — научная цель, целевая переменная, гипотезы, роли.
-- [Backtesting Protocol](backtest_protocol.md) — point-in-time, close proxy, торговые горизонты, тестирование.
-- [Benchmark Specification](benchmark_spec.md) — Random Walk, drift, spread/funding regression и выходные файлы.
-- [Hypothesis Register](hypothesis_register.md) — гипотезы и проверочные сравнения.
-- [Decision Log](decision_log.md) — принятые решения, открытые вопросы, регуляторная основа.
+Использовать `load_scenario(scenario='core')` из `scripts/build_model_features.py`, не выбирать автоматически все 12 колонок из общего CSV. Предобработка (импутация/scaler/PCA/selection) — только внутри train/walk-forward на созревших метках. Test 2026 не использовать для оптимизации.
 
-## Согласованные определения
+## Baselines и научные выводы
 
-- **Инструмент:** USDRUBF.
-- **Данные:** только дневные `OPEN, HIGH, LOW, CLOSE` (плюс VOLUME, если есть). Без intraday.
-- **Target:** дневной `CLOSE` после подтверждения его значения у источника (рыночная цена vs settlement).
-- **Прогноз:** после доступности полной дневной свечи; точное время неизвестно, режим `conditional EOD / pseudo-PIT` до верификации.
-- **Горизонты:** 1–7 следующих **торговых дней USDRUBF**.
-- **Baseline RW/AR(1):** реализованы и проверены на validation 2025 года; текущие артефакты — `results/benchmark_calendar_v2/`, подробная диагностика — `reports/ar1_diagnostics.md`. Drift и spread/funding — не реализованные дополнительные кандидаты.
-- **Качество:** 1160 OHLCV-свечей, raw/processed совпадают. Предварительный реконструированный календарь охватывает 1160 ожидаемых сессий без отсутствующих свечей **относительно этой реконструкции**. Независимый архивный аудит ещё открыт; никаких внутридневных порогов без intraday данных.
-- **Макропризнаки:** публиковаться должны до origin; без timestamp — отдельное консервативное лаговое допущение или исключение.
+RW и AR(1) реализованы, validation 2025 оценена; AR(1) уступает RW по RMSE на всех горизонтах, но HAC+Holm не подтверждает семейную значимость различий. См. [benchmark summary](../reports/benchmark_summary.md), [AR diagnostics](../reports/ar1_diagnostics.md). Новых validation-результатов C/D после B3 этим документом не заявлено.
 
-**Исторический контекст:** предыдущая конвенция 23:50/23:51 и last-trade была отменена для основной daily-версии, поскольку имеющиеся OHLC не позволяют ее проверить.
+## Навигация по прочим правилам
 
-## Источники
+- [Decision Log](decision_log.md) — история решений, включая дополнение о B1–B3.
+- [Hypothesis Register](hypothesis_register.md) — H1–H6 до отдельного OOS-эксперимента **NOT_TESTED**.
+- [Benchmark Specification](benchmark_spec.md) — RW/AR и вспомогательные модели.
+- [Data quality](../reports/data_quality_report.md), [Calendar report](../reports/calendar_quality_report.md) — исходные проверки.
 
-1. Спецификация USDRUBF, приказ ПАО Московская Биржа № МБ-П-2026-3630 от 08.09.2026: п. 1.4, 2.1.3, 2.1.7 и приложение № 1 (файл команды).
-2. https://www.moex.com/ru/derivatives/perpetual-futures/USDRUBF
-3. https://www.moex.com/torgovye-sessii-na-srochnom-rynke
-4. https://www.moex.com/ru/derivatives — расписание mark-to-market.
-5. `BG_2026_stud.pdf` — исходная постановка о **курсе ЦБ**, не о фьючерсе.
-6. Giannone, Reichlin, Small (2008) — методология real-time динамических факторов, **не эмпирические результаты по USDRUBF**.
+**Важно:** исходная официальная постановка `BG_2026_stud.pdf` описывает прогноз курса ЦБ, тогда как фактическая цель команды — цена USDRUBF. Расхождение фиксировать в исследовательском отчёте и согласовать с наставниками. Giannone et al. (2008) — методология dynamic factors/nowcasting, не эмпирическое доказательство качества модели USDRUBF.
 
-## Что нужно проверить до основного бэктеста
-
-См. `project_status.md` и `decision_log.md`. В первую очередь: верифицировать время доступности CANDLE_CLOSE, завершить независимый исторический аудит календаря и подготовить PIT-совместимые внешние признаки. Нельзя молча подменять CLOSE расчетной ценой или заполнять пропуск вчерашней ценой.
-
-Участникам: читать Charter/Protocol, вносить изменения через Git и указывать версии данных и конфигураций в журнале экспериментов. Копии в ChatGPT Project обновлять вручную, так как они не синхронизируются автоматически.
+Исторические материалы и старые manifests не перезаписывать. Каждый новый результат маркировать `IMPLEMENTED` / `VALIDATION_EVALUATED` / `TEST_CONFIRMED` только при наличии файла, периода и воспроизводимой процедуры.
