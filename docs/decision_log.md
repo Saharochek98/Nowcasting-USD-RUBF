@@ -73,3 +73,29 @@
 - **Q08 (расхождение с PDF):** OPEN — согласовать с наставниками trading-day и смену официального курса на USDRUBF.
 
 **Для распределения задач A/B/C/D на следующие два дня:** [two_day_plan.md](two_day_plan.md). Статус выполнения — [project_status.md](project_status.md).
+
+## Status update — 2026-11-23 (после слияний B1/B2/B3)
+
+Этот раздел **дополняет** решения D01–D20 и старые вопросы; не исправляет задним числом исторические статусы 20.11. Базовый `main` проверен после merge: tree SHA `791964a5bbe12cdb686641fa7e6434d3d8413ca7`.
+
+| ID | Новое решение / наблюдение | Основание | Статус |
+|---|---|---|---|
+| D21 | Источник target идентифицирован как MOEX ISS USDRUBF `interval=24` / `CANDLE_CLOSE`; это не отдельное поле settlement. Точное фактическое время готовности свечи неизвестно | B1, `forecast_origin_pit_proposal.md`, raw candle | ACCEPTED SOURCE / HISTORICAL TIMESTAMP OPEN |
+| D22 | ЕТС с 23.03.2026 изменила принадлежность вечерней сессии к торговому дню; необычный `end≈19:30` **не** является доказанным timestamp publication/last trade | B1, `results/moex_minute_audit/comparison.csv` | ACCEPTED CAVEAT |
+| D23 | B2 описал все 30 полей и публикационные ограничения; A согласовал группы/сценарии, но **исторический record-level PIT не verified** | `feature_availability_catalog.csv`, `feature_lag_policy_proposal.md`, пользовательское подтверждение A | APPROVED CONDITIONAL POLICY |
+| D24 | Версия `features_daily_v1` утверждена для инженерного использования: основной `core` 9, sensitivity RUONIA/Brent 11, sensitivity плюс USD/CNH 12. `swaprate_current` и `value` исключены | `configs/feature_scenarios_v1.json`, `docs/features_daily_v1.md` | ACCEPTED CONDITIONAL EOD |
+| D25 | Не импутировать B3 funding, не удалять строки; 154 пропуска, fill/scale/PCA только train-only и по protocol A/C | `reports/features_daily_v1_coverage.md` | ACCEPTED ENGINEERING POLICY |
+| D26 | B3 локально проверен: 3 MATCH `--compare`; 49 unittest / 1 skipped (full source rebuild v2). Результат локального запуска сообщён пользователем; CI-clean rerun команды не заявлен | пользовательский терминальный журнал от 23.11.2026 | REPORTED_LOCAL_VERIFICATION |
+| D27 | Следующие B задачи: **B4 funding missingness**, **B5 независимый календарный audit и handoff**; C/D могут использовать frozen B3 при принятом conditional EOD | `two_day_plan.md` | NEXT_ACTIONS |
+
+### Состояние открытых вопросов на 23.11
+
+- **Q01:** source идентифицирован и raw→panel `close` сохранён; экономическая интерпретация как биржевой candle close зафиксирована. Время публикации не установлено (**Q02 OPEN**).
+- **Q03:** `PROVISIONAL`, нужен независимый архив USDRUBF и проверка особых торговых дат (**B5**).
+- **Q04:** внутренний аудит качества завершён.
+- **Q05:** split и baseline protocol зафиксированы; чистый replay с manifest всё ещё задача **A**.
+- **Q06:** B2-каталог и лаговая политика **подготовлены и группы согласованы A**; исторические публикации funding, CBR, RUONIA, EIA, CNH недостаточно восстановлены для verified PIT.
+- **Q07:** интервал 90%/95% и online calibration **задача D/A**; готовность не подтверждена.
+- **Q08:** расхождение target USDRUBF vs официального USD/RUB в PDF **требует согласования с наставниками**.
+
+Любое новое изменение разрешённых факторов, fixed forecast origin или lag policy оформлять отдельной версией и review A. Финальный test 2026 закрыт для model selection; до preregistration новых моделей никаких test-результатов.
