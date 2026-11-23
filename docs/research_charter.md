@@ -65,3 +65,14 @@ A — Research Lead/Backtesting, метрики, RW, leakage-аудит, абл�
 B0 RW и B1 AR(1) реализованы, обе модели проверены на validation (2025 год, по 254 пары на каждый горизонт). AR(1) имеет RMSE выше RW для h=1…7; самый длинный горизонт: RW 2.147724, AR(1) 2.207770 RUB/USD. После Holm-поправки для HAC сравнений различие потерь не установлено на семейном уровне 5%. Диагностика указывает на более выраженную зависимость масштаба изменений, чем signed changes; это мотивирует интервальные модели, но не гарантирует их выигрыш.
 
 Инфраструктурные результаты: датасет 1160 свечей (2022-04-26—2026-11-18), preliminary calendar, walk-forward, common-pair metrics, диагностика, тесты и manifests. Следующие задачи — PIT-панель внешних индикаторов, Ridge/PCA-первый факторный baseline, RW-интервалы, чистый повторный запуск из `main`. Полный план — [two_day_plan.md](two_day_plan.md). Финальный test остаётся закрытым.
+
+## Актуализация milestone — 23.11.2026
+
+Исторический раздел «Достигнутый milestone (20.11.2026)» сохранён как срез на ту дату. После него **в `main` объединены B1/B2/B3**:
+
+- **B1:** `docs/forecast_origin_pit_proposal.md`, аудит исторических `end` и минутного сравнения; исторический `available_at` дневного CLOSE остаётся неизвестным.
+- **B2:** `docs/feature_availability_catalog.csv` (30 полей), `docs/feature_data_dictionary.md`, `docs/feature_lag_policy_proposal.md` — Research Lead A согласовал условные группы/сценарии, **не** удостоверил каждый timestamp.
+- **B3:** `data/processed/features_daily_v1.csv` — 1160 дат, 12 экономических значений в объединённой таблице; сценарии `core` 9, `core_ruonia_brent` 11, `core_ruonia_brent_usdcnh` 12. Только `core` используется по умолчанию; последние два — отдельные исследования чувствительности. `swaprate_current` исключён, 154 пропуска предыдущего funding сохранены.
+- B3 локально воспроизведён через `--compare` (3 совпадения); 49 тестов запущены, один тест полного rebuild v2 из внешних выгрузок пропущен. Формально строгого PIT это **не** устанавливает.
+
+**Следующий milestone:** B4 missingness/funding, B5 independent calendar/data handoff; A clean rerun и общий scoring contract, C Ridge/PCA validation, D RW интервалы и калибровка на созревших ошибках. Подробности: [текущий статус](project_status.md) и [актуальный план](two_day_plan.md). Гипотезы H1–H6 остаются непроверенными вне отдельного эксперимента; final test закрыт.
