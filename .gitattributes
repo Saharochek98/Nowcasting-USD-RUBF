@@ -1,0 +1,4 @@
+# Generated B3 artifacts have canonical LF bytes on every checkout platform.
+/data/processed/features_daily_v1.csv text eol=lf
+/data/processed/features_daily_v1_metadata.csv text eol=lf
+/reports/features_daily_v1_coverage.md text eol=lf

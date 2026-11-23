@@ -1,0 +1,77 @@
+{
+  "schema_version": "features_daily_v1",
+  "source_data": "data/processed/model_dataset_usdrubf_all_features_v2.csv",
+  "source_sha256": "da5b582e622ce5d3efb6fb619c0b9258dc15fc7d18b6d76860ce5fb021107103",
+  "expected_rows": 1160,
+  "calendar": "data/processed/trading_calendar.csv",
+  "raw_candles": "data/raw/USDRUBF_daily_2026-11-18.csv",
+  "availability_catalog": "docs/feature_availability_catalog.csv",
+  "features_file": "data/processed/features_daily_v1.csv",
+  "metadata_file": "data/processed/features_daily_v1_metadata.csv",
+  "date_column": "date",
+  "observed_target_level": "close",
+  "future_targets_in_features": false,
+  "default_scenario": "core",
+  "pit_status": "conditional EOD / pseudo-PIT",
+  "lag_policy_version": "b2-approved-b3-v1",
+  "lag_policy_document": "docs/feature_lag_policy_proposal.md",
+  "approval_basis": "The user-provided B3 task explicitly states Research Lead A approved the factors and scenario allocation. B1/B2 documents retain their historical proposal status.",
+  "train_only_preprocessing_required": true,
+  "missing_value_policy": "preserve empty CSV fields; no row dropping or imputation; C handles preprocessing inside train/walk-forward only",
+  "transformations": [],
+  "excluded_factors": [
+    "swaprate_current", "value", "begin", "end",
+    "cbr_effective_date", "cbr_rate_age_calendar_days",
+    "swaprate_source_trade_date", "swaprate_available_assumed",
+    "key_rate_reference_date", "key_rate_pdf_source_page",
+    "ruonia_reference_date", "ruonia_source_dateupdate", "ruonia_age_calendar_days",
+    "brent_eia_reference_date", "brent_eia_age_calendar_days",
+    "usdcnh_investing_reference_date", "usdcnh_investing_age_calendar_days"
+  ],
+  "excluded_patterns": ["future targets", "close_t+h", "target_*", "unknown predictor columns"],
+  "scenarios": {
+    "core": {
+      "name": "Scenario A - core",
+      "features": [
+        "open", "close", "high", "low", "volume", "cbr_usdrub_effective",
+        "swaprate_prev_session", "key_rate_pct_effective", "spread_close_minus_cbr"
+      ],
+      "pit_status": "conditional EOD / pseudo-PIT",
+      "lag_policy_version": "b2-approved-b3-v1",
+      "sensitivity_only": false,
+      "additional_pit_assumptions": []
+    },
+    "core_ruonia_brent": {
+      "name": "Scenario B1 - core + RUONIA + Brent",
+      "features": [
+        "open", "close", "high", "low", "volume", "cbr_usdrub_effective",
+        "swaprate_prev_session", "key_rate_pct_effective", "spread_close_minus_cbr",
+        "ruonia_pct_last_reported", "brent_eia_spot_usd_bbl_lag10d"
+      ],
+      "pit_status": "conditional EOD / pseudo-PIT",
+      "lag_policy_version": "b2-approved-b3-v1",
+      "sensitivity_only": true,
+      "additional_pit_assumptions": [
+        "RUONIA: DT < date and date(DateUpdate) <= date; DateUpdate is not proven first release; CBR working calendar and actual receipt unverified",
+        "Brent: observation date <= date - 10 calendar days; historical first-release/vintage sufficiency of lag10 not proven"
+      ]
+    },
+    "core_ruonia_brent_usdcnh": {
+      "name": "Scenario B2 - core + RUONIA + Brent + USD/CNH",
+      "features": [
+        "open", "close", "high", "low", "volume", "cbr_usdrub_effective",
+        "swaprate_prev_session", "key_rate_pct_effective", "spread_close_minus_cbr",
+        "ruonia_pct_last_reported", "brent_eia_spot_usd_bbl_lag10d",
+        "usdcnh_investing_price_prev_date"
+      ],
+      "pit_status": "conditional EOD / pseudo-PIT",
+      "lag_policy_version": "b2-approved-b3-v1",
+      "sensitivity_only": true,
+      "additional_pit_assumptions": [
+        "RUONIA: DT < date and date(DateUpdate) <= date; first release and actual receipt unverified",
+        "Brent: existing lag of 10 calendar days assumes timely release and acceptable vintage; not verified PIT",
+        "USD/CNH: provider Date < date; historical Price type, daily cutoff/timezone, revisions and anomalies unresolved"
+      ]
+    }
+  }
+}
