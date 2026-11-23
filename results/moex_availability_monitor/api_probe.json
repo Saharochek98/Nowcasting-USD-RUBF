@@ -1,0 +1,8 @@
+{
+  "requested_at": "2026-11-23T18:41:55.3385568+03:00",
+  "received_at": "2026-11-23T18:41:56.2070490+03:00",
+  "timezone": "Europe/Moscow",
+  "url": "https://iss.moex.com/iss/engines/futures/markets/forts/boards/rfud/securities/USDRUBF/candles.json?interval=24&from=2026-11-16&till=2026-11-23&iss.reverse=true",
+  "error": "Невозможно соединиться с удаленным сервером",
+  "http_status": null
+}

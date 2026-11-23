@@ -1,0 +1,41 @@
+{
+  "raw_rows": 1160,
+  "panel_shape": [
+    1160,
+    30
+  ],
+  "candle_fields_unchanged": true,
+  "calendar_alignment_using_actual_column": true,
+  "catalog_rows": 9,
+  "end_counts": {
+    "23:59:59": 1083,
+    "23:59:41": 29,
+    "23:59:42": 13,
+    "19:30:22": 22,
+    "19:30:21": 13
+  },
+  "begin_counts": {
+    "00:00:00": 1160
+  },
+  "missing": {
+    "swaprate_current": 153,
+    "swaprate_prev_session": 154,
+    "swaprate_source_trade_date": 1
+  },
+  "sha256": {
+    "data/raw/USDRUBF_daily_2026-11-18.csv": "f5cf5fbe0c9556b956f07a39b2e190288f415ee375d242b493bb5a7359d98015",
+    "data/processed/model_dataset_usdrubf_all_features_v2.csv": "da5b582e622ce5d3efb6fb619c0b9258dc15fc7d18b6d76860ce5fb021107103"
+  },
+  "limitations": "Structural checks only; no proof of historical availability; no final-test scoring",
+  "raw_sha256_lf_normalized": "692d42757e4a2566b8ae77cb58bab20442bb41a707d73d415510f621f4b8d366",
+  "monitor_tests": {
+    "passed": 9,
+    "network_used": false
+  },
+  "existing_external_feature_tests": {
+    "passed": 2,
+    "errors": 6,
+    "skipped": 1,
+    "error": "Calendar field mismatch in base 9257d35: forts_market_trade_date_expected vs is_trading_day_expected"
+  }
+}

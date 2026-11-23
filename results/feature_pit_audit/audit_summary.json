@@ -1,0 +1,87 @@
+{
+  "audited_at": "2026-11-23T19:42:11.294782+03:00",
+  "timezone": "Europe/Moscow",
+  "base_commit": "9257d35",
+  "panel_rows": 1160,
+  "panel_columns": 30,
+  "catalog_rows": 30,
+  "column_roles": {
+    "metadata": 16,
+    "economic": 13,
+    "constant_raw": 1
+  },
+  "usage_groups": {
+    "metadata": 16,
+    "A": 9,
+    "C": 2,
+    "B": 3
+  },
+  "availability_statuses_all_columns": {
+    "unknown": 18,
+    "assumed": 12
+  },
+  "availability_statuses_economic_columns": {
+    "assumed": 11,
+    "unknown": 2
+  },
+  "missing_values": {
+    "swaprate_current": 153,
+    "swaprate_prev_session": 154,
+    "swaprate_source_trade_date": 1
+  },
+  "age_ranges": {
+    "cbr_rate_age_calendar_days": [
+      0,
+      12
+    ],
+    "ruonia_age_calendar_days": [
+      1,
+      14
+    ],
+    "brent_eia_age_calendar_days": [
+      10,
+      14
+    ],
+    "usdcnh_investing_age_calendar_days": [
+      1,
+      3
+    ]
+  },
+  "test_suites": {
+    "test_feature_availability.py": {
+      "run": 11,
+      "passed": 11,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "successful": true,
+      "skip_reasons": []
+    },
+    "test_moex_candle_monitor.py": {
+      "run": 9,
+      "passed": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "successful": true,
+      "skip_reasons": []
+    },
+    "test_external_features.py": {
+      "run": 9,
+      "passed": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 1,
+      "successful": true,
+      "skip_reasons": [
+        "Set USDRUBF_SOURCE_DIR to validate exact raw-export reproduction"
+      ]
+    }
+  },
+  "limitations": [
+    "No historical record-level available_at verified",
+    "No final-test scoring",
+    "No full rebuild: external frozen source exports absent"
+  ],
+  "intentional_existing_code_change": "Only canonical calendar field name fixed in builder and existing tests; joins/lags unchanged"
+}

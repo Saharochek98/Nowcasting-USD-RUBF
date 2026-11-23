@@ -262,7 +262,7 @@ def load_funding(path:Path):
 def check_calendar(path:Path, days:list[date]):
     if not path.exists():raise FileNotFoundError(f'Missing independent provisional calendar: {path}')
     lines=load_csv(path)
-    actual=[date.fromisoformat(x['date']) for x in lines if x['forts_market_trade_date_expected']=='1']
+    actual=[date.fromisoformat(x['date']) for x in lines if x['is_trading_day_expected']=='1']
     if len(actual)!=len(set(actual)):raise ValueError('Duplicate dates in calendar')
     if actual!=days:raise ValueError('MOEX trade dates differ from expected provisional calendar')
 
