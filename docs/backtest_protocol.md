@@ -87,3 +87,15 @@ B0 RW: `C_hat[d+h|d]=C_d`. **B1 AR(1) на дневных разностях CLO
 Новые модели получают **только историю до текущего `origin_date`**, возвращают прогнозы `h=1…7` и метаданные fit; сохранение прогнозов выполняется до scoring. Новые признаки требуют `published_at/available_at` либо явно зафиксированного консервативного лага; `target_date` определяется календарём. Для supervised `h`-шаговых регрессий обучающая метка созревает только после доступности `C_{t+h}`.
 
 Interval API: `origin_date,target_date,horizon,alpha,lower,upper,calibration_end_date,model_id,pit_status`. Coverage, width и interval score считать на тех же разрешённых target, независимо от RMSE. При добавлении DFM и ML не переиспользовать test для подбора.
+
+## 11. Действующий интерфейс факторных данных (обновление 23.11.2026)
+
+После слияния B1–B3 рабочий feature store: `data/processed/features_daily_v1.csv` и `features_daily_v1_metadata.csv`; конфигурация `configs/feature_scenarios_v1.json`, загрузка `scripts/build_model_features.py::load_scenario()`. Схема и ограничения — `docs/features_daily_v1.md` и PIT-каталог `docs/feature_availability_catalog.csv`.
+
+- `core` по умолчанию: 9 условных EOD значений (OHLCV, действующий USD/RUB ЦБ, предыдущий funding, действующая ключевая ставка, спред). `core_ruonia_brent` 11 и `core_ruonia_brent_usdcnh` 12 — чувствительные сценарии, **не** автоматически доступные факторы.
+- `close_t` может быть входом только после полной свечи; `close_{t+h}` и его `h`-шаговое изменение — метка после созревания. Нельзя предобучать preprocessing на полном `features_daily_v1`.
+- Пропуски `swaprate_prev_session`: 154. Они сохранены, `swaprate_current` исключён. Missingness policy для конкретной модели определяет A/C на train-only данных без изменения исходного store.
+- Согласование состава сценариев A **не доказывает** исторический `available_at` наблюдений. Статус неизменно `conditional EOD / pseudo-PIT`; timestamp публикации свечи и независимая сертификация торгового календаря остаются открытыми.
+- B4/B5 — аудит missingness и независимого календаря; они не изменяют автоматически зафиксированные lag-policy и target. Любые изменения потребуют новой версии данных и зарегистрированного решения A.
+
+Все исторические части этого протокола, результаты RW/AR validation и правила закрытого final test остаются в силе. Оперативные задачи — [two_day_plan.md](two_day_plan.md).
