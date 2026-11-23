@@ -1,16 +1,16 @@
 # USDRUBF — Research Documentation
 
-**Актуально:** 2026-11-23, после B1/B2/B3 merge.  
+**Актуально:** 2026-11-23, после B1–B5 merge.  
 **Режим исследования:** `conditional EOD / pseudo-PIT`; финальный test 2026 закрыт для выбора моделей.
 
 ## С чего начать
 
 1. [Project Status](project_status.md) — подтверждённые артефакты, ограничения, следующие задачи A/B/C/D.
-2. [План ближайших двух дней](two_day_plan.md) — **актуальный** roadmap: B4 funding missingness, B5 календарь/handoff, параллельно A/C/D.
+2. [План ближайших двух дней](two_day_plan.md) — **актуальный** план на 24.11: A — протокол/benchmarks, C — Ridge, D — интервалы; B — поддержка интеграции при необходимости.
 3. [Backtest Protocol](backtest_protocol.md) и [Research Charter](research_charter.md) — научные правила, target и оценки.
 4. [Features v1 — инструкция C](features_daily_v1.md) — загрузка, сценарии и ограниченная PIT-достоверность.
 
-## Источники, данные и B1–B3
+## Источники, данные и B1–B5
 
 - **Target:** рыночный `CANDLE_CLOSE` дневной свечи USDRUBF, MOEX ISS `interval=24`, **не** официальный USD/RUB ЦБ и **не** расчётная цена клиринга.
 - **Горизонт:** h=1…7 следующих **торговых** дат USDRUBF. `forecast_origin` после доступности полной свечи, но исторический час неизвестен; время `end` не заменяет `available_at`.
@@ -20,6 +20,9 @@
 - **B3:** `data/processed/features_daily_v1.csv` — `date` + 12 экономических полей; `features_daily_v1_metadata.csv` — provenance. [Сценарии](../configs/feature_scenarios_v1.json): **core 9** (default), **core+RUONIA+Brent 11**, **core+RUONIA+Brent+USD/CNH 12** (последние два sensitivity only).
 - **Пропуски:** `swaprate_prev_session` — 154/1160 (13.275862%); без подмены нулями или удаления строк. `swaprate_current` исключён.
 - **Воспроизводимость:** `python scripts/build_model_features.py --compare`, [покрытие и контрольные суммы](../reports/features_daily_v1_coverage.md). Пользовательский прогон: **3 MATCH; 49 tests OK, 1 skipped** (полный rebuild v2 требует внешних frozen exports).
+
+- **B4:** [аудит funding](../reports/funding_missingness_audit.md) — 153/154 initial missing; 198 наблюдаемых нулей; покрытие после 05/06.12.2022.
+- **B5:** [краткая инструкция A/C/D](data_handoff_to_modeling.md). Повторный календарный аудит не нужен.
 
 ## Передача C
 
