@@ -1,71 +1,59 @@
-# Project status — USDRUBF Nowcasting
+# Project Status — USDRUBF Nowcasting
 
-**Срез проекта:** 2026-11-20 · **База:** `main`, коммит `84cc4a5` (до обновления документации)  
-**Режим выводов:** `PRELIMINARY`, `conditional EOD / pseudo-PIT`; финальный test 2026 **не оценивался**.
+**Срез:** 2026-11-23, после слияния B1–B3 в `main` (проверенный tree SHA `791964a5bbe12cdb686641fa7e6434d3d8413ca7`).  
+**Научный статус:** `PRELIMINARY`, **conditional EOD / pseudo-PIT**. Исторические `available_at` не восстановлены. **Final test 2026 закрыт для оценки и выбора моделей.**
 
-Этот документ — краткий командный dashboard. Полные результаты и методология находятся в [reports/benchmark_summary.md](../reports/benchmark_summary.md), [reports/ar1_diagnostics.md](../reports/ar1_diagnostics.md), [reports/calendar_quality_report.md](../reports/calendar_quality_report.md), [reports/data_quality_report.md](../reports/data_quality_report.md). Код и конфигурация — в [benchmarks/](../benchmarks/) и [configs/benchmark_config.yaml](../configs/benchmark_config.yaml).
+## Уже выполнено
 
-## Выполнено и подтверждено сохранёнными артефактами
-
-| Блок | Состояние на 20.11.2026 | Подтверждение |
+| Направление | Статус | Воспроизводимые артефакты |
 |---|---|---|
-| Research Charter, backtest protocol, decision log | DONE для текущей **условной EOD** постановки; документы обновлены в текущем изменении | `docs/` |
-| Дневные OHLCV USDRUBF | DONE, 1 160 свечей за 2022-04-26—2026-11-18; raw/processed | `data/raw/`, `data/processed/`, `reports/data_quality_report.md` |
-| Качество и согласованность данных | DONE для первичного аудита: без дубликатов, неположительных цен и нарушений OHLC | `reports/data_quality_report.md` |
-| Торговый календарь | **PROVISIONAL**: реконструкция 1 668 календарных дат и 1 160 ожидаемых торговых дат, равенство с raw 1 160/1 160; 4 рабочие субботы | `reports/calendar_quality_report.md` |
-| Baseline B0 Random Walk | IMPLEMENTED + validation evaluated | `benchmarks/core.py`, `results/benchmark_calendar_v2/` |
-| Baseline B1 AR(1) на `ΔCLOSE` | IMPLEMENTED + validation evaluated; expanding OLS, минимум 100 валидных пар | те же источники |
-| Универсальный walk-forward и метрики | IMPLEMENTED для B0/B1; отдельное формирование прогноза и scoring | `benchmarks/core.py`, `benchmarks/run.py` |
-| Тесты и контроль отсутствия look-ahead | IMPLEMENTED; тесты присутствуют в репозитории, сохранённая проверка воспроизводимости A1/A2 = passed | `tests/`, `results/benchmark_calendar_v2/comparison.json` |
-| AR diagnostics | DONE, исследовательская диагностика train/validation без настройки baseline | `reports/ar1_diagnostics.md`, `results/ar1_diagnostics/` |
-| Final test 2026 | **SEALED** для оценки; в текущих результатах не открыт | `results/benchmark_calendar_v2/run_manifest.json` |
-| PIT-факторы, PCA/DFM, ML residual correction, интервалы | NOT IMPLEMENTED в просмотренной ветке `main` | пока нет соответствующих артефактов |
+| USDRUBF daily `CANDLE_CLOSE` | DONE — определён источник MOEX ISS `interval=24`, не clearing/settlement | `data/raw/USDRUBF_daily_2026-11-18.csv`, `reports/data_quality_report.md` |
+| Исторические данные и календарь | DONE для внутренней сверки; календарь **PROVISIONAL** | 1160 свечей (26.04.2022–18.11.2026), `data/processed/trading_calendar.csv`, `reports/calendar_quality_report.md` |
+| RW и AR(1), h=1…7 | IMPLEMENTED; validation 2025 оценена | `benchmarks/`, `results/benchmark_calendar_v2/`, `reports/benchmark_summary.md` |
+| Диагностика AR(1) | DONE exploratory; AR(1) хуже RW по RMSE на каждом h, без значимости после HAC+Holm | `reports/ar1_diagnostics.md` |
+| **B1: forecast origin и аудит свечей** | **DONE как аудит, NOT verified historical PIT** | `docs/forecast_origin_pit_proposal.md`, `docs/moex_candle_monitoring.md`, `results/moex_minute_audit/comparison.csv` |
+| **B2: PIT-каталог и data dictionary** | **DONE; группы/сценарии согласованы A**, статусы самих публикаций остаются assumed/unknown | `docs/feature_availability_catalog.csv`, `docs/feature_data_dictionary.md`, `docs/feature_lag_policy_proposal.md`, `reports/feature_pit_audit.md` |
+| **B3: модельная панель** | **DONE, merged; структурная сверка и локальный тестовый прогон успешны** | `data/processed/features_daily_v1.csv`, `data/processed/features_daily_v1_metadata.csv`, `configs/feature_scenarios_v1.json`, `scripts/build_model_features.py`, `docs/features_daily_v1.md` |
+| PCA/Ridge/DFM, интервалы, ML-коррекция | **Не подтверждены представленными артефактами main на данном срезе** | Ответственные C/D/A сообщают реализацию и OOS-результаты отдельно |
 
-«DONE» означает наличие конкретной реализации/сохранённого результата, **не** полное независимое подтверждение протокола. Исполнение `pytest` из чистого checkout текущего `main` в рамках этого документа не выполнялось.
+### B3 — контракт передачи моделистам
 
-## Эмпирические результаты: validation 2025
+- `features_daily_v1.csv`: **1160 строк**, `date` + **12** экономических значений в общем store. `core` использует **9**, `core_ruonia_brent` — **11**, `core_ruonia_brent_usdcnh` — **12**. Только `core` — основной согласованный условный сценарий; остальные — проверки чувствительности с дополнительными PIT-предположениями.
+- **154** пустых `swaprate_prev_session` (13.275862%), **1006** полных строк каждого сценария. Пропуски сохранены, нули не подставлены, строки не удалены. `swaprate_current` и постоянное `value` не передаются в модель.
+- `close_t` — известный на условном origin уровень; `close_{t+h}` создаётся только бэктестом по следующему **торговому** календарю.
+- Загружать данные через `load_scenario(scenario='core')` из `scripts/build_model_features.py`, **не** брать автоматически все столбцы общего store. Импутация, scaler/PCA/feature selection — **train-only в каждом walk-forward окне**.
+- Локально сообщён результат: `python scripts/build_model_features.py --compare` — **3 MATCH**; `unittest discover -s tests -p 'test_*.py'` — **49 tests, OK, skipped=1**. Пропущен **полный rebuild v2 из исходных внешних выгрузок**, т.к. отсутствует `USDRUBF_SOURCE_DIR`; это не тест построения B3. Прямого независимого запуска полного тестового набора автором этого статуса не было.
+- Замороженный источник v2: SHA-256 `da5b582e622ce5d3efb6fb619c0b9258dc15fc7d18b6d76860ce5fb021107103`. Контрольные SHA файлов B3 — в `reports/features_daily_v1_coverage.md`.
 
-Train 683 торговых свечи (до 2024-12-30), validation 254 свечи (2025-01-03—2025-12-30), final test 223 свечи (2026-01-05—2026-11-18; **не оценивался**). 254 общих scored forecast pairs на каждом горизонте у обеих моделей.
+## Следующие задачи / приоритеты
 
-| h (торговые дни) | RW RMSE | AR(1) RMSE | AR/RW RMSE |
-|---:|---:|---:|---:|
-| 1 | 0.772440 | 0.774045 | 1.002078 |
-| 2 | 1.135664 | 1.144051 | 1.007385 |
-| 3 | 1.404904 | 1.422296 | 1.012380 |
-| 4 | 1.617355 | 1.644489 | 1.016777 |
-| 5 | 1.790585 | 1.827089 | 1.020387 |
-| 6 | 1.965425 | 2.012490 | 1.023947 |
-| 7 | 2.147724 | 2.207770 | 1.027958 |
+| ID | Владелец | Приоритет | Действие | Definition of Done |
+|---|---|---|---|---|
+| **B4** | B | P0 | Диагностика 154 пропусков funding **по месяцам/годам и непрерывным сегментам**, пересечение с режимами торгов; проверить источник, пропуск vs действительный ноль | Отчёт `reports/funding_missingness_audit.md`, таблица периодов, воспроизводимый read-only скрипт, список рисков для C; **не** импутировать и **не** выбирать модель |
+| **B5** | B + A | P0 | Независимая проверка специальных торговых дат и реформы 23.03.2026, расхождений candle/contractresults; окончательный Data Handoff | `reports/calendar_final_audit.md` либо явно PROVISIONAL, список открытых дат, immutable hashes, handoff C с режимом pseudo-PIT |
+| **A1** | A | P0 | Контрольный rerun RW/AR и diagnostics **из чистого main** с новым manifest и Git SHA; убедиться, что final test не используется для selection | Новый каталог результатов без перезаписи истории, common-pair validation keys, тесты |
+| **A2** | A | P0 | Заморозить модельный API и сценарии, обеспечить сравнение на **общих** origin/target | Фиксированные train/validation keys, JSON конфиги, реестр экспериментов и leakage review |
+| **C1** | C | P0 | Ridge на `core` (и price-only ablation), train-only preprocessing, метки только созревших h-step targets | OOS validation прогнозы h=1..7 + тесты и сравнение с RW; ничего не заключать по test |
+| **C2** | C | P1 | PCA+Ridge как следующий этап; DFM/Kalman — только после сравнения с простыми моделями | train-only PCA, воспроизводимые OOS прогнозы и решение go/no-go для DFM |
+| **D1** | D | P0 | RW 90%/95% интервалы и separate coverage, width, interval score | Validation по h, интервал калибруется только на доступных past targets/OOS errors |
+| **D2** | D + A | P1 | Online-калибровка и/или variance shrinkage, затем возможная residual ML | Зарегистрированный эксперимент, без случайного доступа к validation/test в fit |
 
-**Вывод по validation:** AR(1) имеет худший RMSE, чем RW, на всех семи горизонтах. Это **не** означает семейно-значимое различие: после Holm-поправки семи HAC-сравнений ни один горизонт не имеет `p_adj < 0.05` (см. `results/ar1_diagnostics/loss_summary_hac.csv`).
+### Ближайшая синхронизация
+1. **A → C/D:** зафиксировать `origin_date`, `target_date`, `h`, общий score set и правила созревания меток. Согласование feature groups A уже сообщено командой; дополнительные изменения делать отдельной версией.
+2. **B → C:** передать B3 API, metadata, покрытие и список предположений, не выдавая `pseudo-PIT` за `verified`.
+3. **A/C/D:** отдельно докладывать факт кода, факт validation и факт статистической значимости; не переносить статусы без артефактов.
 
-**Исследовательские инсайты:**
-1. Lag-1 ACF дневных изменений: ~0.050 на train и ~0.061 на validation; Ljung–Box на заранее выбранных лагах не отвергает отсутствие серийной корреляции signed changes. Не утверждать полное отсутствие прогнозируемости.
-2. Зависимость абсолютных доходностей сильнее зависимости направления: для validation `abs(log return)` Holm-adjusted Ljung–Box на лаге 20 `p≈0.027`. Это мотивирует тестирование **прогнозной дисперсии и интервалов**, но не доказывает преимущества какой-либо модели.
-3. У AR(1) прогнозный дрейф константы накапливается к h=7. По сохранённым прогнозам средний вклад константы ≈+0.1003 RUB, AR-части ≈−0.0059 RUB. Это **алгебраическая диагностика**, а не эксперимент с моделью без константы.
-4. A1→A2: 254 validation-пары для каждого h, прогнозы, OLS-параметры и ошибки воспроизведены; прежние файлы сохранены.
+## Незакрытые ограничения
 
-## Блокеры и ограничения
+- **P0:** точный исторический момент доступности финального daily `CLOSE` неизвестен; `end` и гипотеза 00:05 МСК не являются timestamp публикации. 15-минутная задержка бесплатных данных не доказывает финальность свечи.
+- **P0:** `verified` для record-level PIT **нет ни у одного** из 30 столбцов; для `swaprate_prev_session`, действующих значений ЦБ и остальных показателей остаются документированные допущения.
+- **P1:** календарь внутренне согласован, но не подтверждён независимым архивом; после 23.03.2026 изменилась структура торговой даты срочного рынка.
+- **P1:** полная пересборка v2 из frozen external exports не воспроизведена в новой среде; исходные экспорты не включены в Git.
+- **P1:** исходные manifests прошлых RW/AR запусков фиксируют `uncommitted_changes`; требуется clean rerun.
+- **P1:** RUONIA/Brent/USD-CNH доступны в sensitivity-сценариях только по допущениям. Особенности `end≈19:30` исследованы на 35 днях: 9/35 полных совпадений OHLCV для минутного окна до 19:30, механизм не установлен.
 
-- **P0 — external feature panel отсутствует:** для Ridge/PCA/DFM нет готового PIT-совместимого набора внешних признаков; funding и курс ЦБ требуют дат публикации или заранее оговорённых консервативных лагов.
-- **P0 — доступность дневного CLOSE:** `CANDLE_CLOSE` получен из MOEX ISS `interval=24` и отделён от биржевой расчётной цены по происхождению поля, однако историческое время готовности свечи не подтверждено. Нельзя называть прогноз «в 23:51».
-- **P1 — календарь:** `reconstructed_moex_calendar_provisional` внутренне согласован с ценами, но ещё не проверен полностью по независимому историческому архиву USDRUBF. Совпадение всех дат с реконструкцией не равняется независимому аудиту.
-- **P1 — reproducibility manifest:** A2 и AR diagnostics сохранены при `implementation_state=uncommitted_changes`; их код позднее вошёл в `main`, поэтому желателен контрольный rerun из чистого checkout с верным SHA текущего кода.
-- **P1 — интервалы:** нет point forecast interval benchmark и калибровки; метрики покрытия и ширины должны считаться отдельно от RMSE.
-- **P1 — закрытый test:** не открывать до регистрации выбора моделей, доступных признаков, правил калибровки и финального протокола.
+## Известные validation-результаты (без изменений)
 
-## Ближайшие 2 дня
+Train 683, validation 254, final test 223 дневные свечи. На validation 2025 RW имеет меньший RMSE, чем AR(1), на каждом h=1..7; для h=7: **RW 2.147724; AR(1) 2.207770** RUB/USD. HAC+Holm не подтверждает семейно-значимое различие. См. `reports/benchmark_summary.md` и `reports/ar1_diagnostics.md`.
 
-Детальные задания, зависимости и definition of done: [two_day_plan.md](two_day_plan.md).
-
-**A — Research Lead/Backtesting:** чистый rerun RW/AR; реестр экспериментов, leakage review, API новых моделей; затем интеграция и common-pair OOS-сравнение.
-
-**B — Data Engineer/PIT:** data dictionary с датами публикаций, 2–3 внешних экономически мотивированных индикатора, сверка funding/CBR и окончательная пометка календарных ограничений; затем PIT-панель и её покрытие.
-
-**C — Quant Modeling:** спецификация факторных групп и простой Ridge baseline; затем PCA + регрессия **только при достаточной панели** и совместимость с benchmark API.
-
-**D — ML/Uncertainty:** RW-интервалы по семи горизонтам и interval metrics; затем causal/online calibration без test и анализ роли прошлой волатильности.
-
-## Правило обновления статуса
-
-Изменяйте статус на DONE только при наличии **пути к артефакту + периода + точного критерия проверки**. Данные и метрики финального test не использовать для выбора моделей. После новых результатов обновлять статус, [hypothesis_register.md](hypothesis_register.md) и [decision_log.md](decision_log.md). Не переписывать историю validation задним числом.
+**Не открывать final test для настройки** до регистрации окончательных моделей, pipeline, правил отбора и интервалов. История тестов и метрик не переписывается.
