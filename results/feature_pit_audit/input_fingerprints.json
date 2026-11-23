@@ -1,0 +1,22 @@
+{
+  "byte_sha256_at_b2_start": {
+    "docs/feature_availability_catalog.csv": "c0fb1adac5d5dc2ff03bc093a4d9a4ca1844eac0939ff66540bdd51e4748de8f",
+    "data/processed/model_dataset_usdrubf_all_features_v2.csv": "da5b582e622ce5d3efb6fb619c0b9258dc15fc7d18b6d76860ce5fb021107103",
+    "data/raw/USDRUBF_daily_2026-11-18.csv": "f5cf5fbe0c9556b956f07a39b2e190288f415ee375d242b493bb5a7359d98015",
+    "data/processed/trading_calendar.csv": "3a0baab58501ebfdea5adcc399873062a775d4269dd4c99243f5c93c8babedff",
+    "scripts/build_external_features.py": "290e35a7d98f8573769e86fad13db29d2a243d32f6a48650c61d958558ecb700",
+    "docs/backtest_protocol.md": "f75f95e2e838948130e53fc2fb7d786fed511d67b39ffd346fdd5196f58295ee",
+    "test_usdrubf_minute_aggregation.py": "9f8153b7b77ef9d0fbe8ffb191dba70a007e5f8249ed80f35aa4f91c230090b5",
+    "results/moex_minute_audit/comparison.csv": "a768369659905f7087be048ac16056288d61c907c69c06d9634c8e8cf7db2bbf"
+  },
+  "lf_normalized_sha256": {
+    "docs/feature_availability_catalog.csv": "c0fb1adac5d5dc2ff03bc093a4d9a4ca1844eac0939ff66540bdd51e4748de8f",
+    "data/processed/model_dataset_usdrubf_all_features_v2.csv": "5ad96b50d867b6b2bde16cd0d7823ecda55c3f2031a07cc1f4dfeaa835203835",
+    "data/raw/USDRUBF_daily_2026-11-18.csv": "692d42757e4a2566b8ae77cb58bab20442bb41a707d73d415510f621f4b8d366",
+    "data/processed/trading_calendar.csv": "9b683fd60d469fc83de56466b621bc561f68e58d7de66b9894cc5e5a5c117abc",
+    "scripts/build_external_features.py": "b815118fc2ca1b6f261274f17297cd6e9116ce85ddda3a2b3c6b87719ab007d8",
+    "docs/backtest_protocol.md": "785dc3fbdfc1e696255135abca721a1c43ed05d2277492375f9a42de549cc06d",
+    "test_usdrubf_minute_aggregation.py": "9f8153b7b77ef9d0fbe8ffb191dba70a007e5f8249ed80f35aa4f91c230090b5",
+    "results/moex_minute_audit/comparison.csv": "7230a1e6a84a9da34116e7b33d7176f4cd9b41769bd762c148d2d17993279671"
+  }
+}

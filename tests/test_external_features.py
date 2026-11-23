@@ -33,7 +33,7 @@ def check_integrity(rows,raw,calendar):
     if dates!=sorted(set(dates)) or dates[0]!=date(2022,4,26) or dates[-1]!=date(2026,11,18):
         raise AssertionError('Trading dates not unique / sorted / within frozen range')
     expected=[date.fromisoformat(r['date']) for r in calendar
-        if r['forts_market_trade_date_expected']=='1']
+        if r['is_trading_day_expected']=='1']
     if expected != dates:
         raise AssertionError('Trading calendar disagrees with factor-panel dates')
 
@@ -101,7 +101,7 @@ class SnapshotIntegrityTests(unittest.TestCase):
 
     def test_no_duplicate_and_calendar_alignment(self):
         self.assertEqual(len({r['date'] for r in self.rows}),1160)
-        self.assertEqual(sum(x['forts_market_trade_date_expected']=='1' for x in self.calendar),1160)
+        self.assertEqual(sum(x['is_trading_day_expected']=='1' for x in self.calendar),1160)
 
     def test_no_forward_looking_join(self):
         for row in self.rows:
@@ -132,7 +132,7 @@ class SnapshotIntegrityTests(unittest.TestCase):
 
     def test_reject_calendar_mismatch(self):
         calendar=[x.copy() for x in self.calendar]
-        calendar[0]['forts_market_trade_date_expected']='0'
+        calendar[0]['is_trading_day_expected']='0'
         with self.assertRaisesRegex(AssertionError,'Trading calendar disagrees'):
             check_integrity(self.rows,self.raw,calendar)
 
