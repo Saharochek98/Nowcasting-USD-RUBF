@@ -1,0 +1,95 @@
+{
+  "committed_source_verified": true,
+  "all_previous_data_and_results_unchanged": true,
+  "all_output_hashes_verified": true,
+  "all_1778_training_windows_medians_and_maturity_verified": true,
+  "catboost_inner_schedule_identical": true,
+  "inner_selection_recomputed": true,
+  "exact_real_data_refits": [
+    {
+      "horizon": 1,
+      "origins": [
+        "2024-12-30",
+        "2025-07-04",
+        "2025-12-29"
+      ],
+      "predictions_exact": true,
+      "imputers_exact": true,
+      "gains_exact": true,
+      "saved_model_prediction_exact": true
+    },
+    {
+      "horizon": 2,
+      "origins": [
+        "2024-12-28",
+        "2025-07-03",
+        "2025-12-26"
+      ],
+      "predictions_exact": true,
+      "imputers_exact": true,
+      "gains_exact": true,
+      "saved_model_prediction_exact": true
+    },
+    {
+      "horizon": 3,
+      "origins": [
+        "2024-12-27",
+        "2025-07-02",
+        "2025-12-25"
+      ],
+      "predictions_exact": true,
+      "imputers_exact": true,
+      "gains_exact": true,
+      "saved_model_prediction_exact": true
+    },
+    {
+      "horizon": 4,
+      "origins": [
+        "2024-12-26",
+        "2025-07-01",
+        "2025-12-24"
+      ],
+      "predictions_exact": true,
+      "imputers_exact": true,
+      "gains_exact": true,
+      "saved_model_prediction_exact": true
+    },
+    {
+      "horizon": 5,
+      "origins": [
+        "2024-12-25",
+        "2025-06-30",
+        "2025-12-23"
+      ],
+      "predictions_exact": true,
+      "imputers_exact": true,
+      "gains_exact": true,
+      "saved_model_prediction_exact": true
+    },
+    {
+      "horizon": 6,
+      "origins": [
+        "2024-12-24",
+        "2025-06-27",
+        "2025-12-22"
+      ],
+      "predictions_exact": true,
+      "imputers_exact": true,
+      "gains_exact": true,
+      "saved_model_prediction_exact": true
+    },
+    {
+      "horizon": 7,
+      "origins": [
+        "2024-12-23",
+        "2025-06-26",
+        "2025-12-19"
+      ],
+      "predictions_exact": true,
+      "imputers_exact": true,
+      "gains_exact": true,
+      "saved_model_prediction_exact": true
+    }
+  ],
+  "numeric_reproduction_scope": "21 first/middle/last refits plus seven saved model reloads"
+}

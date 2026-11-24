@@ -1,0 +1,36 @@
+{
+  "stage_prediction_counts": {
+    "core": 3556,
+    "extended": 5334,
+    "log": 8890,
+    "s2": 3556
+  },
+  "total_predictions": 21336,
+  "each_model_horizon_common_n": 254,
+  "input_sha256_verified": {
+    "data\\processed\\features_daily_v1.csv": "95ff7cc95f3cbd08db994bbc6e098b12d06019cfc5e8b593fd647cd9606df792",
+    "data\\processed\\features_daily_v1_metadata.csv": "3e398df07ee63852b43752082364a03082b81997bab217c6740b5c2eae24c92f",
+    "data\\processed\\model_dataset_usdrubf_all_features_v2.csv": "da5b582e622ce5d3efb6fb619c0b9258dc15fc7d18b6d76860ce5fb021107103",
+    "data\\processed\\usdrubf_trading_days.csv": "deb6c6ffecfb267e31f7bb8d50a2d32684f67f061e70fbd285fede5032ea86f5",
+    "configs\\feature_scenarios_v1.json": "5511440a790aa2ac5dc7f8d4d7d5bf2aa477e3397c2af19c8747ba7effa92bc9",
+    "results\\benchmark_calendar_v2\\scored_predictions.parquet": "87ca1f0f3de069bc24ad17c2971715102aa9276b451586e478e625c4b915c988"
+  },
+  "implementation_hashes_verified": true,
+  "matured_train_only_labels_verified": true,
+  "validation_targets_only_verified": true,
+  "r5_excluded_from_primary_verified": true,
+  "protected_tracked_paths_unchanged": true,
+  "ridge_tests": {
+    "total": 14,
+    "passed": 14
+  },
+  "full_suite": {
+    "total": 75,
+    "passed": 73,
+    "skipped": 1,
+    "failed": 1,
+    "failure": "existing B4 artifact reproducibility: backtest_protocol.md hash changed upstream after frozen audit",
+    "frozen_audit_protocol_hash": "9b7055ee3229b3de7164757cb8334e65b3fa73c076afc84d7a0a722bbb73a207",
+    "unchanged_HEAD_protocol_hash": "9704d68fe147a57b01d1ca962aafa516bac80ae65a3b3c11267e011f32b1368e"
+  }
+}

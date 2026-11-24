@@ -1,0 +1,330 @@
+model_id,horizon,transform,scope,pit_status,feature,mse_increase_mean,mse_increase_std,repeats,block_sessions,n,diagnostic_only
+R1,1,log_return,all,conditional EOD / pseudo-PIT,open,0.0012136507771215333,0.00038980029140249728,20,20,254,True
+R1,1,log_return,all,conditional EOD / pseudo-PIT,high,0.00089154840410225473,0.0003503761976487903,20,20,254,True
+R1,1,log_return,all,conditional EOD / pseudo-PIT,low,0.00064377382121333924,0.00026656470679939696,20,20,254,True
+R1,1,log_return,all,conditional EOD / pseudo-PIT,close,0.0010350857857442497,0.00029247039400529613,20,20,254,True
+R1,1,log_return,all,conditional EOD / pseudo-PIT,volume,0.0070620090414067523,0.0038810769805584459,20,20,254,True
+R1,2,log_return,all,conditional EOD / pseudo-PIT,open,0.0040599462262372763,0.0012625749311133449,20,20,254,True
+R1,2,log_return,all,conditional EOD / pseudo-PIT,high,0.0033574378256187032,0.0012924684101462871,20,20,254,True
+R1,2,log_return,all,conditional EOD / pseudo-PIT,low,0.0025820747991084692,0.0010563556106432245,20,20,254,True
+R1,2,log_return,all,conditional EOD / pseudo-PIT,close,0.0039298472042194384,0.00095743624909540954,20,20,254,True
+R1,2,log_return,all,conditional EOD / pseudo-PIT,volume,0.013543088255535273,0.010308074189828539,20,20,254,True
+R1,3,log_return,all,conditional EOD / pseudo-PIT,open,0.0073644084334477441,0.0024051565163548442,20,20,254,True
+R1,3,log_return,all,conditional EOD / pseudo-PIT,high,0.0071883143337306164,0.0029803372231240522,20,20,254,True
+R1,3,log_return,all,conditional EOD / pseudo-PIT,low,0.0058686894506891239,0.0024588703686288472,20,20,254,True
+R1,3,log_return,all,conditional EOD / pseudo-PIT,close,0.0088361780535644481,0.0021345598890587327,20,20,254,True
+R1,3,log_return,all,conditional EOD / pseudo-PIT,volume,0.021303937256945106,0.013760261981093565,20,20,254,True
+R1,4,log_return,all,conditional EOD / pseudo-PIT,open,0.011307184685659388,0.0038925575958279391,20,20,254,True
+R1,4,log_return,all,conditional EOD / pseudo-PIT,high,0.012844044839536495,0.0056660342120607061,20,20,254,True
+R1,4,log_return,all,conditional EOD / pseudo-PIT,low,0.0085279553481222067,0.0036761706547174169,20,20,254,True
+R1,4,log_return,all,conditional EOD / pseudo-PIT,close,0.014894449160060464,0.0036445361708643078,20,20,254,True
+R1,4,log_return,all,conditional EOD / pseudo-PIT,volume,0.015754240892833993,0.010662285997989074,20,20,254,True
+R1,5,log_return,all,conditional EOD / pseudo-PIT,open,0.017520704740177064,0.0062182326452620137,20,20,254,True
+R1,5,log_return,all,conditional EOD / pseudo-PIT,high,0.021429141639999049,0.0096264832111138884,20,20,254,True
+R1,5,log_return,all,conditional EOD / pseudo-PIT,low,0.013678228824648263,0.0060058801982899547,20,20,254,True
+R1,5,log_return,all,conditional EOD / pseudo-PIT,close,0.022746573921045777,0.0056890761444490043,20,20,254,True
+R1,5,log_return,all,conditional EOD / pseudo-PIT,volume,0.014647448956702025,0.012641567977086893,20,20,254,True
+R1,6,log_return,all,conditional EOD / pseudo-PIT,open,0.023624257717618669,0.0084340737474548674,20,20,254,True
+R1,6,log_return,all,conditional EOD / pseudo-PIT,high,0.031146015069385812,0.014090624178765547,20,20,254,True
+R1,6,log_return,all,conditional EOD / pseudo-PIT,low,0.016993405412761176,0.0074770376940401792,20,20,254,True
+R1,6,log_return,all,conditional EOD / pseudo-PIT,close,0.031729698028729825,0.0079240928549558741,20,20,254,True
+R1,6,log_return,all,conditional EOD / pseudo-PIT,volume,0.004102709651392011,0.0041321400665490435,20,20,254,True
+R1,7,log_return,all,conditional EOD / pseudo-PIT,open,0.034278671135782667,0.012379262666646153,20,20,254,True
+R1,7,log_return,all,conditional EOD / pseudo-PIT,high,0.044305068730994268,0.02024220034360617,20,20,254,True
+R1,7,log_return,all,conditional EOD / pseudo-PIT,low,0.023478313713812992,0.010523342867862653,20,20,254,True
+R1,7,log_return,all,conditional EOD / pseudo-PIT,close,0.042042075007212666,0.010546789846902271,20,20,254,True
+R1,7,log_return,all,conditional EOD / pseudo-PIT,volume,0.010054143492326029,0.0087977647753269168,20,20,254,True
+R2,1,log_return,all,conditional EOD / pseudo-PIT,open,0.00087069748347267111,0.00028498523879988142,20,20,254,True
+R2,1,log_return,all,conditional EOD / pseudo-PIT,close,0.0006029338434359599,0.00023890843545931978,20,20,254,True
+R2,1,log_return,all,conditional EOD / pseudo-PIT,high,0.00055936195068717609,0.00023486294625958381,20,20,254,True
+R2,1,log_return,all,conditional EOD / pseudo-PIT,low,0.00040553641835625043,0.00011800953354663979,20,20,254,True
+R2,1,log_return,all,conditional EOD / pseudo-PIT,volume,0.0070427253325475335,0.0040328283333912101,20,20,254,True
+R2,1,log_return,all,conditional EOD / pseudo-PIT,cbr_usdrub_effective,0.00053185090451536294,0.00013628691421535129,20,20,254,True
+R2,1,log_return,all,conditional EOD / pseudo-PIT,swaprate_prev_session,0.00011088117908077954,0.00010410456980682915,20,20,254,True
+R2,1,log_return,all,conditional EOD / pseudo-PIT,key_rate_pct_effective,0.00071636605903624417,0.00057702489921519339,20,20,254,True
+R2,1,log_return,all,conditional EOD / pseudo-PIT,spread_close_minus_cbr,0.00032434233712863028,0.00026683805341550394,20,20,254,True
+R2,2,log_return,all,conditional EOD / pseudo-PIT,open,0.0031875544507314001,0.001008744114054312,20,20,254,True
+R2,2,log_return,all,conditional EOD / pseudo-PIT,close,0.0024720347053453716,0.00096279530681113662,20,20,254,True
+R2,2,log_return,all,conditional EOD / pseudo-PIT,high,0.0023164766218437883,0.00096856844760039897,20,20,254,True
+R2,2,log_return,all,conditional EOD / pseudo-PIT,low,0.0021034021627688083,0.00054279378209501036,20,20,254,True
+R2,2,log_return,all,conditional EOD / pseudo-PIT,volume,0.012955510207529941,0.010560129886691532,20,20,254,True
+R2,2,log_return,all,conditional EOD / pseudo-PIT,cbr_usdrub_effective,0.0016089451776455377,0.00041916451427294213,20,20,254,True
+R2,2,log_return,all,conditional EOD / pseudo-PIT,swaprate_prev_session,-0.00014890579301485296,9.9056412444074927e-05,20,20,254,True
+R2,2,log_return,all,conditional EOD / pseudo-PIT,key_rate_pct_effective,0.0027637460893338182,0.002133191037957585,20,20,254,True
+R2,2,log_return,all,conditional EOD / pseudo-PIT,spread_close_minus_cbr,0.0062460692436850486,0.0017293628990031659,20,20,254,True
+R2,3,log_return,all,conditional EOD / pseudo-PIT,open,0.006336422487836957,0.0021459443671367319,20,20,254,True
+R2,3,log_return,all,conditional EOD / pseudo-PIT,close,0.0060048547544173329,0.0025440388689553415,20,20,254,True
+R2,3,log_return,all,conditional EOD / pseudo-PIT,high,0.0053691178076660014,0.0023793696695077289,20,20,254,True
+R2,3,log_return,all,conditional EOD / pseudo-PIT,low,0.0056943669838384172,0.0015245841696053693,20,20,254,True
+R2,3,log_return,all,conditional EOD / pseudo-PIT,volume,0.018258821930147918,0.013252239062385899,20,20,254,True
+R2,3,log_return,all,conditional EOD / pseudo-PIT,cbr_usdrub_effective,0.0030729411484314963,0.00082023670027554904,20,20,254,True
+R2,3,log_return,all,conditional EOD / pseudo-PIT,swaprate_prev_session,0.0033302661718859206,0.0020631799836286009,20,20,254,True
+R2,3,log_return,all,conditional EOD / pseudo-PIT,key_rate_pct_effective,0.0052610969043806795,0.0044279165630534238,20,20,254,True
+R2,3,log_return,all,conditional EOD / pseudo-PIT,spread_close_minus_cbr,0.0241555380027886,0.0060094430637436238,20,20,254,True
+R2,4,log_return,all,conditional EOD / pseudo-PIT,open,0.0098664265115463445,0.0035476566017882496,20,20,254,True
+R2,4,log_return,all,conditional EOD / pseudo-PIT,close,0.010134424021799671,0.004604182364219841,20,20,254,True
+R2,4,log_return,all,conditional EOD / pseudo-PIT,high,0.0096744532586361173,0.0043907848305943806,20,20,254,True
+R2,4,log_return,all,conditional EOD / pseudo-PIT,low,0.0083844682936659917,0.0022984975274383439,20,20,254,True
+R2,4,log_return,all,conditional EOD / pseudo-PIT,volume,0.012336394409219364,0.0099445281123797212,20,20,254,True
+R2,4,log_return,all,conditional EOD / pseudo-PIT,cbr_usdrub_effective,0.0048721840959143224,0.0013276067731903948,20,20,254,True
+R2,4,log_return,all,conditional EOD / pseudo-PIT,swaprate_prev_session,0.0058920487135452728,0.0053469054583132319,20,20,254,True
+R2,4,log_return,all,conditional EOD / pseudo-PIT,key_rate_pct_effective,0.0093066047002695381,0.007929385444192744,20,20,254,True
+R2,4,log_return,all,conditional EOD / pseudo-PIT,spread_close_minus_cbr,0.039894748948323386,0.010821044374819585,20,20,254,True
+R2,5,log_return,all,conditional EOD / pseudo-PIT,open,0.015367971964177385,0.0057263824311594436,20,20,254,True
+R2,5,log_return,all,conditional EOD / pseudo-PIT,close,0.015515013449036363,0.0072593814974827578,20,20,254,True
+R2,5,log_return,all,conditional EOD / pseudo-PIT,high,0.016325420090476373,0.0075383916196239782,20,20,254,True
+R2,5,log_return,all,conditional EOD / pseudo-PIT,low,0.013572465266895151,0.0038042351933756445,20,20,254,True
+R2,5,log_return,all,conditional EOD / pseudo-PIT,volume,0.0099363665557449469,0.0119165299776475,20,20,254,True
+R2,5,log_return,all,conditional EOD / pseudo-PIT,cbr_usdrub_effective,0.0075226872623808784,0.0020797528228449973,20,20,254,True
+R2,5,log_return,all,conditional EOD / pseudo-PIT,swaprate_prev_session,0.010937644294525307,0.0098274977369271505,20,20,254,True
+R2,5,log_return,all,conditional EOD / pseudo-PIT,key_rate_pct_effective,0.013858576114160437,0.011983837221166194,20,20,254,True
+R2,5,log_return,all,conditional EOD / pseudo-PIT,spread_close_minus_cbr,0.054420799937930829,0.015704157939182731,20,20,254,True
+R2,6,log_return,all,conditional EOD / pseudo-PIT,open,0.020746140523954026,0.007764633888326049,20,20,254,True
+R2,6,log_return,all,conditional EOD / pseudo-PIT,close,0.021585051475958638,0.010248160112544461,20,20,254,True
+R2,6,log_return,all,conditional EOD / pseudo-PIT,high,0.023685440192474407,0.01094404368439633,20,20,254,True
+R2,6,log_return,all,conditional EOD / pseudo-PIT,low,0.016795850641672595,0.0046575006678061049,20,20,254,True
+R2,6,log_return,all,conditional EOD / pseudo-PIT,volume,0.0019306249055804469,0.0030782023237612365,20,20,254,True
+R2,6,log_return,all,conditional EOD / pseudo-PIT,cbr_usdrub_effective,0.010199508334636741,0.0028397041356809536,20,20,254,True
+R2,6,log_return,all,conditional EOD / pseudo-PIT,swaprate_prev_session,0.018372476800312156,0.01558197966853303,20,20,254,True
+R2,6,log_return,all,conditional EOD / pseudo-PIT,key_rate_pct_effective,0.020400188505419449,0.017301271198408942,20,20,254,True
+R2,6,log_return,all,conditional EOD / pseudo-PIT,spread_close_minus_cbr,0.076268706040031928,0.022430053971742164,20,20,254,True
+R2,7,log_return,all,conditional EOD / pseudo-PIT,open,0.029801355444994959,0.011209659781170552,20,20,254,True
+R2,7,log_return,all,conditional EOD / pseudo-PIT,close,0.028131446789961601,0.013380350280270282,20,20,254,True
+R2,7,log_return,all,conditional EOD / pseudo-PIT,high,0.033561893301878906,0.015593292853151045,20,20,254,True
+R2,7,log_return,all,conditional EOD / pseudo-PIT,low,0.023112977759992149,0.0063267653828281943,20,20,254,True
+R2,7,log_return,all,conditional EOD / pseudo-PIT,volume,0.0064737159890911221,0.0076249182147775747,20,20,254,True
+R2,7,log_return,all,conditional EOD / pseudo-PIT,cbr_usdrub_effective,0.013032887340309163,0.0036640496960421952,20,20,254,True
+R2,7,log_return,all,conditional EOD / pseudo-PIT,swaprate_prev_session,0.022452839789644942,0.017857115631112908,20,20,254,True
+R2,7,log_return,all,conditional EOD / pseudo-PIT,key_rate_pct_effective,0.028264886775295928,0.02467730424429912,20,20,254,True
+R2,7,log_return,all,conditional EOD / pseudo-PIT,spread_close_minus_cbr,0.09168020574336766,0.026752599196568593,20,20,254,True
+R3,1,log_return,all,conditional EOD / pseudo-PIT,open,0.0012001292329947787,0.0004072001042460419,20,20,254,True
+R3,1,log_return,all,conditional EOD / pseudo-PIT,close,0.00095512693170252681,0.0003894334922387405,20,20,254,True
+R3,1,log_return,all,conditional EOD / pseudo-PIT,high,0.00085614610815257783,0.00039516285036792002,20,20,254,True
+R3,1,log_return,all,conditional EOD / pseudo-PIT,low,0.00084265450515188525,0.00026942907337557982,20,20,254,True
+R3,1,log_return,all,conditional EOD / pseudo-PIT,volume,0.0050300545470063074,0.0034139828305901291,20,20,254,True
+R3,1,log_return,all,conditional EOD / pseudo-PIT,cbr_usdrub_effective,0.00095712786870812421,0.00026571811637335,20,20,254,True
+R3,1,log_return,all,conditional EOD / pseudo-PIT,swaprate_prev_session,2.9385394842312841e-05,2.7548291975506897e-05,20,20,254,True
+R3,1,log_return,all,conditional EOD / pseudo-PIT,key_rate_pct_effective,0.00036005824156232213,0.00036828946783016425,20,20,254,True
+R3,1,log_return,all,conditional EOD / pseudo-PIT,spread_close_minus_cbr,-8.1599943326859933e-05,7.7394437576201955e-05,20,20,254,True
+R3,1,log_return,all,conditional EOD / pseudo-PIT,ruonia_pct_last_reported,0.00048740487454640988,0.00041307888735315476,20,20,254,True
+R3,1,log_return,all,conditional EOD / pseudo-PIT,brent_eia_spot_usd_bbl_lag10d,0.0026015198177429368,0.0014042124849639828,20,20,254,True
+R3,2,log_return,all,conditional EOD / pseudo-PIT,open,0.0045008662341392671,0.0014685719164933783,20,20,254,True
+R3,2,log_return,all,conditional EOD / pseudo-PIT,close,0.0039296227754499809,0.0015676310440762428,20,20,254,True
+R3,2,log_return,all,conditional EOD / pseudo-PIT,high,0.0035070278565799916,0.0016153513871151812,20,20,254,True
+R3,2,log_return,all,conditional EOD / pseudo-PIT,low,0.0038461249969802048,0.0010818737347246348,20,20,254,True
+R3,2,log_return,all,conditional EOD / pseudo-PIT,volume,0.0076501609998780194,0.0080832334828774954,20,20,254,True
+R3,2,log_return,all,conditional EOD / pseudo-PIT,cbr_usdrub_effective,0.003291681441012584,0.00093054957059702386,20,20,254,True
+R3,2,log_return,all,conditional EOD / pseudo-PIT,swaprate_prev_session,-0.00042617443282625398,0.000272697995047645,20,20,254,True
+R3,2,log_return,all,conditional EOD / pseudo-PIT,key_rate_pct_effective,0.0014288324994763402,0.001383468392703888,20,20,254,True
+R3,2,log_return,all,conditional EOD / pseudo-PIT,spread_close_minus_cbr,0.0029542903877850411,0.00085099545891406192,20,20,254,True
+R3,2,log_return,all,conditional EOD / pseudo-PIT,ruonia_pct_last_reported,0.0016734550631727018,0.0014189661087535685,20,20,254,True
+R3,2,log_return,all,conditional EOD / pseudo-PIT,brent_eia_spot_usd_bbl_lag10d,0.011560877342638132,0.0056804214283614467,20,20,254,True
+R3,3,log_return,all,conditional EOD / pseudo-PIT,open,0.0090295611816337169,0.0031840195477658251,20,20,254,True
+R3,3,log_return,all,conditional EOD / pseudo-PIT,close,0.0089542885231807864,0.0039277650255074474,20,20,254,True
+R3,3,log_return,all,conditional EOD / pseudo-PIT,high,0.0076075690426591347,0.0037525762258708273,20,20,254,True
+R3,3,log_return,all,conditional EOD / pseudo-PIT,low,0.0091889111173934831,0.002670613493190495,20,20,254,True
+R3,3,log_return,all,conditional EOD / pseudo-PIT,volume,0.009401396147599517,0.008890470181403709,20,20,254,True
+R3,3,log_return,all,conditional EOD / pseudo-PIT,cbr_usdrub_effective,0.006567262933196605,0.0019045147961707335,20,20,254,True
+R3,3,log_return,all,conditional EOD / pseudo-PIT,swaprate_prev_session,0.0027553098276094758,0.0016228258401657174,20,20,254,True
+R3,3,log_return,all,conditional EOD / pseudo-PIT,key_rate_pct_effective,0.0025722886548415146,0.0027931493135821277,20,20,254,True
+R3,3,log_return,all,conditional EOD / pseudo-PIT,spread_close_minus_cbr,0.015743525255403523,0.0040082070479812194,20,20,254,True
+R3,3,log_return,all,conditional EOD / pseudo-PIT,ruonia_pct_last_reported,0.0037459860000145671,0.0029630574809175036,20,20,254,True
+R3,3,log_return,all,conditional EOD / pseudo-PIT,brent_eia_spot_usd_bbl_lag10d,0.024349895391800148,0.013120966268753503,20,20,254,True
+R3,4,log_return,all,conditional EOD / pseudo-PIT,open,0.01468160516440411,0.0055236946561906487,20,20,254,True
+R3,4,log_return,all,conditional EOD / pseudo-PIT,close,0.015426895703784683,0.0072906120872566638,20,20,254,True
+R3,4,log_return,all,conditional EOD / pseudo-PIT,high,0.013499512177359941,0.0068437603935854966,20,20,254,True
+R3,4,log_return,all,conditional EOD / pseudo-PIT,low,0.014736131245509232,0.0044029071576859972,20,20,254,True
+R3,4,log_return,all,conditional EOD / pseudo-PIT,volume,0.002961005943391415,0.0035867436296507394,20,20,254,True
+R3,4,log_return,all,conditional EOD / pseudo-PIT,cbr_usdrub_effective,0.011282884484693478,0.0033477687266199227,20,20,254,True
+R3,4,log_return,all,conditional EOD / pseudo-PIT,swaprate_prev_session,0.0049886452177946962,0.0044518961907930883,20,20,254,True
+R3,4,log_return,all,conditional EOD / pseudo-PIT,key_rate_pct_effective,0.0044178031773374872,0.0048846745167663965,20,20,254,True
+R3,4,log_return,all,conditional EOD / pseudo-PIT,spread_close_minus_cbr,0.02568538216016818,0.0072820979290291379,20,20,254,True
+R3,4,log_return,all,conditional EOD / pseudo-PIT,ruonia_pct_last_reported,0.0073372857534648173,0.0052239885686523688,20,20,254,True
+R3,4,log_return,all,conditional EOD / pseudo-PIT,brent_eia_spot_usd_bbl_lag10d,0.04515619785095195,0.025054373311896316,20,20,254,True
+R3,5,log_return,all,conditional EOD / pseudo-PIT,open,0.022520253971965266,0.0087946582881320619,20,20,254,True
+R3,5,log_return,all,conditional EOD / pseudo-PIT,close,0.023376581858645728,0.011376457247708785,20,20,254,True
+R3,5,log_return,all,conditional EOD / pseudo-PIT,high,0.021844826370328564,0.011220892110784735,20,20,254,True
+R3,5,log_return,all,conditional EOD / pseudo-PIT,low,0.022898514878464348,0.0070081523401186322,20,20,254,True
+R3,5,log_return,all,conditional EOD / pseudo-PIT,volume,0.00099542275678694554,0.0033469064648020616,20,20,254,True
+R3,5,log_return,all,conditional EOD / pseudo-PIT,cbr_usdrub_effective,0.017197227537764072,0.0051897377609355158,20,20,254,True
+R3,5,log_return,all,conditional EOD / pseudo-PIT,swaprate_prev_session,0.0094784160005730207,0.0084454247882417861,20,20,254,True
+R3,5,log_return,all,conditional EOD / pseudo-PIT,key_rate_pct_effective,0.0065084146703533905,0.0072478066936996315,20,20,254,True
+R3,5,log_return,all,conditional EOD / pseudo-PIT,spread_close_minus_cbr,0.034708525245294199,0.010940060671484529,20,20,254,True
+R3,5,log_return,all,conditional EOD / pseudo-PIT,ruonia_pct_last_reported,0.011494113148282126,0.0080359414967889793,20,20,254,True
+R3,5,log_return,all,conditional EOD / pseudo-PIT,brent_eia_spot_usd_bbl_lag10d,0.069537682153498898,0.038478483752636787,20,20,254,True
+R3,6,log_return,all,conditional EOD / pseudo-PIT,open,0.031388753528920607,0.012247681110793647,20,20,254,True
+R3,6,log_return,all,conditional EOD / pseudo-PIT,close,0.033024513423195102,0.016271172733985376,20,20,254,True
+R3,6,log_return,all,conditional EOD / pseudo-PIT,high,0.031732873404854756,0.01611907902136232,20,20,254,True
+R3,6,log_return,all,conditional EOD / pseudo-PIT,low,0.030673413723655462,0.0092398142613259442,20,20,254,True
+R3,6,log_return,all,conditional EOD / pseudo-PIT,volume,-0.0037885049035579765,0.0092500392779982163,20,20,254,True
+R3,6,log_return,all,conditional EOD / pseudo-PIT,cbr_usdrub_effective,0.024112465164445717,0.0072744899030171718,20,20,254,True
+R3,6,log_return,all,conditional EOD / pseudo-PIT,swaprate_prev_session,0.016232007480052778,0.013481883898957974,20,20,254,True
+R3,6,log_return,all,conditional EOD / pseudo-PIT,key_rate_pct_effective,0.0098880440680864552,0.010457982776315485,20,20,254,True
+R3,6,log_return,all,conditional EOD / pseudo-PIT,spread_close_minus_cbr,0.048815084312384148,0.015467322397199175,20,20,254,True
+R3,6,log_return,all,conditional EOD / pseudo-PIT,ruonia_pct_last_reported,0.017289036738416329,0.011227729571044967,20,20,254,True
+R3,6,log_return,all,conditional EOD / pseudo-PIT,brent_eia_spot_usd_bbl_lag10d,0.097840045131383141,0.056459887332918367,20,20,254,True
+R3,7,log_return,all,conditional EOD / pseudo-PIT,open,0.043623272736917643,0.017056110372174204,20,20,254,True
+R3,7,log_return,all,conditional EOD / pseudo-PIT,close,0.043237245049969307,0.021333810387303136,20,20,254,True
+R3,7,log_return,all,conditional EOD / pseudo-PIT,high,0.043877924524337655,0.022281540300993639,20,20,254,True
+R3,7,log_return,all,conditional EOD / pseudo-PIT,low,0.041417188284387049,0.01225627688134962,20,20,254,True
+R3,7,log_return,all,conditional EOD / pseudo-PIT,volume,-0.0048480808669057133,0.0088237840584135616,20,20,254,True
+R3,7,log_return,all,conditional EOD / pseudo-PIT,cbr_usdrub_effective,0.031423161149908105,0.0095293850005216205,20,20,254,True
+R3,7,log_return,all,conditional EOD / pseudo-PIT,swaprate_prev_session,0.019374630723317399,0.015139059849645562,20,20,254,True
+R3,7,log_return,all,conditional EOD / pseudo-PIT,key_rate_pct_effective,0.013960889697933831,0.015208553890902731,20,20,254,True
+R3,7,log_return,all,conditional EOD / pseudo-PIT,spread_close_minus_cbr,0.058262793159391313,0.018348694668506797,20,20,254,True
+R3,7,log_return,all,conditional EOD / pseudo-PIT,ruonia_pct_last_reported,0.023515297979568927,0.01529868071420247,20,20,254,True
+R3,7,log_return,all,conditional EOD / pseudo-PIT,brent_eia_spot_usd_bbl_lag10d,0.12127763115333981,0.07471525015242704,20,20,254,True
+R4,1,log_return,all,conditional EOD / pseudo-PIT,open,0.0011993060905463536,0.00040695019299839938,20,20,254,True
+R4,1,log_return,all,conditional EOD / pseudo-PIT,close,0.00095437999887255096,0.00038913747478347204,20,20,254,True
+R4,1,log_return,all,conditional EOD / pseudo-PIT,high,0.00085544133454177327,0.00039486791796589918,20,20,254,True
+R4,1,log_return,all,conditional EOD / pseudo-PIT,low,0.00084183615452023688,0.00026920522476412182,20,20,254,True
+R4,1,log_return,all,conditional EOD / pseudo-PIT,volume,0.0050304160399941454,0.0034146329230196775,20,20,254,True
+R4,1,log_return,all,conditional EOD / pseudo-PIT,cbr_usdrub_effective,0.00095634750590664066,0.00026550334763334653,20,20,254,True
+R4,1,log_return,all,conditional EOD / pseudo-PIT,swaprate_prev_session,2.9123092287441922e-05,2.7304955411559323e-05,20,20,254,True
+R4,1,log_return,all,conditional EOD / pseudo-PIT,key_rate_pct_effective,0.0003598372439105768,0.00036821983495588864,20,20,254,True
+R4,1,log_return,all,conditional EOD / pseudo-PIT,spread_close_minus_cbr,-8.1317257773694257e-05,7.7135311949195953e-05,20,20,254,True
+R4,1,log_return,all,conditional EOD / pseudo-PIT,ruonia_pct_last_reported,0.00048711393085913989,0.0004129780124106265,20,20,254,True
+R4,1,log_return,all,conditional EOD / pseudo-PIT,brent_eia_spot_usd_bbl_lag10d,0.0026012258471393378,0.0014041661425746494,20,20,254,True
+R4,1,log_return,all,conditional EOD / pseudo-PIT,usdcnh_investing_price_prev_date,4.5190860657629008e-06,2.1935549959763748e-06,20,20,254,True
+R4,2,log_return,all,conditional EOD / pseudo-PIT,open,0.0046548297688057015,0.0015137082691575494,20,20,254,True
+R4,2,log_return,all,conditional EOD / pseudo-PIT,close,0.0040760119570040108,0.0016246430304618761,20,20,254,True
+R4,2,log_return,all,conditional EOD / pseudo-PIT,high,0.0036427233513088852,0.0016714240846155085,20,20,254,True
+R4,2,log_return,all,conditional EOD / pseudo-PIT,low,0.0040076219933308458,0.0011197466990245856,20,20,254,True
+R4,2,log_return,all,conditional EOD / pseudo-PIT,volume,0.0075989089215833692,0.007952553413459235,20,20,254,True
+R4,2,log_return,all,conditional EOD / pseudo-PIT,cbr_usdrub_effective,0.0034336054737715395,0.00097025596783244824,20,20,254,True
+R4,2,log_return,all,conditional EOD / pseudo-PIT,swaprate_prev_session,-0.00037862472210727918,0.00024152219562609113,20,20,254,True
+R4,2,log_return,all,conditional EOD / pseudo-PIT,key_rate_pct_effective,0.0014717663808715086,0.0013961578211620766,20,20,254,True
+R4,2,log_return,all,conditional EOD / pseudo-PIT,spread_close_minus_cbr,0.0028658413912069913,0.00082529693076488291,20,20,254,True
+R4,2,log_return,all,conditional EOD / pseudo-PIT,ruonia_pct_last_reported,0.0017250461993837951,0.0014370765725826894,20,20,254,True
+R4,2,log_return,all,conditional EOD / pseudo-PIT,brent_eia_spot_usd_bbl_lag10d,0.011613338830536158,0.0056908191512871787,20,20,254,True
+R4,2,log_return,all,conditional EOD / pseudo-PIT,usdcnh_investing_price_prev_date,-0.00084614559724930369,0.00040209104868798386,20,20,254,True
+R4,3,log_return,all,conditional EOD / pseudo-PIT,open,0.009551354260169731,0.003345704088904263,20,20,254,True
+R4,3,log_return,all,conditional EOD / pseudo-PIT,close,0.0094687066104877093,0.0041427429929093177,20,20,254,True
+R4,3,log_return,all,conditional EOD / pseudo-PIT,high,0.0080658309818272926,0.0039503846922027382,20,20,254,True
+R4,3,log_return,all,conditional EOD / pseudo-PIT,low,0.0097582493789399646,0.0028072001078883642,20,20,254,True
+R4,3,log_return,all,conditional EOD / pseudo-PIT,volume,0.0091318280692568084,0.0084991107935432318,20,20,254,True
+R4,3,log_return,all,conditional EOD / pseudo-PIT,cbr_usdrub_effective,0.0070487614321298239,0.0020426769121661176,20,20,254,True
+R4,3,log_return,all,conditional EOD / pseudo-PIT,swaprate_prev_session,0.0029275527932840716,0.0017054611543544729,20,20,254,True
+R4,3,log_return,all,conditional EOD / pseudo-PIT,key_rate_pct_effective,0.0027097811260880177,0.0028376177357903971,20,20,254,True
+R4,3,log_return,all,conditional EOD / pseudo-PIT,spread_close_minus_cbr,0.015451922884415525,0.0039351060432342953,20,20,254,True
+R4,3,log_return,all,conditional EOD / pseudo-PIT,ruonia_pct_last_reported,0.0039299470103692832,0.0030225293697118279,20,20,254,True
+R4,3,log_return,all,conditional EOD / pseudo-PIT,brent_eia_spot_usd_bbl_lag10d,0.024526491323263167,0.013132937222691217,20,20,254,True
+R4,3,log_return,all,conditional EOD / pseudo-PIT,usdcnh_investing_price_prev_date,-0.0026460100465074852,0.0014644302281368029,20,20,254,True
+R4,4,log_return,all,conditional EOD / pseudo-PIT,open,0.015646169409581346,0.0058411391885232755,20,20,254,True
+R4,4,log_return,all,conditional EOD / pseudo-PIT,close,0.016398275720755806,0.0077250995224566344,20,20,254,True
+R4,4,log_return,all,conditional EOD / pseudo-PIT,high,0.014360476992925419,0.0072225950411844986,20,20,254,True
+R4,4,log_return,all,conditional EOD / pseudo-PIT,low,0.015792470529885173,0.0046654113828982716,20,20,254,True
+R4,4,log_return,all,conditional EOD / pseudo-PIT,volume,0.0024966063173020416,0.0029574481321788595,20,20,254,True
+R4,4,log_return,all,conditional EOD / pseudo-PIT,cbr_usdrub_effective,0.012198518066906573,0.0036183505252992531,20,20,254,True
+R4,4,log_return,all,conditional EOD / pseudo-PIT,swaprate_prev_session,0.005281996197132233,0.0046249613502852959,20,20,254,True
+R4,4,log_return,all,conditional EOD / pseudo-PIT,key_rate_pct_effective,0.0046741500060325956,0.0049701010792221403,20,20,254,True
+R4,4,log_return,all,conditional EOD / pseudo-PIT,spread_close_minus_cbr,0.025227419548990347,0.007145539747521263,20,20,254,True
+R4,4,log_return,all,conditional EOD / pseudo-PIT,ruonia_pct_last_reported,0.0077036596332415554,0.0053307587673093225,20,20,254,True
+R4,4,log_return,all,conditional EOD / pseudo-PIT,brent_eia_spot_usd_bbl_lag10d,0.045500989794168986,0.025067876654726179,20,20,254,True
+R4,4,log_return,all,conditional EOD / pseudo-PIT,usdcnh_investing_price_prev_date,-0.0049826945606661344,0.0028565588573475713,20,20,254,True
+R4,5,log_return,all,conditional EOD / pseudo-PIT,open,0.023813503120771483,0.0092334517085018927,20,20,254,True
+R4,5,log_return,all,conditional EOD / pseudo-PIT,close,0.024674254992325718,0.01197018040700849,20,20,254,True
+R4,5,log_return,all,conditional EOD / pseudo-PIT,high,0.023016410514596151,0.011739774527262417,20,20,254,True
+R4,5,log_return,all,conditional EOD / pseudo-PIT,low,0.024310206097153599,0.0073656354348552245,20,20,254,True
+R4,5,log_return,all,conditional EOD / pseudo-PIT,volume,0.0007267378813991199,0.0025658656083119699,20,20,254,True
+R4,5,log_return,all,conditional EOD / pseudo-PIT,cbr_usdrub_effective,0.018427637019035048,0.0055605056288119004,20,20,254,True
+R4,5,log_return,all,conditional EOD / pseudo-PIT,swaprate_prev_session,0.0099040071778024874,0.0086729083467741684,20,20,254,True
+R4,5,log_return,all,conditional EOD / pseudo-PIT,key_rate_pct_effective,0.0068394927722650765,0.0073620460967973337,20,20,254,True
+R4,5,log_return,all,conditional EOD / pseudo-PIT,spread_close_minus_cbr,0.034206169477833857,0.010735484892852008,20,20,254,True
+R4,5,log_return,all,conditional EOD / pseudo-PIT,ruonia_pct_last_reported,0.0119868322494884,0.0081769564864656672,20,20,254,True
+R4,5,log_return,all,conditional EOD / pseudo-PIT,brent_eia_spot_usd_bbl_lag10d,0.06997404595804517,0.038466215974598011,20,20,254,True
+R4,5,log_return,all,conditional EOD / pseudo-PIT,usdcnh_investing_price_prev_date,-0.0067386190940545319,0.0037976514294340213,20,20,254,True
+R4,6,log_return,all,conditional EOD / pseudo-PIT,open,0.033595754215515458,0.013007584239787861,20,20,254,True
+R4,6,log_return,all,conditional EOD / pseudo-PIT,close,0.035232557755740058,0.017299861004289232,20,20,254,True
+R4,6,log_return,all,conditional EOD / pseudo-PIT,high,0.033741453528480882,0.017006915709286016,20,20,254,True
+R4,6,log_return,all,conditional EOD / pseudo-PIT,low,0.033068703881599992,0.0098549864060756293,20,20,254,True
+R4,6,log_return,all,conditional EOD / pseudo-PIT,volume,-0.0045696050940460253,0.010609317420625189,20,20,254,True
+R4,6,log_return,all,conditional EOD / pseudo-PIT,cbr_usdrub_effective,0.026202275386083683,0.0079086811870780239,20,20,254,True
+R4,6,log_return,all,conditional EOD / pseudo-PIT,swaprate_prev_session,0.016991073141662795,0.013850962558172419,20,20,254,True
+R4,6,log_return,all,conditional EOD / pseudo-PIT,key_rate_pct_effective,0.010438821290080291,0.010654501895681212,20,20,254,True
+R4,6,log_return,all,conditional EOD / pseudo-PIT,spread_close_minus_cbr,0.047912530773962958,0.015108135527804436,20,20,254,True
+R4,6,log_return,all,conditional EOD / pseudo-PIT,ruonia_pct_last_reported,0.018112085225721098,0.011463902124332381,20,20,254,True
+R4,6,log_return,all,conditional EOD / pseudo-PIT,brent_eia_spot_usd_bbl_lag10d,0.098486463975762065,0.056374768270576005,20,20,254,True
+R4,6,log_return,all,conditional EOD / pseudo-PIT,usdcnh_investing_price_prev_date,-0.012011456465707494,0.0062217299204610881,20,20,254,True
+R4,7,log_return,all,conditional EOD / pseudo-PIT,open,0.047118864387732537,0.01826822477076441,20,20,254,True
+R4,7,log_return,all,conditional EOD / pseudo-PIT,close,0.046687123520648702,0.022949474251682533,20,20,254,True
+R4,7,log_return,all,conditional EOD / pseudo-PIT,high,0.047048368340495507,0.023688880534264545,20,20,254,True
+R4,7,log_return,all,conditional EOD / pseudo-PIT,low,0.045198146951152783,0.013221190191809387,20,20,254,True
+R4,7,log_return,all,conditional EOD / pseudo-PIT,volume,-0.0062884555497674469,0.011009126150561764,20,20,254,True
+R4,7,log_return,all,conditional EOD / pseudo-PIT,cbr_usdrub_effective,0.034694658910487688,0.010530305925583837,20,20,254,True
+R4,7,log_return,all,conditional EOD / pseudo-PIT,swaprate_prev_session,0.020549788322702246,0.015759782505054533,20,20,254,True
+R4,7,log_return,all,conditional EOD / pseudo-PIT,key_rate_pct_effective,0.014829898274637498,0.015523968135499279,20,20,254,True
+R4,7,log_return,all,conditional EOD / pseudo-PIT,spread_close_minus_cbr,0.056968169910229349,0.01780902680806561,20,20,254,True
+R4,7,log_return,all,conditional EOD / pseudo-PIT,ruonia_pct_last_reported,0.024789456327635007,0.015661849781739425,20,20,254,True
+R4,7,log_return,all,conditional EOD / pseudo-PIT,brent_eia_spot_usd_bbl_lag10d,0.12215918300177857,0.074493387758636495,20,20,254,True
+R4,7,log_return,all,conditional EOD / pseudo-PIT,usdcnh_investing_price_prev_date,-0.01923210865761198,0.0094428609963277087,20,20,254,True
+R5,1,log_return,all,PIT_UNVERIFIED,open,0.00088881247301383914,0.00028750477840123339,20,20,254,True
+R5,1,log_return,all,PIT_UNVERIFIED,close,0.00060407915295826453,0.00023848751641812594,20,20,254,True
+R5,1,log_return,all,PIT_UNVERIFIED,high,0.0005622820554044061,0.00023373318986583743,20,20,254,True
+R5,1,log_return,all,PIT_UNVERIFIED,low,0.00041208600011651274,0.00011734869125554297,20,20,254,True
+R5,1,log_return,all,PIT_UNVERIFIED,volume,0.0074469444408975238,0.0041012031619172395,20,20,254,True
+R5,1,log_return,all,PIT_UNVERIFIED,cbr_usdrub_effective,0.00053129015816161251,0.00013568890271470241,20,20,254,True
+R5,1,log_return,all,PIT_UNVERIFIED,swaprate_prev_session,0.00059426590856376802,0.00053362602175176623,20,20,254,True
+R5,1,log_return,all,PIT_UNVERIFIED,key_rate_pct_effective,0.00080894301711146308,0.00062479296607652942,20,20,254,True
+R5,1,log_return,all,PIT_UNVERIFIED,spread_close_minus_cbr,0.0003269636853496627,0.00026478093668880074,20,20,254,True
+R5,1,log_return,all,PIT_UNVERIFIED,swaprate_current,-0.00054402794129463912,0.0013036307165032689,20,20,254,True
+R5,2,log_return,all,PIT_UNVERIFIED,open,0.0032184526966184011,0.0010132289927099992,20,20,254,True
+R5,2,log_return,all,PIT_UNVERIFIED,close,0.0024768443732137045,0.00096324271973304129,20,20,254,True
+R5,2,log_return,all,PIT_UNVERIFIED,high,0.0023252904864932812,0.00096728914166421343,20,20,254,True
+R5,2,log_return,all,PIT_UNVERIFIED,low,0.0021213625695552076,0.00054276650872700277,20,20,254,True
+R5,2,log_return,all,PIT_UNVERIFIED,volume,0.013411116327807716,0.010651494453991633,20,20,254,True
+R5,2,log_return,all,PIT_UNVERIFIED,cbr_usdrub_effective,0.0016065588893128036,0.00041764117906053231,20,20,254,True
+R5,2,log_return,all,PIT_UNVERIFIED,swaprate_prev_session,0.00060690260123206217,0.00038540991505371165,20,20,254,True
+R5,2,log_return,all,PIT_UNVERIFIED,key_rate_pct_effective,0.0029133811548069043,0.0022074754698821523,20,20,254,True
+R5,2,log_return,all,PIT_UNVERIFIED,spread_close_minus_cbr,0.0062654471010530456,0.001733048305159212,20,20,254,True
+R5,2,log_return,all,PIT_UNVERIFIED,swaprate_current,-0.0016147947230055414,0.001975405009720784,20,20,254,True
+R5,3,log_return,all,PIT_UNVERIFIED,open,0.0064033421250379472,0.0021546092108019172,20,20,254,True
+R5,3,log_return,all,PIT_UNVERIFIED,close,0.0060302949922798497,0.0025469843090960525,20,20,254,True
+R5,3,log_return,all,PIT_UNVERIFIED,high,0.0054027142468850101,0.0023788182250741052,20,20,254,True
+R5,3,log_return,all,PIT_UNVERIFIED,low,0.0057522814044596252,0.001527727841031326,20,20,254,True
+R5,3,log_return,all,PIT_UNVERIFIED,volume,0.018985623534837036,0.013417941403613406,20,20,254,True
+R5,3,log_return,all,PIT_UNVERIFIED,cbr_usdrub_effective,0.0030705009928589265,0.00081682103478759741,20,20,254,True
+R5,3,log_return,all,PIT_UNVERIFIED,swaprate_prev_session,0.0046698358611427567,0.0028363964629947456,20,20,254,True
+R5,3,log_return,all,PIT_UNVERIFIED,key_rate_pct_effective,0.0055586841512852651,0.0045840500066676891,20,20,254,True
+R5,3,log_return,all,PIT_UNVERIFIED,spread_close_minus_cbr,0.02424391358317457,0.0060312292408764324,20,20,254,True
+R5,3,log_return,all,PIT_UNVERIFIED,swaprate_current,-0.0045004670380274451,0.0031937360188310721,20,20,254,True
+R5,4,log_return,all,PIT_UNVERIFIED,open,0.0098771666869754467,0.0035489728233940201,20,20,254,True
+R5,4,log_return,all,PIT_UNVERIFIED,close,0.010138934372170061,0.0046042607529044261,20,20,254,True
+R5,4,log_return,all,PIT_UNVERIFIED,high,0.0096812138607331507,0.004390925802622331,20,20,254,True
+R5,4,log_return,all,PIT_UNVERIFIED,low,0.0083928249438381952,0.002298758171376035,20,20,254,True
+R5,4,log_return,all,PIT_UNVERIFIED,volume,0.012410674738710492,0.0099640456878748122,20,20,254,True
+R5,4,log_return,all,PIT_UNVERIFIED,cbr_usdrub_effective,0.0048711267937123328,0.0013267607250743334,20,20,254,True
+R5,4,log_return,all,PIT_UNVERIFIED,swaprate_prev_session,0.0060756334779498381,0.0054957333251461965,20,20,254,True
+R5,4,log_return,all,PIT_UNVERIFIED,key_rate_pct_effective,0.0093585843798627,0.007957192196787569,20,20,254,True
+R5,4,log_return,all,PIT_UNVERIFIED,spread_close_minus_cbr,0.039913155628586924,0.010825505762646254,20,20,254,True
+R5,4,log_return,all,PIT_UNVERIFIED,swaprate_current,-0.00083562811726052284,0.00044900968058024656,20,20,254,True
+R5,5,log_return,all,PIT_UNVERIFIED,open,0.015334992167593153,0.0057221274085145109,20,20,254,True
+R5,5,log_return,all,PIT_UNVERIFIED,close,0.015502973418961319,0.0072603023142563811,20,20,254,True
+R5,5,log_return,all,PIT_UNVERIFIED,high,0.01630247747008302,0.0075384010308162178,20,20,254,True
+R5,5,log_return,all,PIT_UNVERIFIED,low,0.013545838023948421,0.0038038494269236937,20,20,254,True
+R5,5,log_return,all,PIT_UNVERIFIED,volume,0.0097421677165602238,0.011863946600620689,20,20,254,True
+R5,5,log_return,all,PIT_UNVERIFIED,cbr_usdrub_effective,0.007528536475837377,0.0020825449481353376,20,20,254,True
+R5,5,log_return,all,PIT_UNVERIFIED,swaprate_prev_session,0.010315105494713817,0.009352034249663221,20,20,254,True
+R5,5,log_return,all,PIT_UNVERIFIED,key_rate_pct_effective,0.013688394744397847,0.011894078379076994,20,20,254,True
+R5,5,log_return,all,PIT_UNVERIFIED,spread_close_minus_cbr,0.054363398140108245,0.015700941090034257,20,20,254,True
+R5,5,log_return,all,PIT_UNVERIFIED,swaprate_current,0.0020751505213229882,0.0011491397959246111,20,20,254,True
+R5,6,log_return,all,PIT_UNVERIFIED,open,0.020655925517193908,0.0077527227598398439,20,20,254,True
+R5,6,log_return,all,PIT_UNVERIFIED,close,0.021553698120193098,0.01025288632171944,20,20,254,True
+R5,6,log_return,all,PIT_UNVERIFIED,high,0.023614139609477714,0.010946714878365748,20,20,254,True
+R5,6,log_return,all,PIT_UNVERIFIED,low,0.016730918119357875,0.0046582253504872904,20,20,254,True
+R5,6,log_return,all,PIT_UNVERIFIED,volume,0.0017218873848789506,0.0029171799005248008,20,20,254,True
+R5,6,log_return,all,PIT_UNVERIFIED,cbr_usdrub_effective,0.010221788897308359,0.0028504826627975418,20,20,254,True
+R5,6,log_return,all,PIT_UNVERIFIED,swaprate_prev_session,0.016452421428240282,0.014198354654639454,20,20,254,True
+R5,6,log_return,all,PIT_UNVERIFIED,key_rate_pct_effective,0.019879740888317919,0.017026531792434959,20,20,254,True
+R5,6,log_return,all,PIT_UNVERIFIED,spread_close_minus_cbr,0.076104701834074515,0.022427450854949935,20,20,254,True
+R5,6,log_return,all,PIT_UNVERIFIED,swaprate_current,0.0062298198231087289,0.0038787931554558558,20,20,254,True
+R5,7,log_return,all,PIT_UNVERIFIED,open,0.029562109921723857,0.011176999903207495,20,20,254,True
+R5,7,log_return,all,PIT_UNVERIFIED,close,0.028056671538871081,0.013390454250304591,20,20,254,True
+R5,7,log_return,all,PIT_UNVERIFIED,high,0.033373062045081392,0.01558718170241918,20,20,254,True
+R5,7,log_return,all,PIT_UNVERIFIED,low,0.022943898992564726,0.0063270944072179348,20,20,254,True
+R5,7,log_return,all,PIT_UNVERIFIED,volume,0.0057728378430874196,0.0071920923864960736,20,20,254,True
+R5,7,log_return,all,PIT_UNVERIFIED,cbr_usdrub_effective,0.013087173335807379,0.003690931938717923,20,20,254,True
+R5,7,log_return,all,PIT_UNVERIFIED,swaprate_prev_session,0.017661560436319678,0.014428680013668319,20,20,254,True
+R5,7,log_return,all,PIT_UNVERIFIED,key_rate_pct_effective,0.027028681795736455,0.024016000520200243,20,20,254,True
+R5,7,log_return,all,PIT_UNVERIFIED,spread_close_minus_cbr,0.091297393108100394,0.026733003672776121,20,20,254,True
+R5,7,log_return,all,PIT_UNVERIFIED,swaprate_current,0.01636918027347143,0.0094880753301984141,20,20,254,True

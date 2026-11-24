@@ -1,0 +1,23 @@
+{
+  "prediction_count": 35560,
+  "common_pairs_per_model_horizon": 254,
+  "matured_labels_verified": true,
+  "frozen_train_cap_verified": true,
+  "prequential_2025_labels_present": true,
+  "validation_targets_only": true,
+  "protected_v1_data_baselines_unchanged": true,
+  "source_hashes_verified": true,
+  "real_data_reproduction": {
+    "model": "core_v2",
+    "horizon": 7,
+    "regime": "prequential",
+    "transform": "delta",
+    "predictions_exact": true,
+    "coefficients_exact": true,
+    "importance_exact": true
+  },
+  "hac_comparison_count": 532,
+  "primary_holm_family_size": 98,
+  "secondary_holm_family_size": 434,
+  "separate_test_results": "See reports/ridge_experiments_v2.md; this verifier checks artifacts, not the unittest suite"
+}

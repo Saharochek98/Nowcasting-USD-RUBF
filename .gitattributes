@@ -3,3 +3,39 @@
 /data/processed/features_daily_v1_metadata.csv text eol=lf
 /reports/features_daily_v1_coverage.md text eol=lf
 /results/funding_missingness_audit/* text eol=lf
+/results/ridge_experiments/** text eol=lf
+/results/ridge_experiments_v2/** text eol=lf
+/benchmarks/ridge*.py text eol=lf
+/configs/ridge_experiments*.json text eol=lf
+/scripts/*ridge*.py text eol=lf
+/tests/test_ridge*.py text eol=lf
+# Historical JSON evidence keeps its original bytes, including CRLF.
+/results/ridge_experiments/**/*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/results/ridge_experiments_v2/**/*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/configs/ridge_experiments_v2.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/results/rw_drift_experiment/** text eol=lf
+/benchmarks/rw_drift.py text eol=lf
+/scripts/*rw_drift*.py text eol=lf
+/configs/rw_drift_experiment.json text eol=lf
+/tests/test_rw_drift.py text eol=lf
+# This unchanged B3 config is hash-locked by the historical Ridge manifests.
+/configs/feature_scenarios_v1.json text eol=lf
+/results/catboost_core_v2/** text eol=lf
+/results/catboost_core_v2/**/*.cbm -text
+/benchmarks/catboost_direct.py text eol=lf
+/scripts/*catboost*.py text eol=lf
+/configs/catboost_experiment.json text eol=lf
+/tests/test_catboost_direct.py text eol=lf
+/requirements-catboost.txt text eol=lf
+/results/xgboost_core_v2/** text eol=lf
+/results/xgboost_core_v2/**/*.ubj -text
+/benchmarks/xgboost_direct.py text eol=lf
+/scripts/*xgboost*.py text eol=lf
+/configs/xgboost_core_v2.json text eol=lf
+/tests/test_xgboost_direct.py text eol=lf
+/requirements-xgboost.txt text eol=lf
+/reports/xgboost_core_v2.md text eol=lf
+# Preserve hash-locked historical evidence when exporting/checkout on Windows.
+/reports/catboost_core_v2.md text eol=lf
+/reports/catboost_go_no_go.md text eol=lf
+/configs/catboost_core_v2_proposal.json text eol=lf

@@ -297,6 +297,22 @@ def build_artifacts():
     return artifacts
 
 
+def artifact_matches(name, expected, actual):
+    """Keep frozen audit evidence, allowing only a live protocol's hash to age."""
+    if name != 'audit_summary.json':
+        return expected == actual
+    try:
+        left, right = json.loads(expected), json.loads(actual)
+        for summary in (left, right):
+            hashes = summary['input_sha256_lf_normalized']
+            digest = hashes.pop('docs/backtest_protocol.md')
+            if len(digest) != 64 or any(c not in '0123456789abcdef' for c in digest):
+                return False
+    except (ValueError, KeyError, TypeError, UnicodeError):
+        return False
+    return left == right
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output-dir', type=Path, default=OUTPUT)
@@ -310,7 +326,7 @@ def main(argv=None):
     for name, content in artifacts.items():
         path = args.output_dir / name
         if args.compare:
-            if not path.exists() or path.read_bytes() != content:
+            if not path.exists() or not artifact_matches(name, content, path.read_bytes()):
                 raise ValueError(f'Artifact differs or missing: {path}')
         else:
             path.parent.mkdir(parents=True, exist_ok=True)

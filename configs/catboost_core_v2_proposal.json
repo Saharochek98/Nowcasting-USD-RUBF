@@ -1,0 +1,27 @@
+{
+  "status": "GO_PROPOSAL_ONLY_NOT_EXECUTED",
+  "execute_now": false,
+  "feature_config": "configs/ridge_experiments_v2.json",
+  "scenario": "core_v2",
+  "funding_status": "ASSUMED_AVAILABLE",
+  "target": "C[t+h]-C[t]",
+  "horizons": [1, 2, 3, 4, 5, 6, 7],
+  "training_policy": "every_origin_expanding_prequential; target_date <= origin_date",
+  "imputer": "eligible training median; observed zeros retained",
+  "parameter_grid": {"depth": [2, 3], "l2_leaf_reg": [10, 30]},
+  "fixed_parameters": {
+    "iterations": 100, "learning_rate": 0.03, "loss_function": "RMSE",
+    "random_seed": 240112, "thread_count": 1, "allow_writing_files": false,
+    "bootstrap_type": "No", "verbose": false
+  },
+  "early_stopping": false,
+  "inner_origin_windows": [["2023-01-01", "2023-06-30"], ["2023-07-01", "2023-12-31"], ["2024-01-01", "2024-06-30"]],
+  "inner_policy": "prequential within folds; all tuning targets precede first outer origin",
+  "selection": "pooled inner RMSE in RUB/USD; deterministic tie-break by grid order",
+  "minimum_train_pairs": 100,
+  "validation_targets": ["2025-01-01", "2025-12-31"],
+  "comparison_keys": "results/rw_drift_experiment/common_pairs.csv",
+  "hac_family": {"versus": ["RW", "RW_DRIFT", "Ridge_Core_v2"], "size": 21, "adjustment": "Holm jointly"},
+  "final_test_access": false,
+  "interpretation": "exploratory after Ridge v1/v2 and drift; independent test required"
+}

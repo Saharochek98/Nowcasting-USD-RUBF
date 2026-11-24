@@ -1,0 +1,29 @@
+{
+  "version": "xgboost_core_v2_direct_v1",
+  "feature_config": "configs/ridge_experiments_v2.json",
+  "scenario": "core_v2",
+  "funding_status": "ASSUMED_AVAILABLE",
+  "target": "C[t+h]-C[t]",
+  "horizons": [1, 2, 3, 4, 5, 6, 7],
+  "parameter_grid": {"max_depth": [2, 3], "reg_lambda": [10, 30]},
+  "fixed_parameters": {
+    "n_estimators": 100, "learning_rate": 0.03, "min_child_weight": 5,
+    "subsample": 1.0, "colsample_bytree": 1.0, "objective": "reg:squarederror",
+    "tree_method": "hist", "random_state": 240112, "n_jobs": 1
+  },
+  "inner_origin_windows": [["2023-01-01", "2023-06-30"], ["2023-07-01", "2023-12-31"], ["2024-01-01", "2024-06-30"]],
+  "minimum_train_pairs": 100,
+  "inner_policy": "same prequential folds as CatBoost; all tuning targets before first outer origin",
+  "selection": "pooled inner price RMSE; deterministic grid-order tie-break",
+  "imputer": "eligible training median; observed funding zeros retained",
+  "early_stopping": false,
+  "validation_targets": ["2025-01-01", "2025-12-31"],
+  "comparison_path": "results/catboost_core_v2/scored_common_predictions.csv",
+  "catboost_importance": "results/catboost_core_v2/feature_importance.csv",
+  "hac_family": {"versus": ["RW", "Ridge_Core_v2", "CatBoost_Core_v2"], "size": 21, "adjustment": "Holm jointly"},
+  "hac_base_lag": 20,
+  "importance": "raw mean split gain and per-window normalized gain; zero for unused features",
+  "output_root": "results/xgboost_core_v2",
+  "research_status": "exploratory validation after Ridge, drift and CatBoost iterations",
+  "final_test_access": false
+}

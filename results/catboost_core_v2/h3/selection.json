@@ -1,0 +1,9 @@
+{
+  "horizon": 3,
+  "parameters": {
+    "depth": 2,
+    "l2_leaf_reg": 30
+  },
+  "tuning_targets_before_first_outer": true,
+  "validation_used_for_selection": false
+}
