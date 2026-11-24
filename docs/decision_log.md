@@ -1,6 +1,6 @@
 # Decision Log / Open Questions — USDRUBF
 
-**Версия:** 1.4 · 2026-11-24 · **Владелец:** A
+**Версия:** 1.4 · 2026-11-24 · **Владелец:** B, Research Lead
 
 ## Принятые решения
 
@@ -84,7 +84,7 @@
 | D22 | ЕТС с 23.03.2026 изменила принадлежность вечерней сессии к торговому дню; необычный `end≈19:30` **не** является доказанным timestamp publication/last trade | B1, `results/moex_minute_audit/comparison.csv` | ACCEPTED CAVEAT |
 | D23 | B2 описал все 30 полей и публикационные ограничения; A согласовал группы/сценарии, но **исторический record-level PIT не verified** | `feature_availability_catalog.csv`, `feature_lag_policy_proposal.md`, пользовательское подтверждение A | APPROVED CONDITIONAL POLICY |
 | D24 | Версия `features_daily_v1` утверждена для инженерного использования: основной `core` 9, sensitivity RUONIA/Brent 11, sensitivity плюс USD/CNH 12. `swaprate_current` и `value` исключены | `configs/feature_scenarios_v1.json`, `docs/features_daily_v1.md` | ACCEPTED CONDITIONAL EOD |
-| D25 | Не импутировать B3 funding, не удалять строки; 154 пропуска, fill/scale/PCA только train-only и по protocol A/C | `reports/features_daily_v1_coverage.md` | ACCEPTED ENGINEERING POLICY |
+| D25 | Не импутировать B3 funding, не удалять строки; 154 пропуска, fill/scale/PCA только train-only и по протоколу B/C | `reports/features_daily_v1_coverage.md` | ACCEPTED ENGINEERING POLICY |
 | D26 | B3 локально проверен: 3 MATCH `--compare`; 49 unittest / 1 skipped (full source rebuild v2). Результат локального запуска сообщён пользователем; CI-clean rerun команды не заявлен | пользовательский терминальный журнал от 23.11.2026 | REPORTED_LOCAL_VERIFICATION |
 | D27 | Следующие B задачи: **B4 funding missingness**, **B5 независимый календарный audit и handoff**; C/D могут использовать frozen B3 при принятом conditional EOD | `two_day_plan.md` | NEXT_ACTIONS |
 
@@ -113,3 +113,7 @@
 **Остаточные ограничения:** conditional EOD/pseudo-PIT; непроверенное фактическое время доступности свечей; provisional calendar; 154 начальных funding missing, 198 наблюдаемых нулей; final test 2026 закрыт.
 
 **Исторические задачи в старых разделах про DFM/PCA — архивная постановка, не текущий план.** Текущий список работ: [two_day_plan.md](two_day_plan.md).
+
+## Исправление распределения ролей — 2026-11-24
+
+**A = Data Engineer; B = Research Lead & Backtesting (руководитель исследования); C = Models; D = Uncertainty.** Все текущие назначения B0/B1 benchmarks, оценки, review, common-pair и go/no-go принадлежат **B**, а загрузка/качество/PIT-факторы — **A**. Старые подписи владельцев A/B в документах были ошибочной перестановкой ролей; скорректированы без изменения экспериментальных данных. Исторические ID B1–B5 и имена веток data work не переименовываем. При упоминании «группы A/B/C» в B2 речь о категориях признаков, не участниках команды.
