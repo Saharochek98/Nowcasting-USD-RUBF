@@ -117,3 +117,19 @@
 ## Исправление распределения ролей — 2026-11-24
 
 **A = Data Engineer; B = Research Lead & Backtesting (руководитель исследования); C = Models; D = Uncertainty.** Все текущие назначения B0/B1 benchmarks, оценки, review, common-pair и go/no-go принадлежат **B**, а загрузка/качество/PIT-факторы — **A**. Старые подписи владельцев A/B в документах были ошибочной перестановкой ролей; скорректированы без изменения экспериментальных данных. Исторические ID B1–B5 и имена веток data work не переименовываем. При упоминании «группы A/B/C» в B2 речь о категориях признаков, не участниках команды.
+
+
+## Решения после merge линейных и boosting-экспериментов — 2026-11-24
+
+Эта запись **дополняет, но не переписывает** исторические решения D21–D25, которые были приняты до фактической реализации моделей.
+
+| ID | Решение / наблюдение | Основание | Статус |
+|---|---|---|---|
+| D28 | Ridge v1/v2, RW with Drift, CatBoost Core v2 и XGBoost Core v2 реализованы и оценены на validation 2025, h=1…7; frozen B3 v1 остаётся без изменений | `reports/ridge_experiments*.md`, `reports/rw_drift_experiment.md`, `reports/catboost_core_v2.md`, `reports/xgboost_core_v2.md` | VALIDATION_EVALUATED_EXPLORATORY |
+| D29 | Для новых моделей принят **Core v2 = 10** полей с `swaprate_current[t]`; доступность до origin — предположение команды, **ASSUMED_AVAILABLE**, не фактический historical verified timestamp | `reports/ridge_experiments_v2.md` и B4 PIT caveats | ACCEPTED_CONDITIONAL_ASSUMPTION |
+| D30 | CatBoost имеет меньший RMSE против RW на h=4/6/7, но улучшение после HAC/Holm не подтверждено; XGBoost не лучше CatBoost ни на одном h. Не объявлять победу над RW | validation reports, общие 254 пары/h | OBSERVED_EXPLORATORY |
+| D31 | Прогноз `C[t+h]−C[t]` уже используется во всех факторных моделях, в Ridge сравнен с log-return; **прямой level vs delta ещё не проверен** | Ridge/CatBoost/XGBoost reports | ACCEPTED_SCOPE_CLARIFICATION |
+| D32 | Новые кандидаты — matched level-vs-delta и relative-features, без автоматического дальнейшего перебора бустингов; OI только после PIT-проверки; DFM/Kalman отдельный ресурсный выбор | [план](two_day_plan.md), [гипотезы](hypothesis_register.md) | PROPOSED_NOT_TESTED |
+| D33 | Final test 2026 по-прежнему закрыт для любых исследовательских решений; repeated validation 2025 **не** независимое подтверждение | [протокол](backtest_protocol.md) | ACCEPTED |
+
+**Роли:** A — Data Engineer; B — Research Lead & Backtesting; C — Models; D — Uncertainty. Существующие исторические решения и manifest не перезаписывать.
