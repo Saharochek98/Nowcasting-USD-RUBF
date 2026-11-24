@@ -20,3 +20,10 @@
 /tests/test_rw_drift.py text eol=lf
 # This unchanged B3 config is hash-locked by the historical Ridge manifests.
 /configs/feature_scenarios_v1.json text eol=lf
+/results/catboost_core_v2/** text eol=lf
+/results/catboost_core_v2/**/*.cbm -text
+/benchmarks/catboost_direct.py text eol=lf
+/scripts/*catboost*.py text eol=lf
+/configs/catboost_experiment.json text eol=lf
+/tests/test_catboost_direct.py text eol=lf
+/requirements-catboost.txt text eol=lf

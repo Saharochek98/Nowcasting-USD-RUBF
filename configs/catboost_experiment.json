@@ -1,0 +1,11 @@
+{
+  "version": "catboost_core_v2_direct_v1",
+  "proposal": "configs/catboost_core_v2_proposal.json",
+  "feature_config": "configs/ridge_experiments_v2.json",
+  "comparison_path": "results/rw_drift_experiment/common_pairs.csv",
+  "hac_base_lag": 20,
+  "output_root": "results/catboost_core_v2",
+  "feature_importance": "PredictionValuesChange, training leaf weights only; per-origin diagnostic",
+  "research_status": "exploratory validation after Ridge v1/v2 and RW drift",
+  "final_test_access": false
+}
