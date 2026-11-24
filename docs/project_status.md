@@ -59,3 +59,9 @@ Train 683, validation 254, final test 223 дневные свечи. На valida
 - **B4 объединён в `main`:** [аудит funding](../reports/funding_missingness_audit.md), 153/154 начальных пропуска current/previous и по 198 наблюдаемых нулей, граница покрытия 05/06.12.2022. Исторические publication timestamps не проверены; 61 unittest (60 passed, 1 skipped) согласно локальному отчёту.
 - **B5 — передача данных моделистам:** [краткая инструкция A/C/D](data_handoff_to_modeling.md), без повторного аудита и изменения данных.
 - **Инженерное направление B закрыто для conditional EOD / pseudo-PIT MVP;** остаются отдельно открытыми независимая сертификация календаря и строгий historical PIT. Следующие модельные эксперименты принадлежат A/C/D; final test не используется для выбора.
+
+## Решение Research Lead 24.11.2026 — новая обязательная ветка моделей
+
+Завершённые B1–B5, B0 RW и B1 AR(1), данные, результаты и их ограничения **не изменились**. План на текущий спринт сокращён до **M1 Ridge price-only, M2 Ridge core (9 признаков), M3 CatBoost core (те же 9 признаков)**; все три пока `PLANNED/NOT_TESTED`. Семь direct models прогнозируют `C_{t+h}-C_t` на h=1..7. Отдельный интервальный benchmark RW остаётся за D.
+
+Две абляции: **M2 vs M1** — польза внешних факторов на общих датах; **M3 vs M2** — нелинейность при одинаковых 9 признаках. DFM/Kalman/PCA, XGBoost и ML-коррекция DFM отложены. Внешние индикаторы B переданы, но запись `available_at` не стала исторически verified; не повышать PIT-статус и не открывать final test. [Рабочий план](two_day_plan.md) · [Benchmark specification](benchmark_spec.md) · [Гипотезы](hypothesis_register.md).
