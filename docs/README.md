@@ -1,12 +1,12 @@
 # USDRUBF — Research Documentation
 
-**Актуально:** 2026-11-23, после B1–B5 merge.  
+**Актуально:** 2026-11-24, решение о моделях M1/M2/M3; B1–B5 merged.  
 **Режим исследования:** `conditional EOD / pseudo-PIT`; финальный test 2026 закрыт для выбора моделей.
 
 ## С чего начать
 
 1. [Project Status](project_status.md) — подтверждённые артефакты, ограничения, следующие задачи A/B/C/D.
-2. [План ближайших двух дней](two_day_plan.md) — **актуальный** план на 24.11: A — протокол/benchmarks, C — Ridge, D — интервалы; B — поддержка интеграции при необходимости.
+2. [План 24–25 ноября](two_day_plan.md) — **актуальный** план: M1 Ridge price-only, M2 Ridge core, M3 CatBoost core; A — бэктест/ревью, C — реализация, D — интервалы, B — data support.
 3. [Backtest Protocol](backtest_protocol.md) и [Research Charter](research_charter.md) — научные правила, target и оценки.
 4. [Features v1 — инструкция C](features_daily_v1.md) — загрузка, сценарии и ограниченная PIT-достоверность.
 
@@ -42,3 +42,7 @@ RW и AR(1) реализованы, validation 2025 оценена; AR(1) уст
 **Важно:** исходная официальная постановка `BG_2026_stud.pdf` описывает прогноз курса ЦБ, тогда как фактическая цель команды — цена USDRUBF. Расхождение фиксировать в исследовательском отчёте и согласовать с наставниками. Giannone et al. (2008) — методология dynamic factors/nowcasting, не эмпирическое доказательство качества модели USDRUBF.
 
 Исторические материалы и старые manifests не перезаписывать. Каждый новый результат маркировать `IMPLEMENTED` / `VALIDATION_EVALUATED` / `TEST_CONFIRMED` только при наличии файла, периода и воспроизводимой процедуры.
+
+## Модельная стратегия с 24.11.2026
+
+**В работе:** M1 Ridge price-only (OHLCV), M2 Ridge `core` (9 полей), M3 CatBoost `core` (ровно те же 9 полей). Все модели — direct forecast изменения `C_{t+h}-C_t` для h=1…7 торговых дней. Это **план**, не выполненные ML-эксперименты. PCA/DFM/Kalman и XGBoost в текущий спринт **не входят**; литература Giannone et al. остаётся методологическим источником по nowcasting и реальным временным ограничениям. См. [спецификацию](benchmark_spec.md), [план](two_day_plan.md) и [решение](decision_log.md).
