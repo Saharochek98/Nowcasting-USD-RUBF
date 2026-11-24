@@ -35,19 +35,19 @@
 
 | Участник | Приоритет | Задачи | Definition of Done |
 |---|---|---|---|
-| **A — Research Lead** | P0 | Проверить clean rerun RW/AR и тесты; согласовать 7 direct targets `Δ_h CLOSE`, созревание h-шаговых меток, общий prediction schema, неизменные validation keys; утвердить заранее ограниченные гиперпараметры и missing policy | Общая конфигурация экспериментов, тесты no-leakage, валидная RW/AR контрольная таблица с git SHA |
+| **B — Research Lead** | P0 | Проверить clean rerun RW/AR и тесты; согласовать 7 direct targets `Δ_h CLOSE`, созревание h-шаговых меток, общий prediction schema, неизменные validation keys; утвердить заранее ограниченные гиперпараметры и missing policy | Общая конфигурация экспериментов, тесты no-leakage, валидная RW/AR контрольная таблица с git SHA |
 | **C — Models** | P0 | Реализовать **M1 Ridge price-only** и **M2 Ridge core** с train-only scaling/imputation, expanding/direct h=1..7, OOS validation прогнозами; подготовить минимальный M3 CatBoost core | PR с кодом и тестами; `predictions_m1/m2`; общий список признаков; метрики vs RW/AR на одинаковых парах |
 | **D — Uncertainty** | P0 | RW интервалы 90%/95% из созревших исторических h-шаговых ошибок; отдельно interval coverage, width, interval score; no-leakage тесты | Интервальный baseline и validation таблицы по 7 h и двум уровням |
-| **B — Data** | По необходимости | Ответить на вопросы по `load_scenario('core')`, 154 missing `swaprate_prev_session` и 198 фактических нулях; PIT-lag policy; новых сборов без блока не начинать | Подтверждение data contract, correction PR только если найден баг |
+| **A — Data Engineer** | По необходимости | Ответить на вопросы по `load_scenario('core')`, 154 missing `swaprate_prev_session` и 198 фактических нулях; PIT-lag policy; новых сборов без блока не начинать | Подтверждение data contract, correction PR только если найден баг |
 
 ## 25 ноября — нелинейность и абляции
 
 | Участник | Приоритет | Задачи | Definition of Done |
 |---|---|---|---|
-| **A** | P0 | Сверить clean validation результаты для B0/B1/M1/M2/M3, common-sample сравнения M1↔M2 и M2↔M3, даты, n, метрики и leakage; обновить реестр гипотез, журнал экспериментов | Таблица сравнения по h и обоснованный вывод без final test |
+| **B** | P0 | Сверить clean validation результаты для B0/B1/M1/M2/M3, common-sample сравнения M1↔M2 и M2↔M3, даты, n, метрики и leakage; обновить реестр гипотез, журнал экспериментов | Таблица сравнения по h и обоснованный вывод без final test |
 | **C** | P0 | **M3 CatBoost core** на ровно тех же признаках, origin/target, правилах missing и периоде, что M2; маленькая заранее зафиксированная конфигурация; seed и deterministic run где возможно | `predictions_m3`, config, воспроизводимый run, абляции M1/M2/M3 |
 | **D** | P1 | Проверить интервалы RW по h, при времени — калибровка на уже созревших OOS-ошибках, исследовать связь ошибки с прошлой волатильностью | Отдельный interval report; не подбирать по final test |
-| **B** | Поддержка | Устранить только найденные проблемы lag policy/source; сохранить frozen feature panel | Не менять silently старый data snapshot |
+| **A** | Поддержка | Устранить только найденные проблемы lag policy/source; сохранить frozen feature panel | Не менять silently старый data snapshot |
 
 ## Методологические требования / стоп-сигналы
 
@@ -61,6 +61,6 @@
 
 ## Передача и review
 
-C отдаёт A `model_id,origin_date,target_date,horizon,prediction,train_end_date,feature_scenario,model_version,pit_status`; фактические значения `actual` добавляются только при scoring. D использует те же календарные ключи. A документирует `n` и правила common-sample, сохраняет старые RW/AR artifacts.
+C отдаёт B `model_id,origin_date,target_date,horizon,prediction,train_end_date,feature_scenario,model_version,pit_status`; фактические значения `actual` добавляются только при scoring. D использует те же календарные ключи. B документирует `n` и правила common-sample, сохраняет старые RW/AR artifacts.
 
 Данные: [Data handoff](data_handoff_to_modeling.md). Статус: [Project status](project_status.md). Метрики и правила: [Backtest protocol](backtest_protocol.md).
