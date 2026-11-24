@@ -1,6 +1,6 @@
 # Decision Log / Open Questions — USDRUBF
 
-**Версия:** 1.3 · 2026-11-20 · **Владелец:** A
+**Версия:** 1.4 · 2026-11-24 · **Владелец:** A
 
 ## Принятые решения
 
@@ -99,3 +99,17 @@
 - **Q08:** расхождение target USDRUBF vs официального USD/RUB в PDF **требует согласования с наставниками**.
 
 Любое новое изменение разрешённых факторов, fixed forecast origin или lag policy оформлять отдельной версией и review A. Финальный test 2026 закрыт для model selection; до preregistration новых моделей никаких test-результатов.
+
+## Решение 2026-11-24 — сокращение линейки точечных моделей
+
+| ID | Решение | Обоснование | Статус |
+|---|---|---|---|
+| D21 | Приоритет текущего спринта: **M1 Ridge price-only, M2 Ridge core, M3 CatBoost core**, семь direct h-step моделей на `Δ_h CLOSE` | ограниченное время и 9 согласованных core-признаков, возможность двух чистых абляций | ACCEPTED; NOT_IMPLEMENTED на момент решения |
+| D22 | `core` = 9 полей согласно `configs/feature_scenarios_v1.json`, из них 5 OHLCV и 4 внешних; 11/12 только sensitivity вне спринта | data handoff B1–B5 | ACCEPTED |
+| D23 | PCA/DFM/Kalman, XGBoost, ML residual correction **не обязательны в текущем спринте** | сложность без достаточных вневыборочных оснований | DEFERRED |
+| D24 | Сравнение M1/M2/M3 только по общим validation forecast keys; обучающие target созревают с лагом h, без test | защита от leakage и selection bias | ACCEPTED |
+| D25 | Interval baseline RW и calibration остаются параллельным направлением D, B помогает только при запросе | ограниченный срок проекта | ACCEPTED |
+
+**Остаточные ограничения:** conditional EOD/pseudo-PIT; непроверенное фактическое время доступности свечей; provisional calendar; 154 начальных funding missing, 198 наблюдаемых нулей; final test 2026 закрыт.
+
+**Исторические задачи в старых разделах про DFM/PCA — архивная постановка, не текущий план.** Текущий список работ: [two_day_plan.md](two_day_plan.md).
