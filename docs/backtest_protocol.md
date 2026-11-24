@@ -1,6 +1,6 @@
 # Backtesting Protocol — USDRUBF
 
-**Версия:** 1.4 · **Дата:** 2026-11-24 · **Владелец:** A  
+**Версия:** 1.4 · **Дата:** 2026-11-24 · **Владелец:** B, Research Lead  
 **Статус:** RW/AR(1) validation реализован и сохранён; источник `MOEX ISS CANDLE_CLOSE` документирован, время доступности свечи всё ещё не подтверждено (conditional EOD / pseudo-PIT).
 
 ## 1. Определение target и origin
@@ -21,7 +21,7 @@
 
 ## 3. Дневные OHLC, пропуски и контроль качества
 
-Ожидаемые данные от B: `trade_date, OPEN, HIGH, LOW, CLOSE`, опционально `VOLUME`, а также `price_type, source, available_at (if known), data_version`. Отдельно — **независимый торговый календарь USDRUBF**, включающий торговые дни без записей котировок.
+Ожидаемые данные от A (Data Engineer): `trade_date, OPEN, HIGH, LOW, CLOSE`, опционально `VOLUME`, а также `price_type, source, available_at (if known), data_version`. Отдельно — **независимый торговый календарь USDRUBF**, включающий торговые дни без записей котировок.
 
 Обязательный первичный аудит:
 1. Даты, дубликаты, сортировка, глубина истории, торговый календарь, необычные пропуски и приостановки.
@@ -94,7 +94,7 @@ Interval API: `origin_date,target_date,horizon,alpha,lower,upper,calibration_end
 
 - `core` по умолчанию: 9 условных EOD значений (OHLCV, действующий USD/RUB ЦБ, предыдущий funding, действующая ключевая ставка, спред). `core_ruonia_brent` 11 и `core_ruonia_brent_usdcnh` 12 — чувствительные сценарии, **не** автоматически доступные факторы.
 - `close_t` может быть входом только после полной свечи; `close_{t+h}` и его `h`-шаговое изменение — метка после созревания. Нельзя предобучать preprocessing на полном `features_daily_v1`.
-- Пропуски `swaprate_prev_session`: 154. Они сохранены, `swaprate_current` исключён. Missingness policy для конкретной модели определяет A/C на train-only данных без изменения исходного store.
+- Пропуски `swaprate_prev_session`: 154. Они сохранены, `swaprate_current` исключён. Missingness policy для конкретной модели определяет B/C на train-only данных без изменения исходного store.
 - Согласование состава сценариев A **не доказывает** исторический `available_at` наблюдений. Статус неизменно `conditional EOD / pseudo-PIT`; timestamp публикации свечи и независимая сертификация торгового календаря остаются открытыми.
 - B4/B5 — аудит missingness и независимого календаря; они не изменяют автоматически зафиксированные lag-policy и target. Любые изменения потребуют новой версии данных и зарегистрированного решения A.
 
