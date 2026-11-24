@@ -170,7 +170,18 @@ class FundingAuditTests(unittest.TestCase):
                     audit.main(['--output-dir', folder, '--compare'])
         self.assertEqual(fingerprints, {p: hashlib.sha256(p.read_bytes()).hexdigest() for p in protected})
         for name, content in first.items():
-            self.assertEqual(content, (audit.OUTPUT / name).read_bytes(), name)
+            self.assertTrue(audit.artifact_matches(name, content, (audit.OUTPUT / name).read_bytes()), name)
+
+    def test_only_live_protocol_hash_may_change(self):
+        content = audit.build_artifacts()['audit_summary.json']
+        changed = json.loads(content)
+        changed['input_sha256_lf_normalized']['docs/backtest_protocol.md'] = '0' * 64
+        self.assertTrue(audit.artifact_matches('audit_summary.json', content, json.dumps(changed).encode()))
+        changed['b3_funding_linkage_passed'] = False
+        self.assertFalse(audit.artifact_matches('audit_summary.json', content, json.dumps(changed).encode()))
+        changed = json.loads(content)
+        changed['input_sha256_lf_normalized']['data/processed/features_daily_v1.csv'] = '0' * 64
+        self.assertFalse(audit.artifact_matches('audit_summary.json', content, json.dumps(changed).encode()))
 
 
 if __name__ == '__main__':

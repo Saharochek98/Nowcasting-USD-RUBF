@@ -1,0 +1,160 @@
+{
+  "version": "ridge_direct_v2",
+  "horizons": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "train_start": "2022-04-26",
+  "train_target_end": "2024-12-31",
+  "validation_start": "2025-01-01",
+  "validation_end": "2025-12-31",
+  "validation_labels_in_fit": "matured_only_prequential",
+  "alpha_grid": [
+    0.01,
+    0.1,
+    1,
+    10,
+    100,
+    1000,
+    10000,
+    100000
+  ],
+  "inner_origin_windows": [
+    [
+      "2023-01-01",
+      "2023-06-30"
+    ],
+    [
+      "2023-07-01",
+      "2023-12-31"
+    ],
+    [
+      "2024-01-01",
+      "2024-06-30"
+    ]
+  ],
+  "inner_policy": "fixed fit at first origin of each chronological fold; target labels must have matured; all inner targets precede first outer origin",
+  "minimum_train_pairs": 100,
+  "funding_missing_policy": "median of eligible training rows only; observed zeros retained; all-missing training column is an error",
+  "s2_start": "2022-12-06",
+  "s2_models": [
+    "R1",
+    "R2"
+  ],
+  "s2_policy": "same covered training-origin filter for both models; require observed previous funding; no data-store changes",
+  "permutation_repeats": 20,
+  "permutation_block_sessions": 20,
+  "random_seed": 240112,
+  "hac_base_lag": 20,
+  "baseline_path": "results/benchmark_calendar_v2/scored_predictions.parquet",
+  "feature_path": "data/processed/features_daily_v1.csv",
+  "metadata_path": "data/processed/features_daily_v1_metadata.csv",
+  "v2_path": "data/processed/model_dataset_usdrubf_all_features_v2.csv",
+  "calendar_path": "data/processed/usdrubf_trading_days.csv",
+  "scenario_config": "configs/feature_scenarios_v1.json",
+  "r5_source": "MOEX contractresults USDRUBF/RFUD SWAPRATE current TRADEDATE; frozen v2",
+  "r5_status": "PIT_UNVERIFIED",
+  "pit_status": "ASSUMED_AVAILABLE",
+  "scenarios": {
+    "price_only": [
+      "open",
+      "high",
+      "low",
+      "close",
+      "volume"
+    ],
+    "core_v2": [
+      "open",
+      "high",
+      "low",
+      "close",
+      "volume",
+      "cbr_usdrub_effective",
+      "swaprate_prev_session",
+      "swaprate_current",
+      "key_rate_pct_effective",
+      "spread_close_minus_cbr"
+    ],
+    "core_v2_no_spread": [
+      "open",
+      "high",
+      "low",
+      "close",
+      "volume",
+      "cbr_usdrub_effective",
+      "swaprate_prev_session",
+      "swaprate_current",
+      "key_rate_pct_effective"
+    ],
+    "B1_v2": [
+      "open",
+      "high",
+      "low",
+      "close",
+      "volume",
+      "cbr_usdrub_effective",
+      "swaprate_prev_session",
+      "swaprate_current",
+      "key_rate_pct_effective",
+      "spread_close_minus_cbr",
+      "ruonia_pct_last_reported",
+      "brent_eia_spot_usd_bbl_lag10d"
+    ],
+    "B2_v2": [
+      "open",
+      "high",
+      "low",
+      "close",
+      "volume",
+      "cbr_usdrub_effective",
+      "swaprate_prev_session",
+      "swaprate_current",
+      "key_rate_pct_effective",
+      "spread_close_minus_cbr",
+      "ruonia_pct_last_reported",
+      "brent_eia_spot_usd_bbl_lag10d",
+      "usdcnh_investing_price_prev_date"
+    ]
+  },
+  "regimes": [
+    "frozen",
+    "prequential"
+  ],
+  "transforms": [
+    "delta",
+    "log_return"
+  ],
+  "research_after_validation_v1": true,
+  "primary_hac_family": {
+    "transform": "delta",
+    "regime": "prequential",
+    "baseline_comparisons": "all five scenarios vs RW and AR",
+    "incremental_pairs": [
+      [
+        "core_v2",
+        "price_only"
+      ],
+      [
+        "core_v2_no_spread",
+        "core_v2"
+      ],
+      [
+        "B1_v2",
+        "core_v2"
+      ],
+      [
+        "B2_v2",
+        "B1_v2"
+      ]
+    ],
+    "size": 98,
+    "adjustment": "Holm across all 98 tests"
+  },
+  "secondary_hac_family": "all remaining reported comparisons; Holm jointly; exploratory",
+  "regularization_diagnostic": "fixed first outer-origin eligible training, all alpha values; never select on validation"
+}

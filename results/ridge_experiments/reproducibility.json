@@ -1,0 +1,43 @@
+{
+  "stage": "core",
+  "deterministic_csv_artifacts": {
+    "coefficients_windows.csv": {
+      "identical_bytes": true,
+      "sha256": "d7fbcc987f4e7add78a57fc5b18a645b770e9a74a0ac9f2cb09143ce2f31b7de"
+    },
+    "coefficient_stability.csv": {
+      "identical_bytes": true,
+      "sha256": "8695d56de353433b368edf3da9181a41b081152c9a6d0070d1206e1bc1b17f86"
+    },
+    "common_pairs.csv": {
+      "identical_bytes": true,
+      "sha256": "ae8b0e9d249b4c0088d68aef36774decade42f542b1cd4e2966e86ffa677a61d"
+    },
+    "hac_loss_comparison.csv": {
+      "identical_bytes": true,
+      "sha256": "7e6504b65fcd0813eaa86f39f883935251ebbba8201c6eabcd308e6b4a4f8576"
+    },
+    "inner_tuning.csv": {
+      "identical_bytes": true,
+      "sha256": "883593b7b43ce0c8f5864004266aa08d61e96a89a1a9c085e8a0bd24f2eee706"
+    },
+    "metrics.csv": {
+      "identical_bytes": true,
+      "sha256": "d5ad79ebb5e37dbe0069962b4ef61e0b5b4b9ec2530203fed2316a8f6d53db73"
+    },
+    "permutation_importance.csv": {
+      "identical_bytes": true,
+      "sha256": "140ddc2f070b873e1e9a733820615383575b84d0fc550b6983685c1bdf7a36a0"
+    },
+    "predictions_oos.csv": {
+      "identical_bytes": true,
+      "sha256": "6812aef98eed323836ef73e7a0cfe17e172cfa47dcdaab2b909a6eedd1e6f7c3"
+    },
+    "scored_validation.csv": {
+      "identical_bytes": true,
+      "sha256": "ac041b377a989f45e20f96df6945fdf246769d6e81f6169ea638f82fd0792cf7"
+    }
+  },
+  "passed": true,
+  "manifest_excluded": "Git working-tree status is run-specific; numeric outputs compared byte-for-byte"
+}

@@ -3,3 +3,13 @@
 /data/processed/features_daily_v1_metadata.csv text eol=lf
 /reports/features_daily_v1_coverage.md text eol=lf
 /results/funding_missingness_audit/* text eol=lf
+/results/ridge_experiments/** text eol=lf
+/results/ridge_experiments_v2/** text eol=lf
+/benchmarks/ridge*.py text eol=lf
+/configs/ridge_experiments*.json text eol=lf
+/scripts/*ridge*.py text eol=lf
+/tests/test_ridge*.py text eol=lf
+# Historical JSON evidence keeps its original bytes, including CRLF.
+/results/ridge_experiments/**/*.json -text
+/results/ridge_experiments_v2/**/*.json -text
+/configs/ridge_experiments_v2.json -text

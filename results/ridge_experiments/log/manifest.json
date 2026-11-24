@@ -1,0 +1,161 @@
+{
+  "stage": "log",
+  "git_sha": "887a176d7f269eb8f98ef648843d4e57e6e80c58",
+  "git_status": "?? benchmarks/ridge.py\n?? configs/ridge_experiments.json\n?? results/ridge_experiments/\n?? scripts/run_ridge_experiments.py\n?? tests/test_ridge.py\n",
+  "python": "3.11.9",
+  "packages": {
+    "numpy": "2.4.6",
+    "pandas": "2.3.3",
+    "pyarrow": "23.0.1"
+  },
+  "config": {
+    "version": "ridge_direct_v1",
+    "horizons": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "train_start": "2022-04-26",
+    "train_target_end": "2024-12-31",
+    "validation_start": "2025-01-01",
+    "validation_end": "2025-12-31",
+    "validation_labels_in_fit": false,
+    "alpha_grid": [
+      0.01,
+      0.1,
+      1.0,
+      10.0,
+      100.0,
+      1000.0
+    ],
+    "inner_origin_windows": [
+      [
+        "2023-01-01",
+        "2023-06-30"
+      ],
+      [
+        "2023-07-01",
+        "2023-12-31"
+      ],
+      [
+        "2024-01-01",
+        "2024-06-30"
+      ]
+    ],
+    "inner_policy": "fixed fit at first origin of each chronological fold; target labels must have matured; all inner targets precede first outer origin",
+    "minimum_train_pairs": 100,
+    "funding_missing_policy": "median of eligible training rows only; observed zeros retained; all-missing training column is an error",
+    "s2_start": "2022-12-06",
+    "s2_models": [
+      "R1",
+      "R2"
+    ],
+    "s2_policy": "same covered training-origin filter for both models; require observed previous funding; no data-store changes",
+    "permutation_repeats": 20,
+    "permutation_block_sessions": 20,
+    "random_seed": 240112,
+    "hac_base_lag": 20,
+    "baseline_path": "results/benchmark_calendar_v2/scored_predictions.parquet",
+    "feature_path": "data/processed/features_daily_v1.csv",
+    "metadata_path": "data/processed/features_daily_v1_metadata.csv",
+    "v2_path": "data/processed/model_dataset_usdrubf_all_features_v2.csv",
+    "calendar_path": "data/processed/usdrubf_trading_days.csv",
+    "scenario_config": "configs/feature_scenarios_v1.json",
+    "r5_source": "MOEX contractresults USDRUBF/RFUD SWAPRATE current TRADEDATE; frozen v2",
+    "r5_status": "PIT_UNVERIFIED",
+    "pit_status": "conditional EOD / pseudo-PIT"
+  },
+  "models": [
+    "R1",
+    "R2",
+    "R3",
+    "R4",
+    "R5"
+  ],
+  "columns": {
+    "R1": [
+      "open",
+      "high",
+      "low",
+      "close",
+      "volume"
+    ],
+    "R2": [
+      "open",
+      "close",
+      "high",
+      "low",
+      "volume",
+      "cbr_usdrub_effective",
+      "swaprate_prev_session",
+      "key_rate_pct_effective",
+      "spread_close_minus_cbr"
+    ],
+    "R3": [
+      "open",
+      "close",
+      "high",
+      "low",
+      "volume",
+      "cbr_usdrub_effective",
+      "swaprate_prev_session",
+      "key_rate_pct_effective",
+      "spread_close_minus_cbr",
+      "ruonia_pct_last_reported",
+      "brent_eia_spot_usd_bbl_lag10d"
+    ],
+    "R4": [
+      "open",
+      "close",
+      "high",
+      "low",
+      "volume",
+      "cbr_usdrub_effective",
+      "swaprate_prev_session",
+      "key_rate_pct_effective",
+      "spread_close_minus_cbr",
+      "ruonia_pct_last_reported",
+      "brent_eia_spot_usd_bbl_lag10d",
+      "usdcnh_investing_price_prev_date"
+    ],
+    "R5": [
+      "open",
+      "close",
+      "high",
+      "low",
+      "volume",
+      "cbr_usdrub_effective",
+      "swaprate_prev_session",
+      "key_rate_pct_effective",
+      "spread_close_minus_cbr",
+      "swaprate_current"
+    ]
+  },
+  "transform": "log_return",
+  "scope": "all",
+  "final_test_loaded_for_modeling": false,
+  "final_test_scored": false,
+  "validation_labels_used_in_fit": false,
+  "baseline_policy": "saved canonical prequential RW/AR; AR may use matured validation history unlike strict Ridge train cap",
+  "data_cutoff": "2025-12-30",
+  "input_sha256": {
+    "data\\processed\\features_daily_v1.csv": "95ff7cc95f3cbd08db994bbc6e098b12d06019cfc5e8b593fd647cd9606df792",
+    "data\\processed\\features_daily_v1_metadata.csv": "3e398df07ee63852b43752082364a03082b81997bab217c6740b5c2eae24c92f",
+    "data\\processed\\model_dataset_usdrubf_all_features_v2.csv": "da5b582e622ce5d3efb6fb619c0b9258dc15fc7d18b6d76860ce5fb021107103",
+    "data\\processed\\usdrubf_trading_days.csv": "deb6c6ffecfb267e31f7bb8d50a2d32684f67f061e70fbd285fede5032ea86f5",
+    "configs\\feature_scenarios_v1.json": "5511440a790aa2ac5dc7f8d4d7d5bf2aa477e3397c2af19c8747ba7effa92bc9",
+    "results\\benchmark_calendar_v2\\scored_predictions.parquet": "87ca1f0f3de069bc24ad17c2971715102aa9276b451586e478e625c4b915c988"
+  },
+  "prediction_count": 8890,
+  "comparison_passed": true,
+  "implementation_state": "uncommitted changes; source hashes identify implementation",
+  "implementation_sha256_lf": {
+    "benchmarks\\ridge.py": "69f30ce6a1860c4dc19eb5a9d0744f403d6883a5bedc2afa634e7bef9aad51fe",
+    "scripts\\run_ridge_experiments.py": "9820225dbe1e6f5b99e2f27ca56b32c9319bb39a584b3ab122681ca34f6af3df",
+    "configs\\ridge_experiments.json": "9c05a890c3c2e14a23499a59d3e6dec09ff63cf61ba3bf05e65644651b41b2d5"
+  }
+}
