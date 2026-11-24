@@ -1,0 +1,15 @@
+{
+  "committed_implementation_verified": true,
+  "protected_files_unchanged": true,
+  "all_numeric_csv_bytes_identical": true,
+  "csv_sha256": {
+    "common_pairs.csv": "00d105df89cb0c41751fb3546d70c463adda35aed74bb215f160df6c58be00cb",
+    "drift_vs_ridge_diagnostics.csv": "163f9cc4a5f9e529d13bfcf916a5680817e16f7e562a3a27da91e2dae26ee2dc",
+    "drift_vs_ridge_pairs.csv": "49a48e2d73ddc26ff5f36e932edcdaf96a98704f93b46b4ce87320f47278b04a",
+    "hac_comparisons.csv": "9001d32b9a285db4f881100da015d8e292eda5b78d6d3241192765e1d5d3f638",
+    "metrics.csv": "1c16bd94124ce4fdf9b4ff3fb97931734bb2a104223e18ded8ade456a277275b",
+    "predictions_oos.csv": "bd6695e1178862b75614fa54b89db7ba8e917c306b553fbe5f4d1279b76df276"
+  },
+  "source_commit": "b6159d90bd9417362c51acb1800b86a133197fd6",
+  "manifests_not_compared": "Run-specific Git working-tree status and output paths are not numeric results"
+}

@@ -18,3 +18,5 @@
 /scripts/*rw_drift*.py text eol=lf
 /configs/rw_drift_experiment.json text eol=lf
 /tests/test_rw_drift.py text eol=lf
+# This unchanged B3 config is hash-locked by the historical Ridge manifests.
+/configs/feature_scenarios_v1.json text eol=lf
