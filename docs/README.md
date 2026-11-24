@@ -6,7 +6,7 @@
 ## С чего начать
 
 1. [Project Status](project_status.md) — подтверждённые артефакты, ограничения, следующие задачи A/B/C/D.
-2. [План 24–25 ноября](two_day_plan.md) — **актуальный** план: M1 Ridge price-only, M2 Ridge core, M3 CatBoost core; A — бэктест/ревью, C — реализация, D — интервалы, B — data support.
+2. [План 24–25 ноября](two_day_plan.md) — **актуальный** план: M1 Ridge price-only, M2 Ridge core, M3 CatBoost core; B — бэктест/ревью и Research Lead, C — реализация, D — интервалы, A — Data Engineer/support.
 3. [Backtest Protocol](backtest_protocol.md) и [Research Charter](research_charter.md) — научные правила, target и оценки.
 4. [Features v1 — инструкция C](features_daily_v1.md) — загрузка, сценарии и ограниченная PIT-достоверность.
 
@@ -16,13 +16,13 @@
 - **Горизонт:** h=1…7 следующих **торговых** дат USDRUBF. `forecast_origin` после доступности полной свечи, но исторический час неизвестен; время `end` не заменяет `available_at`.
 - **Календарь:** 1160 сессий/свечей 26.04.2022–18.11.2026. Проверен на внутреннюю согласованность, **PROVISIONAL** до независимого архива.
 - **B1:** [forecast origin / candle audit](forecast_origin_pit_proposal.md), [ручной монитор MOEX](moex_candle_monitoring.md); 35 свечей `end≈19:30` исследованы, но техническая причина меток и время финальной публикации не доказаны.
-- **B2:** [полный словарь 30 столбцов](feature_data_dictionary.md), [каталог доступности](feature_availability_catalog.csv), [политика лагов](feature_lag_policy_proposal.md), [отчёт](../reports/feature_pit_audit.md). Research Lead A согласовал группы A/B/C; это **не** означает verified record-level PIT.
+- **B2:** [полный словарь 30 столбцов](feature_data_dictionary.md), [каталог доступности](feature_availability_catalog.csv), [политика лагов](feature_lag_policy_proposal.md), [отчёт](../reports/feature_pit_audit.md). Research Lead B согласовал группы A/B/C (здесь A/B/C — названия групп признаков, не роли участников); это **не** означает verified record-level PIT.
 - **B3:** `data/processed/features_daily_v1.csv` — `date` + 12 экономических полей; `features_daily_v1_metadata.csv` — provenance. [Сценарии](../configs/feature_scenarios_v1.json): **core 9** (default), **core+RUONIA+Brent 11**, **core+RUONIA+Brent+USD/CNH 12** (последние два sensitivity only).
 - **Пропуски:** `swaprate_prev_session` — 154/1160 (13.275862%); без подмены нулями или удаления строк. `swaprate_current` исключён.
 - **Воспроизводимость:** `python scripts/build_model_features.py --compare`, [покрытие и контрольные суммы](../reports/features_daily_v1_coverage.md). Пользовательский прогон: **3 MATCH; 49 tests OK, 1 skipped** (полный rebuild v2 требует внешних frozen exports).
 
 - **B4:** [аудит funding](../reports/funding_missingness_audit.md) — 153/154 initial missing; 198 наблюдаемых нулей; покрытие после 05/06.12.2022.
-- **B5:** [краткая инструкция A/C/D](data_handoff_to_modeling.md). Повторный календарный аудит не нужен.
+- **B5:** [краткая инструкция B/C/D](data_handoff_to_modeling.md). Повторный календарный аудит не нужен.
 
 ## Передача C
 
@@ -46,3 +46,12 @@ RW и AR(1) реализованы, validation 2025 оценена; AR(1) уст
 ## Модельная стратегия с 24.11.2026
 
 **В работе:** M1 Ridge price-only (OHLCV), M2 Ridge `core` (9 полей), M3 CatBoost `core` (ровно те же 9 полей). Все модели — direct forecast изменения `C_{t+h}-C_t` для h=1…7 торговых дней. Это **план**, не выполненные ML-эксперименты. PCA/DFM/Kalman и XGBoost в текущий спринт **не входят**; литература Giannone et al. остаётся методологическим источником по nowcasting и реальным временным ограничениям. См. [спецификацию](benchmark_spec.md), [план](two_day_plan.md) и [решение](decision_log.md).
+
+## Роли команды (исправлено 24.11.2026)
+
+- **A — Data Engineer:** данные, PIT, календарь, funding, поддержка интеграции.
+- **B — Research Lead & Backtesting:** руководство исследованием, benchmark RW/AR, общий walk-forward, сравнения и контроль leakage.
+- **C — Models:** Ridge price-only/core, CatBoost core.
+- **D — Uncertainty:** прогнозные интервалы и калибровка.
+
+Старые маркеры **B1–B5** в истории Git означают названия выполненных *этапов data work*, а не новую роль участника B; названия веток/файлов/ID экспериментов сохраняются ради прослеживаемости.
