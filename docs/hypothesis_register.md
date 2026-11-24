@@ -54,3 +54,27 @@ B1–B3 создали и объединили в `main` PIT-каталог, с�
 | H9 | Нелинейные взаимодействия core дают добавочную пользу сверх Ridge | M3 vs M2 (одинаковые 9 полей и даты) | NOT_TESTED |
 
 Модельная ветка = M1 Ridge price-only, M2 Ridge core, M3 CatBoost core; они пока `PLANNED`, а не `VALIDATION_EVALUATED`. H1–H6 остаются на прежнем уровне: H1 частично операционализируется H8, но даже после M2 улучшение означает только результат **в условном pseudo-PIT сценарии**. H2 (DFM), H4 (ML residual DFM) отложены; H5 (интервалы) ведёт D параллельно. Источник factor scenarios — `configs/feature_scenarios_v1.json`, данные B1–B5 уже переданы.
+
+
+## Обновление исследовательского реестра — 2026-11-24, после merge моделей
+
+Старые статусы `NOT_TESTED` выше отражают **момент регистрации гипотез**, не актуальный факт наличия модельных экспериментов. Результаты получены на многократно использованном exploratory validation 2025 (254 общие пары на h), не независимом test.
+
+| ID | Статус на текущую дату | Основание / интерпретация |
+|---|---|---|
+| H1 | **TESTED_EXPLORATORY / NOT_SUPPORTED vs RW** | Ridge price-only/core, CatBoost и XGBoost на условно доступных экономических признаках не подтвердили преимуществ над RW после HAC/Holm; не означает отсутствия любого сигнала |
+| H2 | **NOT_TESTED** | DFM vs статическая факторная модель не реализована |
+| H3 | **PARTIALLY_TESTED / INCONCLUSIVE** | Core/spread/funding исследованы в Ridge v1/v2 и boosting; нет контролируемого доказательства самостоятельного эффекта funding или spread, PIT current funding assumed |
+| H4 | **NOT_TESTED** | DFM+ML residual не реализована |
+| H5 | **NOT_TESTED** | Нет подтверждённого отчёта interval calibration |
+| H6 | **PARTIALLY_AUDITED / NOT_TESTED_OOS_SENSITIVITY** | Дневные свечи и календарь проверены внутренне, независимая чувствительность к определению CLOSE не доказана |
+| H7 | **TESTED_EXPLORATORY / NOT_SUPPORTED vs RW** | Ridge price-only не превзошла RW по RMSE на семи h; [v1](../reports/ridge_experiments.md), [v2](../reports/ridge_experiments_v2.md) |
+| H8 | **TESTED_EXPLORATORY / SMALL_DESCRIPTIVE_GAIN** | Core v1/v2 обычно улучшал Ridge price-only по RMSE, но добавочный эффект признаков не дал подтверждённого выигрыша над RW |
+| H9 | **TESTED_EXPLORATORY / INCONCLUSIVE** | CatBoost Core v2 ниже Ridge Core v2 RMSE на всех h, ниже RW на h=4,6,7; HAC/Holm статистически значимого улучшения над RW не подтвердил; [отчёт](../reports/catboost_core_v2.md) |
+| H10 | **NOT_TESTED** | Matched direct `C[t+h]` **vs** `C[t+h]-C[t]`: ранее проверена delta vs log-return в Ridge, но не уровень vs delta |
+| H11 | **NOT_TESTED** | Сырые OHLC vs относительные признаки (returns 1/2/3/7/14, normalized SMA/RSI/ATR, funding change; OI только после проверки данных/PIT) |
+| H12 | **NOT_TESTED** | DFM/Kalman как отдельный научный эксперимент |
+
+**Дополнительные экспериментальные результаты:** [RW with Drift](../reports/rw_drift_experiment.md) и [XGBoost Core v2](../reports/xgboost_core_v2.md). XGBoost не улучшил RW или CatBoost ни на одном h. Результаты не распространяются на непроверенные семейства моделей и новые признаки.
+
+**Процедура будущих экспериментов:** заранее зафиксировать один контраст, horizon, календарь, признаки и окно, затем train-only/предсказания на созревших метках. Повторное исследование на 2025 — exploratory, final test 2026 остаётся закрытым до preregistration.
