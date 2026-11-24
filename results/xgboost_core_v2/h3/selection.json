@@ -1,0 +1,9 @@
+{
+  "horizon": 3,
+  "parameters": {
+    "max_depth": 2,
+    "reg_lambda": 30
+  },
+  "validation_used_for_selection": false,
+  "catboost_inner_schedule_identical": true
+}

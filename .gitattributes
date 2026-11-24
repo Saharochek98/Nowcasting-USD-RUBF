@@ -34,6 +34,7 @@
 /configs/xgboost_core_v2.json text eol=lf
 /tests/test_xgboost_direct.py text eol=lf
 /requirements-xgboost.txt text eol=lf
+/reports/xgboost_core_v2.md text eol=lf
 # Preserve hash-locked historical evidence when exporting/checkout on Windows.
 /reports/catboost_core_v2.md text eol=lf
 /reports/catboost_go_no_go.md text eol=lf
