@@ -64,6 +64,8 @@ RMS разности прогнозов drift−Core: 0.000940 RUB/USD на h=1 
 
 Runner: [run_rw_drift_experiment.py](../scripts/run_rw_drift_experiment.py); модель: [rw_drift.py](../benchmarks/rw_drift.py); [config](../configs/rw_drift_experiment.json); [manifest](../results/rw_drift_experiment/manifest.json). Все шесть новых численных CSV побайтово совпали при повторном запуске в temp-каталоге; verifier сверяет source hashes с Git-коммитом реализации и проверяет неизменность защищённых файлов. [reproducibility.json](../results/rw_drift_experiment/reproducibility.json).
 
+Дополнительно проверен чистый Git checkout коммита `d36122c`: девять CSV core-этапа Ridge v1 совпали побайтово, для prequential Core v2 h=7 совпали прогнозы/коэффициенты/importance, все шесть CSV drift воспроизвелись точно. Все 69 исторических файлов результатов совпадают с исходным архивом. [Подтверждение чистого checkout](../results/rw_drift_experiment/committed_checkout_verification.json).
+
 ```powershell
 python scripts/run_rw_drift_experiment.py --output-root results/rw_drift_reproduction
 python scripts/verify_rw_drift_experiment.py
