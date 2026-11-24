@@ -27,3 +27,14 @@
 /configs/catboost_experiment.json text eol=lf
 /tests/test_catboost_direct.py text eol=lf
 /requirements-catboost.txt text eol=lf
+/results/xgboost_core_v2/** text eol=lf
+/results/xgboost_core_v2/**/*.ubj -text
+/benchmarks/xgboost_direct.py text eol=lf
+/scripts/*xgboost*.py text eol=lf
+/configs/xgboost_core_v2.json text eol=lf
+/tests/test_xgboost_direct.py text eol=lf
+/requirements-xgboost.txt text eol=lf
+# Preserve hash-locked historical evidence when exporting/checkout on Windows.
+/reports/catboost_core_v2.md text eol=lf
+/reports/catboost_go_no_go.md text eol=lf
+/configs/catboost_core_v2_proposal.json text eol=lf
