@@ -1,0 +1,27 @@
+{
+  "version": "rw_drift_v1",
+  "benchmark_config": "configs/benchmark_config.yaml",
+  "price_path": "data/processed/USDRUBF_baseline_2026-11-18.csv",
+  "calendar_path": "data/processed/usdrubf_trading_days.csv",
+  "baseline_path": "results/benchmark_calendar_v2/scored_predictions.parquet",
+  "ridge_predictions": "results/ridge_experiments_v2/prequential_delta/predictions_oos.csv",
+  "ridge_manifest": "results/ridge_experiments_v2/manifest.json",
+  "train_start": "2022-04-26",
+  "validation_start": "2025-01-01",
+  "validation_end": "2025-12-31",
+  "horizons": [1, 2, 3, 4, 5, 6, 7],
+  "min_ar_pairs": 100,
+  "refit_schedule": "every_origin_expanding",
+  "drift_estimator": "mean of all finite adjacent calendar-session changes through origin; no gap compression",
+  "eligibility": "same initial 100 lagged-change pairs and known last change as canonical AR(1); drift does not fit AR coefficients",
+  "hac_base_lag": 20,
+  "hac_family": {
+    "left": "RW_DRIFT",
+    "right": ["RW", "AR1", "Ridge_Price", "Ridge_Core_v2"],
+    "horizons": [1, 2, 3, 4, 5, 6, 7],
+    "size": 28,
+    "adjustment": "Holm jointly across all 28 two-sided comparisons"
+  },
+  "research_status": "exploratory validation after Ridge v1/v2; no independent test claim",
+  "catboost_action": "decision only; never launch automatically"
+}

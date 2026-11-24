@@ -10,6 +10,11 @@
 /scripts/*ridge*.py text eol=lf
 /tests/test_ridge*.py text eol=lf
 # Historical JSON evidence keeps its original bytes, including CRLF.
-/results/ridge_experiments/**/*.json -text
-/results/ridge_experiments_v2/**/*.json -text
-/configs/ridge_experiments_v2.json -text
+/results/ridge_experiments/**/*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/results/ridge_experiments_v2/**/*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/configs/ridge_experiments_v2.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/results/rw_drift_experiment/** text eol=lf
+/benchmarks/rw_drift.py text eol=lf
+/scripts/*rw_drift*.py text eol=lf
+/configs/rw_drift_experiment.json text eol=lf
+/tests/test_rw_drift.py text eol=lf
