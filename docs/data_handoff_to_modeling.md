@@ -19,7 +19,7 @@ from scripts.build_model_features import load_scenario
 rows = load_scenario(scenario="core")  # date + строго 9 разрешённых полей
 ```
 
-## Что обязательно учитывать A/C/D
+## Что обязательно учитывать B/C/D
 
 - **Target:** дневной `CANDLE_CLOSE` USDRUBF, `h=1..7` **следующих торговых сессий**, origin после условной доступности полной свечи. Не курс ЦБ и не settlement.
 - **Funding:** у `swaprate_prev_session` **154 начальных пропуска**, первое значение **2022-12-06**; **198** наблюдаемых нулей не равны пропускам. Обработка missing, scaler, PCA и отбор признаков — **train-only** в каждом walk-forward окне; S0/S1/S2 описаны в B4 и требуют общего набора `(origin,target,h)` при сравнении.
@@ -37,4 +37,6 @@ python -m unittest discover -s tests -p "test_*.py" -v
 
 Подробные результаты **не дублируются**: [календарь](../reports/calendar_quality_report.md), [B1 — forecast origin](forecast_origin_pit_proposal.md), [B2 — PIT-каталог](feature_availability_catalog.csv), [B3 — coverage](../reports/features_daily_v1_coverage.md), [B4 — funding](../reports/funding_missingness_audit.md). Локально для B4 сообщено: **61 unittest (60 successful, 1 skipped — full external-source rebuild)**; повторный тест после B5 отдельно не заявлен.
 
-**Граница завершения B:** инженерные данные и ограничения переданы. Историческая PIT-сертификация, архивные источники и независимый календарь остаются открытыми исследованиями; B5 не меняет данные и бэктест.
+**Граница завершения A (Data Engineer):** инженерные данные и ограничения переданы. Историческая PIT-сертификация, архивные источники и независимый календарь остаются открытыми исследованиями; B5 не меняет данные и бэктест.
+
+**Роли для handoff:** A (Data Engineer) передаёт подготовленные B1–B5 артефакты участникам **B (Research Lead), C (Models), D (Uncertainty)**. «B1–B5» — исторические имена data-этапов, не роли людей.
