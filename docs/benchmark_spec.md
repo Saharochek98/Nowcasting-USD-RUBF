@@ -85,3 +85,18 @@ AR не выигрывает по RMSE на validation; семейно-знач�
 **Не входят в обязательный этап:** PCA+Ridge, DFM/Kalman, XGBoost и ML-коррекция остатков DFM. Остаются в разделе возможных расширений после оценки M1–M3; статью Giannone et al. (2008) используем как методологическое обоснование nowcasting/PIT, **не** как воспроизведённую архитектуру.
 
 **Реализация:** использовать `scripts.build_model_features.load_scenario(scenario="core")`, брать разрешённые поля по имени, а не все поля датасета. Новых полученных результатов M1–M3 пока **нет**. B0/B1 уже validation evaluated, их код и исходные отчёты не менять. DFM/Kalman, PCA+Ridge, XGBoost — deferred.
+
+
+## Актуализация 24.11.2026 — фактически выполненные модели
+
+Предыдущие таблицы M1/M2/M3 и статус `PLANNED` выше относятся к **исторической версии плана**, не к текущему состоянию. Сведения ниже имеют приоритет для текущей модели. Не переименовывать старые ID без миграции.
+
+- **RW, AR(1)** — базовые validation-эталоны, [результаты](../reports/benchmark_summary.md).
+- **RW with Drift** — `C[t]+h*mean(ΔC)`, expanding/prequential; [результат](../reports/rw_drift_experiment.md): хуже RW по RMSE на всех h.
+- **Ridge v1/v2** — price-only (5), старый B3 core (9), расширенные B1/B2, Core v2 (10, включая `swaprate_current`), prequential/frozen, no-spread; [v1](../reports/ridge_experiments.md), [v2](../reports/ridge_experiments_v2.md).
+- **CatBoost Core v2** — 10 признаков; [результат](../reports/catboost_core_v2.md): RMSE ниже RW на h=4,6,7, без значимости после HAC/Holm.
+- **XGBoost Core v2** — те же 10 признаков; [результат](../reports/xgboost_core_v2.md): не улучшил RW или CatBoost ни на одном h.
+
+Все прямые факторные модели предсказывают `Δ_h C=C[t+h]-C[t]` и восстанавливают цену как `C[t]+predicted_delta`; Ridge также проверил `log(C[t+h]/C[t])`. **Парное сравнение с direct target уровня `C[t+h]` ещё не выполнялось**. На validation 2025 у каждого h 254 одинаковых прогнозных ключа. Результаты exploratory; final test 2026 не оценивался. Историческая доступность `swaprate_current` в Core v2 — **ASSUMED_AVAILABLE**, а не VERIFIED; frozen B3 core=9 не заменён Core v2=10.
+
+**Новые гипотезы (NOT_TESTED):** direct level vs delta при равных условиях; относительные returns/SMA/RSI/ATR/funding features вместо или вместе с сырыми ценовыми уровнями; Open Interest — только после PIT-аудита источника. Детали — [текущий план](two_day_plan.md) и [реестр](hypothesis_register.md). PCA/DFM/Kalman/ML residual и интервальные калибровки не обозначать реализованными без подтверждающих артефактов.
