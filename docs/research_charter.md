@@ -1,6 +1,6 @@
 # Research Charter — USDRUBF Nowcasting
 
-**Версия:** 1.4 · **Дата:** 2026-11-24 · **Владелец:** A, Research Lead & Backtesting  
+**Версия:** 1.4 · **Дата:** 2026-11-24 · **Владелец:** B, Research Lead & Backtesting  
 **Статус:** baseline RW/AR(1), validation и диагностика выполнены; исходный MOEX ISS `CANDLE_CLOSE` и raw/processed проверены, историческое время доступности и независимость календаря — OPEN.
 
 ## 1. Источники и предмет
@@ -56,7 +56,7 @@
 
 ## 7. Ответственность и границы
 
-A — Research Lead/Backtesting, метрики, RW, leakage-аудит, абляции; B — Futures Data/PIT, дневные OHLC, календарь, определения полей и публикации; C — PCA/DFM/Kalman; D — ML/Uncertainty.
+A — Data Engineer/PIT: данные, календарь, funding и публикации; B — Research Lead/Backtesting: RW/AR, walk-forward, метрики, leakage-аудит, абляции; C — Models: M1 Ridge price-only, M2 Ridge core, M3 CatBoost core; D — Uncertainty: интервалы и калибровка.
 
 Не оценивать доходность стратегии без отдельного протокола; не путать цену сделки с расчетной ценой и эффект цены с денежных потоков фандинга.
 
@@ -71,7 +71,7 @@ B0 RW и B1 AR(1) реализованы, обе модели проверены
 Исторический раздел «Достигнутый milestone (20.11.2026)» сохранён как срез на ту дату. После него **в `main` объединены B1/B2/B3**:
 
 - **B1:** `docs/forecast_origin_pit_proposal.md`, аудит исторических `end` и минутного сравнения; исторический `available_at` дневного CLOSE остаётся неизвестным.
-- **B2:** `docs/feature_availability_catalog.csv` (30 полей), `docs/feature_data_dictionary.md`, `docs/feature_lag_policy_proposal.md` — Research Lead A согласовал условные группы/сценарии, **не** удостоверил каждый timestamp.
+- **B2:** `docs/feature_availability_catalog.csv` (30 полей), `docs/feature_data_dictionary.md`, `docs/feature_lag_policy_proposal.md` — Research Lead B согласовал условные группы/сценарии, **не** удостоверил каждый timestamp.
 - **B3:** `data/processed/features_daily_v1.csv` — 1160 дат, 12 экономических значений в объединённой таблице; сценарии `core` 9, `core_ruonia_brent` 11, `core_ruonia_brent_usdcnh` 12. Только `core` используется по умолчанию; последние два — отдельные исследования чувствительности. `swaprate_current` исключён, 154 пропуска предыдущего funding сохранены.
 - B3 локально воспроизведён через `--compare` (3 совпадения); 49 тестов запущены, один тест полного rebuild v2 из внешних выгрузок пропущен. Формально строгого PIT это **не** устанавливает.
 
