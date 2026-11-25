@@ -1,0 +1,259 @@
+model_id,horizon,candidate_id,params,n,rmse,status,n_failed,score,criterion,selected,n_not_converged,interval_score_90,interval_score_95,coverage_95,window,mse
+AR1_tuned,all,0,"{""window"": null}",2646,1.6517123307670423,ok,0.0,1.6517123307670423,pooled inner price RMSE,True,,,,,,
+AR1_tuned,all,1,"{""window"": 500}",2646,1.6574586065459256,ok,0.0,1.6574586065459256,pooled inner price RMSE,False,,,,,,
+AR1_tuned,all,2,"{""window"": 250}",2646,1.6791637399928572,ok,0.0,1.6791637399928572,pooled inner price RMSE,False,,,,,,
+RW_Drift_tuned,all,0,"{""window"": null}",2646,1.6497048880808836,ok,0.0,1.6497048880808836,pooled inner price RMSE,True,,,,,,
+RW_Drift_tuned,all,1,"{""window"": 250}",2646,1.6680507157388038,ok,0.0,1.6680507157388038,pooled inner price RMSE,False,,,,,,
+RW_Drift_tuned,all,2,"{""window"": 120}",2646,1.664412603909735,ok,0.0,1.664412603909735,pooled inner price RMSE,False,,,,,,
+RW_Drift_tuned,all,3,"{""window"": 60}",2646,1.682120421645482,ok,0.0,1.682120421645482,pooled inner price RMSE,False,,,,,,
+ARIMA_BIC,all,0,"{""window"": null}",2646,1.6497048868312587,ok,0.0,1.6497048868312587,pooled inner price RMSE,True,5.0,7.269200296514901,8.55762278633433,0.9777021919879063,,
+ARIMA_BIC,all,1,"{""window"": 500}",2646,1.6551337332097347,ok,0.0,1.6551337332097347,pooled inner price RMSE,False,5.0,7.268408370464406,8.584388065790428,0.9765684051398337,,
+ARIMA_BIC,all,2,"{""window"": 250}",2646,1.6697087937040902,ok,0.0,1.6697087937040902,pooled inner price RMSE,False,12.0,7.460253295298815,8.930783991970669,0.9338624338624338,,
+UC_Kalman,all,0,"{""level"": ""llevel"", ""window"": null}",2646,1.642976531206151,ok,0.0,1.642976531206151,pooled inner price RMSE,False,0.0,7.263035609621504,8.538513419590362,0.9780801209372638,,
+UC_Kalman,all,1,"{""level"": ""llevel"", ""window"": 500}",2646,1.6429765311863207,ok,0.0,1.6429765311863207,pooled inner price RMSE,False,0.0,7.249250723302601,8.553059580920964,0.9769463340891912,,
+UC_Kalman,all,2,"{""level"": ""llevel"", ""window"": 250}",2646,1.6429726721975657,ok,0.0,1.6429726721975657,pooled inner price RMSE,True,0.0,7.232032322750431,8.604594936072486,0.9440665154950869,,
+UC_Kalman,all,3,"{""level"": ""lltrend"", ""window"": null}",2646,1.6670916978744261,ok,0.0,1.6670916978744261,pooled inner price RMSE,False,1.0,7.5310916876600515,8.915211745352345,0.9780801209372638,,
+UC_Kalman,all,4,"{""level"": ""lltrend"", ""window"": 500}",2646,1.6738135003427126,ok,0.0,1.6738135003427126,pooled inner price RMSE,False,0.0,7.514261028160308,8.932515637559588,0.9773242630385488,,
+UC_Kalman,all,5,"{""level"": ""lltrend"", ""window"": 250}",2646,1.6899415690203476,ok,0.0,1.6899415690203476,pooled inner price RMSE,False,0.0,7.559039708595273,9.098837868644924,0.9444444444444444,,
+RW_GARCH,all,0,"{""dist"": ""normal"", ""vol"": ""GARCH""}",2646,1.6429765312037083,ok,0.0,7.709559427112856,mean inner interval score (90% and 95%),True,0.0,7.10344047630987,8.315678377915841,0.9482237339380196,,
+RW_GARCH,all,1,"{""dist"": ""t"", ""vol"": ""GARCH""}",2646,1.6429765312037083,ok,0.0,7.735289714729136,mean inner interval score (90% and 95%),False,0.0,7.09713359046191,8.373445838996362,0.9520030234315948,,
+RW_GARCH,all,2,"{""dist"": ""normal"", ""vol"": ""GJR""}",2646,1.6429765312037083,ok,0.0,7.741618050418699,mean inner interval score (90% and 95%),False,0.0,7.125081682072387,8.358154418765013,0.9448223733938019,,
+RW_GARCH,all,3,"{""dist"": ""t"", ""vol"": ""GJR""}",2646,1.6429765312037083,ok,0.0,7.788948433194401,mean inner interval score (90% and 95%),False,0.0,7.127510533267462,8.450386333121338,0.9482237339380196,,
+LGBM_Quantile,1,0,"{""learning_rate"": 0.05, ""max_depth"": 2, ""n_estimators"": 100}",378,,ok,,0.8140540633410448,pooled inner price RMSE,True,,,,,expanding,
+LGBM_Quantile,1,1,"{""learning_rate"": 0.02, ""max_depth"": 2, ""n_estimators"": 250}",378,,ok,,0.818004983548396,pooled inner price RMSE,False,,,,,expanding,
+LGBM_Quantile,1,2,"{""learning_rate"": 0.05, ""max_depth"": 3, ""n_estimators"": 100}",378,,ok,,0.8161962338855036,pooled inner price RMSE,False,,,,,expanding,
+LGBM_Quantile,1,3,"{""learning_rate"": 0.02, ""max_depth"": 3, ""n_estimators"": 250}",378,,ok,,0.8162456313542058,pooled inner price RMSE,False,,,,,expanding,
+LGBM_Quantile,2,0,"{""learning_rate"": 0.05, ""max_depth"": 2, ""n_estimators"": 100}",378,,ok,,1.155822047554764,pooled inner price RMSE,False,,,,,expanding,
+LGBM_Quantile,2,1,"{""learning_rate"": 0.02, ""max_depth"": 2, ""n_estimators"": 250}",378,,ok,,1.1523682293372266,pooled inner price RMSE,True,,,,,expanding,
+LGBM_Quantile,2,2,"{""learning_rate"": 0.05, ""max_depth"": 3, ""n_estimators"": 100}",378,,ok,,1.155554625422464,pooled inner price RMSE,False,,,,,expanding,
+LGBM_Quantile,2,3,"{""learning_rate"": 0.02, ""max_depth"": 3, ""n_estimators"": 250}",378,,ok,,1.1654035488071566,pooled inner price RMSE,False,,,,,expanding,
+LGBM_Quantile,3,0,"{""learning_rate"": 0.05, ""max_depth"": 2, ""n_estimators"": 100}",378,,ok,,1.4734572582976717,pooled inner price RMSE,False,,,,,expanding,
+LGBM_Quantile,3,1,"{""learning_rate"": 0.02, ""max_depth"": 2, ""n_estimators"": 250}",378,,ok,,1.472006826425653,pooled inner price RMSE,True,,,,,expanding,
+LGBM_Quantile,3,2,"{""learning_rate"": 0.05, ""max_depth"": 3, ""n_estimators"": 100}",378,,ok,,1.4897876681083781,pooled inner price RMSE,False,,,,,expanding,
+LGBM_Quantile,3,3,"{""learning_rate"": 0.02, ""max_depth"": 3, ""n_estimators"": 250}",378,,ok,,1.483023636650881,pooled inner price RMSE,False,,,,,expanding,
+LGBM_Quantile,4,0,"{""learning_rate"": 0.05, ""max_depth"": 2, ""n_estimators"": 100}",378,,ok,,1.745105842252746,pooled inner price RMSE,False,,,,,expanding,
+LGBM_Quantile,4,1,"{""learning_rate"": 0.02, ""max_depth"": 2, ""n_estimators"": 250}",378,,ok,,1.735033706871134,pooled inner price RMSE,True,,,,,expanding,
+LGBM_Quantile,4,2,"{""learning_rate"": 0.05, ""max_depth"": 3, ""n_estimators"": 100}",378,,ok,,1.766875332984711,pooled inner price RMSE,False,,,,,expanding,
+LGBM_Quantile,4,3,"{""learning_rate"": 0.02, ""max_depth"": 3, ""n_estimators"": 250}",378,,ok,,1.7647696486145918,pooled inner price RMSE,False,,,,,expanding,
+LGBM_Quantile,5,0,"{""learning_rate"": 0.05, ""max_depth"": 2, ""n_estimators"": 100}",378,,ok,,1.9774642648793215,pooled inner price RMSE,True,,,,,expanding,
+LGBM_Quantile,5,1,"{""learning_rate"": 0.02, ""max_depth"": 2, ""n_estimators"": 250}",378,,ok,,1.982681558902989,pooled inner price RMSE,False,,,,,expanding,
+LGBM_Quantile,5,2,"{""learning_rate"": 0.05, ""max_depth"": 3, ""n_estimators"": 100}",378,,ok,,2.027479968315723,pooled inner price RMSE,False,,,,,expanding,
+LGBM_Quantile,5,3,"{""learning_rate"": 0.02, ""max_depth"": 3, ""n_estimators"": 250}",378,,ok,,2.0269324622213047,pooled inner price RMSE,False,,,,,expanding,
+LGBM_Quantile,6,0,"{""learning_rate"": 0.05, ""max_depth"": 2, ""n_estimators"": 100}",378,,ok,,2.2685801527214164,pooled inner price RMSE,False,,,,,expanding,
+LGBM_Quantile,6,1,"{""learning_rate"": 0.02, ""max_depth"": 2, ""n_estimators"": 250}",378,,ok,,2.266517580574758,pooled inner price RMSE,True,,,,,expanding,
+LGBM_Quantile,6,2,"{""learning_rate"": 0.05, ""max_depth"": 3, ""n_estimators"": 100}",378,,ok,,2.329526622135712,pooled inner price RMSE,False,,,,,expanding,
+LGBM_Quantile,6,3,"{""learning_rate"": 0.02, ""max_depth"": 3, ""n_estimators"": 250}",378,,ok,,2.33117120034943,pooled inner price RMSE,False,,,,,expanding,
+LGBM_Quantile,7,0,"{""learning_rate"": 0.05, ""max_depth"": 2, ""n_estimators"": 100}",378,,ok,,2.568981615228775,pooled inner price RMSE,False,,,,,expanding,
+LGBM_Quantile,7,1,"{""learning_rate"": 0.02, ""max_depth"": 2, ""n_estimators"": 250}",378,,ok,,2.556323610015836,pooled inner price RMSE,True,,,,,expanding,
+LGBM_Quantile,7,2,"{""learning_rate"": 0.05, ""max_depth"": 3, ""n_estimators"": 100}",378,,ok,,2.640535815499203,pooled inner price RMSE,False,,,,,expanding,
+LGBM_Quantile,7,3,"{""learning_rate"": 0.02, ""max_depth"": 3, ""n_estimators"": 250}",378,,ok,,2.615183398756485,pooled inner price RMSE,False,,,,,expanding,
+CatBoost_tuned,1,0,"{""depth"": 2, ""l2_leaf_reg"": 30}",378,,ok,,0.7955320851241164,pooled inner price RMSE,True,,,,,expanding,
+CatBoost_tuned,1,1,"{""depth"": 2, ""l2_leaf_reg"": 30}",378,,ok,,0.7988089603500447,pooled inner price RMSE,False,,,,,500,
+CatBoost_tuned,1,2,"{""depth"": 2, ""l2_leaf_reg"": 30}",378,,ok,,0.8015715239354496,pooled inner price RMSE,False,,,,,250,
+CatBoost_tuned,1,3,"{""depth"": 3, ""l2_leaf_reg"": 30}",378,,ok,,0.7957698737677075,pooled inner price RMSE,False,,,,,expanding,
+CatBoost_tuned,1,4,"{""depth"": 3, ""l2_leaf_reg"": 30}",378,,ok,,0.7992307617795035,pooled inner price RMSE,False,,,,,500,
+CatBoost_tuned,1,5,"{""depth"": 3, ""l2_leaf_reg"": 30}",378,,ok,,0.8011663300238819,pooled inner price RMSE,False,,,,,250,
+CatBoost_tuned,2,0,"{""depth"": 2, ""l2_leaf_reg"": 30}",378,,ok,,1.1400968827820352,pooled inner price RMSE,False,,,,,expanding,
+CatBoost_tuned,2,1,"{""depth"": 2, ""l2_leaf_reg"": 30}",378,,ok,,1.1415415219589962,pooled inner price RMSE,False,,,,,500,
+CatBoost_tuned,2,2,"{""depth"": 2, ""l2_leaf_reg"": 30}",378,,ok,,1.1412977104064628,pooled inner price RMSE,False,,,,,250,
+CatBoost_tuned,2,3,"{""depth"": 3, ""l2_leaf_reg"": 30}",378,,ok,,1.1379654291754004,pooled inner price RMSE,True,,,,,expanding,
+CatBoost_tuned,2,4,"{""depth"": 3, ""l2_leaf_reg"": 30}",378,,ok,,1.1391368176554648,pooled inner price RMSE,False,,,,,500,
+CatBoost_tuned,2,5,"{""depth"": 3, ""l2_leaf_reg"": 30}",378,,ok,,1.1394300547348137,pooled inner price RMSE,False,,,,,250,
+CatBoost_tuned,3,0,"{""depth"": 2, ""l2_leaf_reg"": 30}",378,,ok,,1.4154494203316907,pooled inner price RMSE,True,,,,,expanding,
+CatBoost_tuned,3,1,"{""depth"": 2, ""l2_leaf_reg"": 30}",378,,ok,,1.4179729946351414,pooled inner price RMSE,False,,,,,500,
+CatBoost_tuned,3,2,"{""depth"": 2, ""l2_leaf_reg"": 30}",378,,ok,,1.4279983241077407,pooled inner price RMSE,False,,,,,250,
+CatBoost_tuned,3,3,"{""depth"": 3, ""l2_leaf_reg"": 30}",378,,ok,,1.4177624225153416,pooled inner price RMSE,False,,,,,expanding,
+CatBoost_tuned,3,4,"{""depth"": 3, ""l2_leaf_reg"": 30}",378,,ok,,1.4212391273804672,pooled inner price RMSE,False,,,,,500,
+CatBoost_tuned,3,5,"{""depth"": 3, ""l2_leaf_reg"": 30}",378,,ok,,1.424437095815701,pooled inner price RMSE,False,,,,,250,
+CatBoost_tuned,4,0,"{""depth"": 2, ""l2_leaf_reg"": 30}",378,,ok,,1.6789357908253988,pooled inner price RMSE,False,,,,,expanding,
+CatBoost_tuned,4,1,"{""depth"": 2, ""l2_leaf_reg"": 30}",378,,ok,,1.6840716667830598,pooled inner price RMSE,False,,,,,500,
+CatBoost_tuned,4,2,"{""depth"": 2, ""l2_leaf_reg"": 30}",378,,ok,,1.6991482253739834,pooled inner price RMSE,False,,,,,250,
+CatBoost_tuned,4,3,"{""depth"": 3, ""l2_leaf_reg"": 30}",378,,ok,,1.6726408736311908,pooled inner price RMSE,True,,,,,expanding,
+CatBoost_tuned,4,4,"{""depth"": 3, ""l2_leaf_reg"": 30}",378,,ok,,1.6765851810856418,pooled inner price RMSE,False,,,,,500,
+CatBoost_tuned,4,5,"{""depth"": 3, ""l2_leaf_reg"": 30}",378,,ok,,1.6948472597975135,pooled inner price RMSE,False,,,,,250,
+CatBoost_tuned,5,0,"{""depth"": 2, ""l2_leaf_reg"": 30}",378,,ok,,1.8907937353406108,pooled inner price RMSE,True,,,,,expanding,
+CatBoost_tuned,5,1,"{""depth"": 2, ""l2_leaf_reg"": 30}",378,,ok,,1.8975455306145217,pooled inner price RMSE,False,,,,,500,
+CatBoost_tuned,5,2,"{""depth"": 2, ""l2_leaf_reg"": 30}",378,,ok,,1.9077971324214107,pooled inner price RMSE,False,,,,,250,
+CatBoost_tuned,5,3,"{""depth"": 3, ""l2_leaf_reg"": 30}",378,,ok,,1.8933191799957754,pooled inner price RMSE,False,,,,,expanding,
+CatBoost_tuned,5,4,"{""depth"": 3, ""l2_leaf_reg"": 30}",378,,ok,,1.8989684931896256,pooled inner price RMSE,False,,,,,500,
+CatBoost_tuned,5,5,"{""depth"": 3, ""l2_leaf_reg"": 30}",378,,ok,,1.9169469916908672,pooled inner price RMSE,False,,,,,250,
+CatBoost_tuned,6,0,"{""depth"": 2, ""l2_leaf_reg"": 30}",378,,ok,,2.099951957677838,pooled inner price RMSE,True,,,,,expanding,
+CatBoost_tuned,6,1,"{""depth"": 2, ""l2_leaf_reg"": 30}",378,,ok,,2.1086057026180565,pooled inner price RMSE,False,,,,,500,
+CatBoost_tuned,6,2,"{""depth"": 2, ""l2_leaf_reg"": 30}",378,,ok,,2.120519420674393,pooled inner price RMSE,False,,,,,250,
+CatBoost_tuned,6,3,"{""depth"": 3, ""l2_leaf_reg"": 30}",378,,ok,,2.104511319162875,pooled inner price RMSE,False,,,,,expanding,
+CatBoost_tuned,6,4,"{""depth"": 3, ""l2_leaf_reg"": 30}",378,,ok,,2.1117562380948516,pooled inner price RMSE,False,,,,,500,
+CatBoost_tuned,6,5,"{""depth"": 3, ""l2_leaf_reg"": 30}",378,,ok,,2.1357175208223227,pooled inner price RMSE,False,,,,,250,
+CatBoost_tuned,7,0,"{""depth"": 2, ""l2_leaf_reg"": 30}",378,,ok,,2.304645548700399,pooled inner price RMSE,True,,,,,expanding,
+CatBoost_tuned,7,1,"{""depth"": 2, ""l2_leaf_reg"": 30}",378,,ok,,2.314555109175246,pooled inner price RMSE,False,,,,,500,
+CatBoost_tuned,7,2,"{""depth"": 2, ""l2_leaf_reg"": 30}",378,,ok,,2.325906835712968,pooled inner price RMSE,False,,,,,250,
+CatBoost_tuned,7,3,"{""depth"": 3, ""l2_leaf_reg"": 30}",378,,ok,,2.324230312557212,pooled inner price RMSE,False,,,,,expanding,
+CatBoost_tuned,7,4,"{""depth"": 3, ""l2_leaf_reg"": 30}",378,,ok,,2.3314911753444205,pooled inner price RMSE,False,,,,,500,
+CatBoost_tuned,7,5,"{""depth"": 3, ""l2_leaf_reg"": 30}",378,,ok,,2.3386676131296227,pooled inner price RMSE,False,,,,,250,
+H11_CatBoost_core_plus_rel,1,0,"{""depth"": 2, ""l2_leaf_reg"": 10}",378,,ok,,0.7940899548347781,pooled inner price RMSE,False,,,,,expanding,
+H11_CatBoost_core_plus_rel,1,1,"{""depth"": 2, ""l2_leaf_reg"": 30}",378,,ok,,0.7931808692604435,pooled inner price RMSE,True,,,,,expanding,
+H11_CatBoost_core_plus_rel,1,2,"{""depth"": 3, ""l2_leaf_reg"": 10}",378,,ok,,0.7960545748272058,pooled inner price RMSE,False,,,,,expanding,
+H11_CatBoost_core_plus_rel,1,3,"{""depth"": 3, ""l2_leaf_reg"": 30}",378,,ok,,0.7939404261800915,pooled inner price RMSE,False,,,,,expanding,
+H11_CatBoost_core_plus_rel,2,0,"{""depth"": 2, ""l2_leaf_reg"": 10}",378,,ok,,1.1356765619558107,pooled inner price RMSE,False,,,,,expanding,
+H11_CatBoost_core_plus_rel,2,1,"{""depth"": 2, ""l2_leaf_reg"": 30}",378,,ok,,1.134398910120286,pooled inner price RMSE,True,,,,,expanding,
+H11_CatBoost_core_plus_rel,2,2,"{""depth"": 3, ""l2_leaf_reg"": 10}",378,,ok,,1.1416164744434105,pooled inner price RMSE,False,,,,,expanding,
+H11_CatBoost_core_plus_rel,2,3,"{""depth"": 3, ""l2_leaf_reg"": 30}",378,,ok,,1.1371496690023428,pooled inner price RMSE,False,,,,,expanding,
+H11_CatBoost_core_plus_rel,3,0,"{""depth"": 2, ""l2_leaf_reg"": 10}",378,,ok,,1.4156309906716875,pooled inner price RMSE,False,,,,,expanding,
+H11_CatBoost_core_plus_rel,3,1,"{""depth"": 2, ""l2_leaf_reg"": 30}",378,,ok,,1.4118018400977574,pooled inner price RMSE,True,,,,,expanding,
+H11_CatBoost_core_plus_rel,3,2,"{""depth"": 3, ""l2_leaf_reg"": 10}",378,,ok,,1.4292038734334203,pooled inner price RMSE,False,,,,,expanding,
+H11_CatBoost_core_plus_rel,3,3,"{""depth"": 3, ""l2_leaf_reg"": 30}",378,,ok,,1.4141737105974677,pooled inner price RMSE,False,,,,,expanding,
+H11_CatBoost_core_plus_rel,4,0,"{""depth"": 2, ""l2_leaf_reg"": 10}",378,,ok,,1.6676081676564651,pooled inner price RMSE,False,,,,,expanding,
+H11_CatBoost_core_plus_rel,4,1,"{""depth"": 2, ""l2_leaf_reg"": 30}",378,,ok,,1.6626639455138033,pooled inner price RMSE,True,,,,,expanding,
+H11_CatBoost_core_plus_rel,4,2,"{""depth"": 3, ""l2_leaf_reg"": 10}",378,,ok,,1.6923531618803587,pooled inner price RMSE,False,,,,,expanding,
+H11_CatBoost_core_plus_rel,4,3,"{""depth"": 3, ""l2_leaf_reg"": 30}",378,,ok,,1.6708214558708716,pooled inner price RMSE,False,,,,,expanding,
+H11_CatBoost_core_plus_rel,5,0,"{""depth"": 2, ""l2_leaf_reg"": 10}",378,,ok,,1.8787818025930512,pooled inner price RMSE,False,,,,,expanding,
+H11_CatBoost_core_plus_rel,5,1,"{""depth"": 2, ""l2_leaf_reg"": 30}",378,,ok,,1.8705387608139612,pooled inner price RMSE,True,,,,,expanding,
+H11_CatBoost_core_plus_rel,5,2,"{""depth"": 3, ""l2_leaf_reg"": 10}",378,,ok,,1.8981449838228714,pooled inner price RMSE,False,,,,,expanding,
+H11_CatBoost_core_plus_rel,5,3,"{""depth"": 3, ""l2_leaf_reg"": 30}",378,,ok,,1.8746895947573416,pooled inner price RMSE,False,,,,,expanding,
+H11_CatBoost_core_plus_rel,6,0,"{""depth"": 2, ""l2_leaf_reg"": 10}",378,,ok,,2.0746729684893035,pooled inner price RMSE,False,,,,,expanding,
+H11_CatBoost_core_plus_rel,6,1,"{""depth"": 2, ""l2_leaf_reg"": 30}",378,,ok,,2.0590582251950926,pooled inner price RMSE,True,,,,,expanding,
+H11_CatBoost_core_plus_rel,6,2,"{""depth"": 3, ""l2_leaf_reg"": 10}",378,,ok,,2.0924300590379534,pooled inner price RMSE,False,,,,,expanding,
+H11_CatBoost_core_plus_rel,6,3,"{""depth"": 3, ""l2_leaf_reg"": 30}",378,,ok,,2.074482240138429,pooled inner price RMSE,False,,,,,expanding,
+H11_CatBoost_core_plus_rel,7,0,"{""depth"": 2, ""l2_leaf_reg"": 10}",378,,ok,,2.280052995559426,pooled inner price RMSE,False,,,,,expanding,
+H11_CatBoost_core_plus_rel,7,1,"{""depth"": 2, ""l2_leaf_reg"": 30}",378,,ok,,2.264781651490959,pooled inner price RMSE,True,,,,,expanding,
+H11_CatBoost_core_plus_rel,7,2,"{""depth"": 3, ""l2_leaf_reg"": 10}",378,,ok,,2.3115093113545377,pooled inner price RMSE,False,,,,,expanding,
+H11_CatBoost_core_plus_rel,7,3,"{""depth"": 3, ""l2_leaf_reg"": 30}",378,,ok,,2.286003427356595,pooled inner price RMSE,False,,,,,expanding,
+H11_CatBoost_rel_replaces_ohlc,1,0,"{""depth"": 2, ""l2_leaf_reg"": 10}",378,,ok,,0.7925927347653775,pooled inner price RMSE,False,,,,,expanding,
+H11_CatBoost_rel_replaces_ohlc,1,1,"{""depth"": 2, ""l2_leaf_reg"": 30}",378,,ok,,0.792505110650544,pooled inner price RMSE,False,,,,,expanding,
+H11_CatBoost_rel_replaces_ohlc,1,2,"{""depth"": 3, ""l2_leaf_reg"": 10}",378,,ok,,0.7920819944579676,pooled inner price RMSE,False,,,,,expanding,
+H11_CatBoost_rel_replaces_ohlc,1,3,"{""depth"": 3, ""l2_leaf_reg"": 30}",378,,ok,,0.7915048317581922,pooled inner price RMSE,True,,,,,expanding,
+H11_CatBoost_rel_replaces_ohlc,2,0,"{""depth"": 2, ""l2_leaf_reg"": 10}",378,,ok,,1.1360647687759042,pooled inner price RMSE,False,,,,,expanding,
+H11_CatBoost_rel_replaces_ohlc,2,1,"{""depth"": 2, ""l2_leaf_reg"": 30}",378,,ok,,1.133109826667396,pooled inner price RMSE,False,,,,,expanding,
+H11_CatBoost_rel_replaces_ohlc,2,2,"{""depth"": 3, ""l2_leaf_reg"": 10}",378,,ok,,1.127027059733101,pooled inner price RMSE,False,,,,,expanding,
+H11_CatBoost_rel_replaces_ohlc,2,3,"{""depth"": 3, ""l2_leaf_reg"": 30}",378,,ok,,1.1268984403467242,pooled inner price RMSE,True,,,,,expanding,
+H11_CatBoost_rel_replaces_ohlc,3,0,"{""depth"": 2, ""l2_leaf_reg"": 10}",378,,ok,,1.4134068016416013,pooled inner price RMSE,False,,,,,expanding,
+H11_CatBoost_rel_replaces_ohlc,3,1,"{""depth"": 2, ""l2_leaf_reg"": 30}",378,,ok,,1.412855036595491,pooled inner price RMSE,False,,,,,expanding,
+H11_CatBoost_rel_replaces_ohlc,3,2,"{""depth"": 3, ""l2_leaf_reg"": 10}",378,,ok,,1.4101562642334462,pooled inner price RMSE,False,,,,,expanding,
+H11_CatBoost_rel_replaces_ohlc,3,3,"{""depth"": 3, ""l2_leaf_reg"": 30}",378,,ok,,1.4080537940684177,pooled inner price RMSE,True,,,,,expanding,
+H11_CatBoost_rel_replaces_ohlc,4,0,"{""depth"": 2, ""l2_leaf_reg"": 10}",378,,ok,,1.6674678685564395,pooled inner price RMSE,False,,,,,expanding,
+H11_CatBoost_rel_replaces_ohlc,4,1,"{""depth"": 2, ""l2_leaf_reg"": 30}",378,,ok,,1.6621755329338423,pooled inner price RMSE,False,,,,,expanding,
+H11_CatBoost_rel_replaces_ohlc,4,2,"{""depth"": 3, ""l2_leaf_reg"": 10}",378,,ok,,1.6861402403057584,pooled inner price RMSE,False,,,,,expanding,
+H11_CatBoost_rel_replaces_ohlc,4,3,"{""depth"": 3, ""l2_leaf_reg"": 30}",378,,ok,,1.6617510263979929,pooled inner price RMSE,True,,,,,expanding,
+H11_CatBoost_rel_replaces_ohlc,5,0,"{""depth"": 2, ""l2_leaf_reg"": 10}",378,,ok,,1.8763647609535492,pooled inner price RMSE,False,,,,,expanding,
+H11_CatBoost_rel_replaces_ohlc,5,1,"{""depth"": 2, ""l2_leaf_reg"": 30}",378,,ok,,1.8668287369515626,pooled inner price RMSE,True,,,,,expanding,
+H11_CatBoost_rel_replaces_ohlc,5,2,"{""depth"": 3, ""l2_leaf_reg"": 10}",378,,ok,,1.8908487909440315,pooled inner price RMSE,False,,,,,expanding,
+H11_CatBoost_rel_replaces_ohlc,5,3,"{""depth"": 3, ""l2_leaf_reg"": 30}",378,,ok,,1.8687283845036673,pooled inner price RMSE,False,,,,,expanding,
+H11_CatBoost_rel_replaces_ohlc,6,0,"{""depth"": 2, ""l2_leaf_reg"": 10}",378,,ok,,2.0773043437058747,pooled inner price RMSE,False,,,,,expanding,
+H11_CatBoost_rel_replaces_ohlc,6,1,"{""depth"": 2, ""l2_leaf_reg"": 30}",378,,ok,,2.0625698088238438,pooled inner price RMSE,True,,,,,expanding,
+H11_CatBoost_rel_replaces_ohlc,6,2,"{""depth"": 3, ""l2_leaf_reg"": 10}",378,,ok,,2.098615780278886,pooled inner price RMSE,False,,,,,expanding,
+H11_CatBoost_rel_replaces_ohlc,6,3,"{""depth"": 3, ""l2_leaf_reg"": 30}",378,,ok,,2.0637323095714395,pooled inner price RMSE,False,,,,,expanding,
+H11_CatBoost_rel_replaces_ohlc,7,0,"{""depth"": 2, ""l2_leaf_reg"": 10}",378,,ok,,2.2565059189129926,pooled inner price RMSE,False,,,,,expanding,
+H11_CatBoost_rel_replaces_ohlc,7,1,"{""depth"": 2, ""l2_leaf_reg"": 30}",378,,ok,,2.24318250998286,pooled inner price RMSE,True,,,,,expanding,
+H11_CatBoost_rel_replaces_ohlc,7,2,"{""depth"": 3, ""l2_leaf_reg"": 10}",378,,ok,,2.268973530561977,pooled inner price RMSE,False,,,,,expanding,
+H11_CatBoost_rel_replaces_ohlc,7,3,"{""depth"": 3, ""l2_leaf_reg"": 30}",378,,ok,,2.2446584328200827,pooled inner price RMSE,False,,,,,expanding,
+H10_Ridge_level,1,0,"{""alpha"": 0.01}",378,,ok,,1.1786653136031309,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,1,1,"{""alpha"": 0.1}",378,,ok,,1.1776862505335943,pooled inner price RMSE (fixed fit per fold),True,,,,,expanding,
+H10_Ridge_level,1,2,"{""alpha"": 1}",378,,ok,,1.1811988533437814,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,1,3,"{""alpha"": 10}",378,,ok,,1.2903055823927567,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,1,4,"{""alpha"": 100}",378,,ok,,2.408753655687319,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,1,5,"{""alpha"": 1000}",378,,ok,,8.263823404550235,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,1,6,"{""alpha"": 10000}",378,,ok,,16.455161911594832,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,1,7,"{""alpha"": 100000}",378,,ok,,18.73277012242719,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,2,0,"{""alpha"": 0.01}",378,,ok,,2.0681878634004787,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,2,1,"{""alpha"": 0.1}",378,,ok,,2.066366286280828,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,2,2,"{""alpha"": 1}",378,,ok,,2.060105797083826,pooled inner price RMSE (fixed fit per fold),True,,,,,expanding,
+H10_Ridge_level,2,3,"{""alpha"": 10}",378,,ok,,2.1321447547940697,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,2,4,"{""alpha"": 100}",378,,ok,,3.0884793116672515,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,2,5,"{""alpha"": 1000}",378,,ok,,8.519298664279503,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,2,6,"{""alpha"": 10000}",378,,ok,,16.53797248787598,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,2,7,"{""alpha"": 100000}",378,,ok,,18.79866410603014,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,3,0,"{""alpha"": 0.01}",378,,ok,,2.846851422208968,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,3,1,"{""alpha"": 0.1}",378,,ok,,2.8440874195704167,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,3,2,"{""alpha"": 1}",378,,ok,,2.8262756976477847,pooled inner price RMSE (fixed fit per fold),True,,,,,expanding,
+H10_Ridge_level,3,3,"{""alpha"": 10}",378,,ok,,2.8503433466545585,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,3,4,"{""alpha"": 100}",378,,ok,,3.7096640126770946,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,3,5,"{""alpha"": 1000}",378,,ok,,8.838019064096793,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,3,6,"{""alpha"": 10000}",378,,ok,,16.64358774090592,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,3,7,"{""alpha"": 100000}",378,,ok,,18.86795580906971,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,4,0,"{""alpha"": 0.01}",378,,ok,,3.6575526815968167,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,4,1,"{""alpha"": 0.1}",378,,ok,,3.6529212554109964,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,4,2,"{""alpha"": 1}",378,,ok,,3.6203149817631086,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,4,3,"{""alpha"": 10}",378,,ok,,3.6094043499822117,pooled inner price RMSE (fixed fit per fold),True,,,,,expanding,
+H10_Ridge_level,4,4,"{""alpha"": 100}",378,,ok,,4.4074062317049405,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,4,5,"{""alpha"": 1000}",378,,ok,,9.196602329763579,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,4,6,"{""alpha"": 10000}",378,,ok,,16.753788727011447,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,4,7,"{""alpha"": 100000}",378,,ok,,18.93762789902745,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,5,0,"{""alpha"": 0.01}",378,,ok,,4.356340712688148,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,5,1,"{""alpha"": 0.1}",378,,ok,,4.352234386320908,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,5,2,"{""alpha"": 1}",378,,ok,,4.323234355854748,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,5,3,"{""alpha"": 10}",378,,ok,,4.30939210036913,pooled inner price RMSE (fixed fit per fold),True,,,,,expanding,
+H10_Ridge_level,5,4,"{""alpha"": 100}",378,,ok,,5.0503492780618116,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,5,5,"{""alpha"": 1000}",378,,ok,,9.528195434420494,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,5,6,"{""alpha"": 10000}",378,,ok,,16.849177847853426,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,5,7,"{""alpha"": 100000}",378,,ok,,18.99418577385958,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,6,0,"{""alpha"": 0.01}",378,,ok,,4.9580573218573685,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,6,1,"{""alpha"": 0.1}",378,,ok,,4.953241823500099,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,6,2,"{""alpha"": 1}",378,,ok,,4.917790441537019,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,6,3,"{""alpha"": 10}",378,,ok,,4.898084794796999,pooled inner price RMSE (fixed fit per fold),True,,,,,expanding,
+H10_Ridge_level,6,4,"{""alpha"": 100}",378,,ok,,5.642510791809251,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,6,5,"{""alpha"": 1000}",378,,ok,,9.841131215552947,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,6,6,"{""alpha"": 10000}",378,,ok,,16.937935094059863,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,6,7,"{""alpha"": 100000}",378,,ok,,19.04898720000366,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,7,0,"{""alpha"": 0.01}",378,,ok,,5.623664725488437,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,7,1,"{""alpha"": 0.1}",378,,ok,,5.620355328620014,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,7,2,"{""alpha"": 1}",378,,ok,,5.599942997156919,pooled inner price RMSE (fixed fit per fold),True,,,,,expanding,
+H10_Ridge_level,7,3,"{""alpha"": 10}",378,,ok,,5.650492004600936,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,7,4,"{""alpha"": 100}",378,,ok,,6.391745385791281,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,7,5,"{""alpha"": 1000}",378,,ok,,10.23220862593699,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,7,6,"{""alpha"": 10000}",378,,ok,,17.045289769873577,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+H10_Ridge_level,7,7,"{""alpha"": 100000}",378,,ok,,19.11044713565308,pooled inner price RMSE (fixed fit per fold),False,,,,,expanding,
+CatBoost_Core_v2,1,0,"{""depth"": 2, ""l2_leaf_reg"": 10}",378,0.7975391728366171,,,,,False,,,,,,0.6360687322089155
+CatBoost_Core_v2,1,1,"{""depth"": 2, ""l2_leaf_reg"": 30}",378,0.7955320851241164,,,,,True,,,,,,0.6328712984619245
+CatBoost_Core_v2,1,2,"{""depth"": 3, ""l2_leaf_reg"": 10}",378,0.8017194310862895,,,,,False,,,,,,0.6427540461813237
+CatBoost_Core_v2,1,3,"{""depth"": 3, ""l2_leaf_reg"": 30}",378,0.7957698737677075,,,,,False,,,,,,0.633249691996273
+CatBoost_Core_v2,2,0,"{""depth"": 2, ""l2_leaf_reg"": 10}",378,1.1398669413382145,,,,,False,,,,,,1.2992966439557367
+CatBoost_Core_v2,2,1,"{""depth"": 2, ""l2_leaf_reg"": 30}",378,1.1400968827820352,,,,,False,,,,,,1.2998209021293137
+CatBoost_Core_v2,2,2,"{""depth"": 3, ""l2_leaf_reg"": 10}",378,1.1434978692632631,,,,,False,,,,,,1.3075873770096227
+CatBoost_Core_v2,2,3,"{""depth"": 3, ""l2_leaf_reg"": 30}",378,1.1379654291754004,,,,,True,,,,,,1.2949653179983531
+CatBoost_Core_v2,3,0,"{""depth"": 2, ""l2_leaf_reg"": 10}",378,1.426547334426578,,,,,False,,,,,,2.0350372973595747
+CatBoost_Core_v2,3,1,"{""depth"": 2, ""l2_leaf_reg"": 30}",378,1.4154494203316907,,,,,True,,,,,,2.0034970615173195
+CatBoost_Core_v2,3,2,"{""depth"": 3, ""l2_leaf_reg"": 10}",378,1.4275492708595867,,,,,False,,,,,,2.037896920731738
+CatBoost_Core_v2,3,3,"{""depth"": 3, ""l2_leaf_reg"": 30}",378,1.4177624225153416,,,,,False,,,,,,2.01005028669657
+CatBoost_Core_v2,4,0,"{""depth"": 2, ""l2_leaf_reg"": 10}",378,1.6904154499186477,,,,,False,,,,,,2.8575043933236643
+CatBoost_Core_v2,4,1,"{""depth"": 2, ""l2_leaf_reg"": 30}",378,1.6789357908253988,,,,,False,,,,,,2.8188253897145072
+CatBoost_Core_v2,4,2,"{""depth"": 3, ""l2_leaf_reg"": 10}",378,1.7001530621479166,,,,,False,,,,,,2.890520434730938
+CatBoost_Core_v2,4,3,"{""depth"": 3, ""l2_leaf_reg"": 30}",378,1.6726408736311908,,,,,True,,,,,,2.7977274921417132
+CatBoost_Core_v2,5,0,"{""depth"": 2, ""l2_leaf_reg"": 10}",378,1.907692177397811,,,,,False,,,,,,3.639289443704801
+CatBoost_Core_v2,5,1,"{""depth"": 2, ""l2_leaf_reg"": 30}",378,1.8907937353406108,,,,,True,,,,,,3.5751009496033
+CatBoost_Core_v2,5,2,"{""depth"": 3, ""l2_leaf_reg"": 10}",378,1.9142608364407332,,,,,False,,,,,,3.6643945499307757
+CatBoost_Core_v2,5,3,"{""depth"": 3, ""l2_leaf_reg"": 30}",378,1.8933191799957754,,,,,False,,,,,,3.5846575173398754
+CatBoost_Core_v2,6,0,"{""depth"": 2, ""l2_leaf_reg"": 10}",378,2.1136004552222083,,,,,False,,,,,,4.4673068843155255
+CatBoost_Core_v2,6,1,"{""depth"": 2, ""l2_leaf_reg"": 30}",378,2.099951957677838,,,,,True,,,,,,4.409798224554984
+CatBoost_Core_v2,6,2,"{""depth"": 3, ""l2_leaf_reg"": 10}",378,2.1345644361066696,,,,,False,,,,,,4.556365331891385
+CatBoost_Core_v2,6,3,"{""depth"": 3, ""l2_leaf_reg"": 30}",378,2.104511319162875,,,,,False,,,,,,4.428967892484663
+CatBoost_Core_v2,7,0,"{""depth"": 2, ""l2_leaf_reg"": 10}",378,2.328407713935667,,,,,False,,,,,,5.4214824823151195
+CatBoost_Core_v2,7,1,"{""depth"": 2, ""l2_leaf_reg"": 30}",378,2.304645548700399,,,,,True,,,,,,5.311391105144564
+CatBoost_Core_v2,7,2,"{""depth"": 3, ""l2_leaf_reg"": 10}",378,2.381429427557029,,,,,False,,,,,,5.671206118434599
+CatBoost_Core_v2,7,3,"{""depth"": 3, ""l2_leaf_reg"": 30}",378,2.324230312557212,,,,,False,,,,,,5.402046545809797
+XGBoost_Core_v2,1,0,"{""max_depth"": 2, ""reg_lambda"": 10}",378,0.804594745634567,,,,,False,,,,,,0.6473727047027535
+XGBoost_Core_v2,1,1,"{""max_depth"": 2, ""reg_lambda"": 30}",378,0.7969384946040386,,,,,True,,,,,,0.6351109641817514
+XGBoost_Core_v2,1,2,"{""max_depth"": 3, ""reg_lambda"": 10}",378,0.8105685280237295,,,,,False,,,,,,0.6570213386225555
+XGBoost_Core_v2,1,3,"{""max_depth"": 3, ""reg_lambda"": 30}",378,0.803314182966601,,,,,False,,,,,,0.6453136765552976
+XGBoost_Core_v2,2,0,"{""max_depth"": 2, ""reg_lambda"": 10}",378,1.164344366229441,,,,,False,,,,,,1.3556978031702385
+XGBoost_Core_v2,2,1,"{""max_depth"": 2, ""reg_lambda"": 30}",378,1.1470962756499221,,,,,True,,,,,,1.315829865609922
+XGBoost_Core_v2,2,2,"{""max_depth"": 3, ""reg_lambda"": 10}",378,1.1892166676776441,,,,,False,,,,,,1.41423628268232
+XGBoost_Core_v2,2,3,"{""max_depth"": 3, ""reg_lambda"": 30}",378,1.1753648681796256,,,,,False,,,,,,1.3814825733509088
+XGBoost_Core_v2,3,0,"{""max_depth"": 2, ""reg_lambda"": 10}",378,1.4341163507007193,,,,,False,,,,,,2.0566897073471484
+XGBoost_Core_v2,3,1,"{""max_depth"": 2, ""reg_lambda"": 30}",378,1.4217130485408564,,,,,True,,,,,,2.0212679923913357
+XGBoost_Core_v2,3,2,"{""max_depth"": 3, ""reg_lambda"": 10}",378,1.4803333274506365,,,,,False,,,,,,2.1913867603610737
+XGBoost_Core_v2,3,3,"{""max_depth"": 3, ""reg_lambda"": 30}",378,1.4677990809074215,,,,,False,,,,,,2.1544341419126716
+XGBoost_Core_v2,4,0,"{""max_depth"": 2, ""reg_lambda"": 10}",378,1.695900384411922,,,,,False,,,,,,2.876078113848505
+XGBoost_Core_v2,4,1,"{""max_depth"": 2, ""reg_lambda"": 30}",378,1.681468601318794,,,,,True,,,,,,2.827336657220982
+XGBoost_Core_v2,4,2,"{""max_depth"": 3, ""reg_lambda"": 10}",378,1.751565161830318,,,,,False,,,,,,3.0679805161376685
+XGBoost_Core_v2,4,3,"{""max_depth"": 3, ""reg_lambda"": 30}",378,1.7322596003425108,,,,,False,,,,,,3.0007233229787955
+XGBoost_Core_v2,5,0,"{""max_depth"": 2, ""reg_lambda"": 10}",378,1.9042340511041085,,,,,False,,,,,,3.626107321384364
+XGBoost_Core_v2,5,1,"{""max_depth"": 2, ""reg_lambda"": 30}",378,1.8856190748319879,,,,,True,,,,,,3.555559295370242
+XGBoost_Core_v2,5,2,"{""max_depth"": 3, ""reg_lambda"": 10}",378,1.988510051453773,,,,,False,,,,,,3.954172224732687
+XGBoost_Core_v2,5,3,"{""max_depth"": 3, ""reg_lambda"": 30}",378,1.94764263554782,,,,,False,,,,,,3.793311835803659
+XGBoost_Core_v2,6,0,"{""max_depth"": 2, ""reg_lambda"": 10}",378,2.152875518797466,,,,,False,,,,,,4.634872999437459
+XGBoost_Core_v2,6,1,"{""max_depth"": 2, ""reg_lambda"": 30}",378,2.0995124166740484,,,,,True,,,,,,4.4079523877685025
+XGBoost_Core_v2,6,2,"{""max_depth"": 3, ""reg_lambda"": 10}",378,2.2673008325665758,,,,,False,,,,,,5.140653065357087
+XGBoost_Core_v2,6,3,"{""max_depth"": 3, ""reg_lambda"": 30}",378,2.1610948530042418,,,,,False,,,,,,4.670330963681426
+XGBoost_Core_v2,7,0,"{""max_depth"": 2, ""reg_lambda"": 10}",378,2.4100423211803257,,,,,False,,,,,,5.808303989880252
+XGBoost_Core_v2,7,1,"{""max_depth"": 2, ""reg_lambda"": 30}",378,2.3422641362847765,,,,,True,,,,,,5.486201284125869
+XGBoost_Core_v2,7,2,"{""max_depth"": 3, ""reg_lambda"": 10}",378,2.4627060248730817,,,,,False,,,,,,6.064920964946176
+XGBoost_Core_v2,7,3,"{""max_depth"": 3, ""reg_lambda"": 30}",378,2.3835516804709664,,,,,False,,,,,,5.681318613475969
