@@ -1,0 +1,517 @@
+{
+  "created_before_tuning_and_validation": true,
+  "seed": 240112,
+  "horizons": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "validation_targets": [
+    "2025-01-01",
+    "2025-12-31"
+  ],
+  "inner_origin_windows": [
+    [
+      "2023-01-01",
+      "2023-06-30"
+    ],
+    [
+      "2023-07-01",
+      "2023-12-31"
+    ],
+    [
+      "2024-01-01",
+      "2024-06-30"
+    ]
+  ],
+  "calibration_history_target_start": "2023-07-01",
+  "conformal_tuning_block": [
+    "2024-07-01",
+    "2024-12-31"
+  ],
+  "conformal_windows": [
+    250,
+    120,
+    60
+  ],
+  "min_calibration_errors": 30,
+  "min_train_pairs": 100,
+  "garch_simulations": 2000,
+  "lgbm_fixed": {
+    "objective": "quantile",
+    "min_child_samples": 20,
+    "reg_lambda": 10.0,
+    "subsample": 1.0,
+    "subsample_freq": 0,
+    "colsample_bytree": 1.0,
+    "random_state": 240112,
+    "n_jobs": 1,
+    "deterministic": true,
+    "force_col_wise": true,
+    "verbose": -1
+  },
+  "catboost_fixed": {
+    "iterations": 100,
+    "learning_rate": 0.03,
+    "loss_function": "RMSE",
+    "random_seed": 240112,
+    "thread_count": 1,
+    "allow_writing_files": false,
+    "bootstrap_type": "No",
+    "verbose": false
+  },
+  "old_models": [
+    "RW",
+    "AR1",
+    "RW_Drift",
+    "Ridge_v1_R1",
+    "Ridge_v1_R2",
+    "Ridge_v2_Price_preq",
+    "Ridge_v2_Core_preq",
+    "Ridge_v2_Core_frozen",
+    "CatBoost_Core_v2",
+    "XGBoost_Core_v2"
+  ],
+  "new_models": [
+    "ARIMA_BIC",
+    "UC_Kalman",
+    "RW_GARCH",
+    "LGBM_Quantile",
+    "AR1_tuned",
+    "RW_Drift_tuned",
+    "CatBoost_tuned",
+    "H10_CatBoost_level",
+    "H10_Ridge_level",
+    "CatBoost_rel_exploratory_plus",
+    "CatBoost_rel_exploratory_replace_ohlc",
+    "Combo_RW_CatBoost_Ridge"
+  ],
+  "grids": {
+    "AR1_tuned": {
+      "kind": "ar1",
+      "candidates": [
+        {
+          "window": null
+        },
+        {
+          "window": 500
+        },
+        {
+          "window": 250
+        }
+      ]
+    },
+    "RW_Drift_tuned": {
+      "kind": "drift",
+      "candidates": [
+        {
+          "window": null
+        },
+        {
+          "window": 250
+        },
+        {
+          "window": 120
+        },
+        {
+          "window": 60
+        }
+      ]
+    },
+    "ARIMA_BIC": {
+      "kind": "arima",
+      "candidates": [
+        {
+          "window": null
+        },
+        {
+          "window": 500
+        },
+        {
+          "window": 250
+        }
+      ]
+    },
+    "UC_Kalman": {
+      "kind": "uc",
+      "candidates": [
+        {
+          "level": "llevel",
+          "window": null
+        },
+        {
+          "level": "llevel",
+          "window": 500
+        },
+        {
+          "level": "llevel",
+          "window": 250
+        },
+        {
+          "level": "lltrend",
+          "window": null
+        },
+        {
+          "level": "lltrend",
+          "window": 500
+        },
+        {
+          "level": "lltrend",
+          "window": 250
+        }
+      ]
+    },
+    "RW_GARCH": {
+      "kind": "garch",
+      "criterion": "interval_score",
+      "candidates": [
+        {
+          "vol": "GARCH",
+          "dist": "normal"
+        },
+        {
+          "vol": "GARCH",
+          "dist": "t"
+        },
+        {
+          "vol": "GJR",
+          "dist": "normal"
+        },
+        {
+          "vol": "GJR",
+          "dist": "t"
+        }
+      ]
+    },
+    "LGBM_Quantile": {
+      "kind": "lgbm_quantile",
+      "tune_kind": "lgbm_median",
+      "target": "delta",
+      "features": "core_v2",
+      "candidates": [
+        {
+          "params": {
+            "max_depth": 2,
+            "learning_rate": 0.05,
+            "n_estimators": 100
+          }
+        },
+        {
+          "params": {
+            "max_depth": 2,
+            "learning_rate": 0.02,
+            "n_estimators": 250
+          }
+        },
+        {
+          "params": {
+            "max_depth": 3,
+            "learning_rate": 0.05,
+            "n_estimators": 100
+          }
+        },
+        {
+          "params": {
+            "max_depth": 3,
+            "learning_rate": 0.02,
+            "n_estimators": 250
+          }
+        }
+      ]
+    },
+    "CatBoost_tuned": {
+      "kind": "catboost",
+      "target": "delta",
+      "features": "core_v2",
+      "candidates": [
+        {
+          "params": {
+            "depth": 2,
+            "l2_leaf_reg": 30
+          },
+          "window": null
+        },
+        {
+          "params": {
+            "depth": 2,
+            "l2_leaf_reg": 30
+          },
+          "window": 500
+        },
+        {
+          "params": {
+            "depth": 2,
+            "l2_leaf_reg": 30
+          },
+          "window": 250
+        },
+        {
+          "params": {
+            "depth": 3,
+            "l2_leaf_reg": 30
+          },
+          "window": null
+        },
+        {
+          "params": {
+            "depth": 3,
+            "l2_leaf_reg": 30
+          },
+          "window": 500
+        },
+        {
+          "params": {
+            "depth": 3,
+            "l2_leaf_reg": 30
+          },
+          "window": 250
+        }
+      ]
+    },
+    "CatBoost_rel_exploratory_plus": {
+      "kind": "catboost",
+      "target": "delta",
+      "features": "core_v2_plus_rel",
+      "candidates": [
+        {
+          "params": {
+            "depth": 2,
+            "l2_leaf_reg": 10
+          }
+        },
+        {
+          "params": {
+            "depth": 2,
+            "l2_leaf_reg": 30
+          }
+        },
+        {
+          "params": {
+            "depth": 3,
+            "l2_leaf_reg": 10
+          }
+        },
+        {
+          "params": {
+            "depth": 3,
+            "l2_leaf_reg": 30
+          }
+        }
+      ]
+    },
+    "CatBoost_rel_exploratory_replace_ohlc": {
+      "kind": "catboost",
+      "target": "delta",
+      "features": "rel_replaces_ohlc",
+      "candidates": [
+        {
+          "params": {
+            "depth": 2,
+            "l2_leaf_reg": 10
+          }
+        },
+        {
+          "params": {
+            "depth": 2,
+            "l2_leaf_reg": 30
+          }
+        },
+        {
+          "params": {
+            "depth": 3,
+            "l2_leaf_reg": 10
+          }
+        },
+        {
+          "params": {
+            "depth": 3,
+            "l2_leaf_reg": 30
+          }
+        }
+      ]
+    },
+    "H10_CatBoost_level": {
+      "kind": "catboost",
+      "target": "level",
+      "features": "core_v2",
+      "hyperparameters": "selected CatBoost_Core_v2 parameters per h (no new tuning)"
+    },
+    "H10_Ridge_level": {
+      "kind": "ridge",
+      "target": "level",
+      "features": "core_v2",
+      "regime": "prequential",
+      "alpha_grid": [
+        0.01,
+        0.1,
+        1,
+        10,
+        100,
+        1000,
+        10000,
+        100000
+      ],
+      "selection": "project Ridge procedure: fixed fit at each inner fold start"
+    },
+    "Combo_RW_CatBoost_Ridge": {
+      "kind": "combination",
+      "members": [
+        "RW",
+        "CatBoost_Core_v2",
+        "Ridge_v2_Core_preq"
+      ],
+      "weights": "equal, fixed in advance"
+    }
+  },
+  "model_interval_sources": {
+    "ARIMA_BIC": "model",
+    "UC_Kalman": "model",
+    "RW_GARCH": "model",
+    "LGBM_Quantile": "model_quantiles"
+  },
+  "conformal_models": [
+    "RW",
+    "AR1",
+    "RW_Drift",
+    "Ridge_v1_R1",
+    "Ridge_v1_R2",
+    "Ridge_v2_Price_preq",
+    "Ridge_v2_Core_preq",
+    "Ridge_v2_Core_frozen",
+    "CatBoost_Core_v2",
+    "XGBoost_Core_v2",
+    "ARIMA_BIC",
+    "UC_Kalman",
+    "LGBM_Quantile",
+    "AR1_tuned",
+    "RW_Drift_tuned",
+    "CatBoost_tuned",
+    "H10_CatBoost_level",
+    "H10_Ridge_level",
+    "CatBoost_rel_exploratory_plus",
+    "CatBoost_rel_exploratory_replace_ohlc",
+    "Combo_RW_CatBoost_Ridge"
+  ],
+  "selection_rule": "pooled inner price RMSE; ties -> simpler (earlier) candidate; GARCH: mean inner interval score",
+  "dm_primary": {
+    "pairs": [
+      [
+        "AR1",
+        "RW"
+      ],
+      [
+        "RW_Drift",
+        "RW"
+      ],
+      [
+        "Ridge_v1_R1",
+        "RW"
+      ],
+      [
+        "Ridge_v1_R2",
+        "RW"
+      ],
+      [
+        "Ridge_v2_Price_preq",
+        "RW"
+      ],
+      [
+        "Ridge_v2_Core_preq",
+        "RW"
+      ],
+      [
+        "Ridge_v2_Core_frozen",
+        "RW"
+      ],
+      [
+        "CatBoost_Core_v2",
+        "RW"
+      ],
+      [
+        "XGBoost_Core_v2",
+        "RW"
+      ],
+      [
+        "ARIMA_BIC",
+        "RW"
+      ],
+      [
+        "UC_Kalman",
+        "RW"
+      ],
+      [
+        "LGBM_Quantile",
+        "RW"
+      ],
+      [
+        "AR1_tuned",
+        "RW"
+      ],
+      [
+        "RW_Drift_tuned",
+        "RW"
+      ],
+      [
+        "CatBoost_tuned",
+        "RW"
+      ],
+      [
+        "H10_CatBoost_level",
+        "RW"
+      ],
+      [
+        "H10_Ridge_level",
+        "RW"
+      ],
+      [
+        "CatBoost_rel_exploratory_plus",
+        "RW"
+      ],
+      [
+        "CatBoost_rel_exploratory_replace_ohlc",
+        "RW"
+      ],
+      [
+        "Combo_RW_CatBoost_Ridge",
+        "RW"
+      ]
+    ],
+    "horizons": 7,
+    "size": 140,
+    "adjustment": "Holm jointly"
+  },
+  "dm_secondary": {
+    "pairs": [
+      [
+        "H10_CatBoost_level",
+        "CatBoost_Core_v2"
+      ],
+      [
+        "H10_Ridge_level",
+        "Ridge_v2_Core_preq"
+      ],
+      [
+        "CatBoost_rel_exploratory_plus",
+        "CatBoost_Core_v2"
+      ],
+      [
+        "CatBoost_rel_exploratory_replace_ohlc",
+        "CatBoost_Core_v2"
+      ]
+    ],
+    "horizons": 7,
+    "size": 28,
+    "adjustment": "Holm jointly"
+  },
+  "hac": {
+    "base_lag": 20,
+    "rule": "max(20, h-1)",
+    "kernel": "Bartlett",
+    "correction": "n/(n-1)"
+  },
+  "final_test_access": false
+}

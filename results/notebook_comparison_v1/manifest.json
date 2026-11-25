@@ -1,0 +1,518 @@
+{
+  "experiment": "notebook_comparison_v1",
+  "git": {
+    "sha": "bd43720148e04bf399029cffca478a1af126d380",
+    "branch": "feature/notebook-model-comparison",
+    "status_porcelain": [
+      "M benchmarks/compare.py",
+      " M benchmarks/new_models.py",
+      " M notebooks/model_comparison_2025.ipynb",
+      " M reports/benchmark_summary.md",
+      " M reports/notebook_comparison_v1.md",
+      " M results/benchmark_calendar_v2/comparison.json",
+      " M results/benchmark_calendar_v2/metrics_comparison.csv",
+      " M results/benchmark_calendar_v2/metrics_validation.csv",
+      " M results/benchmark_calendar_v2/predictions_ar1.parquet",
+      " M results/benchmark_calendar_v2/predictions_rw.parquet",
+      " M results/benchmark_calendar_v2/run_manifest.json",
+      " M results/benchmark_calendar_v2/scored_predictions.parquet",
+      " M results/notebook_comparison_v1/conformal_window_tuning.csv",
+      " M results/notebook_comparison_v1/design.json",
+      " M results/notebook_comparison_v1/dm_tests.csv",
+      " M results/notebook_comparison_v1/figures/all_models_h1.png",
+      " M results/notebook_comparison_v1/figures/all_models_h2.png",
+      " M results/notebook_comparison_v1/figures/all_models_h3.png",
+      " M results/notebook_comparison_v1/figures/all_models_h4.png",
+      " M results/notebook_comparison_v1/figures/all_models_h5.png",
+      " M results/notebook_comparison_v1/figures/all_models_h6.png",
+      " M results/notebook_comparison_v1/figures/all_models_h7.png",
+      " D results/notebook_comparison_v1/figures/model_H11_CatBoost_core_plus_rel_h1.png",
+      " D results/notebook_comparison_v1/figures/model_H11_CatBoost_core_plus_rel_h1_3_7.png",
+      " D results/notebook_comparison_v1/figures/model_H11_CatBoost_core_plus_rel_h2.png",
+      " D results/notebook_comparison_v1/figures/model_H11_CatBoost_core_plus_rel_h3.png",
+      " D results/notebook_comparison_v1/figures/model_H11_CatBoost_core_plus_rel_h4.png",
+      " D results/notebook_comparison_v1/figures/model_H11_CatBoost_core_plus_rel_h5.png",
+      " D results/notebook_comparison_v1/figures/model_H11_CatBoost_core_plus_rel_h6.png",
+      " D results/notebook_comparison_v1/figures/model_H11_CatBoost_core_plus_rel_h7.png",
+      " D results/notebook_comparison_v1/figures/model_H11_CatBoost_rel_replaces_ohlc_h1.png",
+      " D results/notebook_comparison_v1/figures/model_H11_CatBoost_rel_replaces_ohlc_h1_3_7.png",
+      " D results/notebook_comparison_v1/figures/model_H11_CatBoost_rel_replaces_ohlc_h2.png",
+      " D results/notebook_comparison_v1/figures/model_H11_CatBoost_rel_replaces_ohlc_h3.png",
+      " D results/notebook_comparison_v1/figures/model_H11_CatBoost_rel_replaces_ohlc_h4.png",
+      " D results/notebook_comparison_v1/figures/model_H11_CatBoost_rel_replaces_ohlc_h5.png",
+      " D results/notebook_comparison_v1/figures/model_H11_CatBoost_rel_replaces_ohlc_h6.png",
+      " D results/notebook_comparison_v1/figures/model_H11_CatBoost_rel_replaces_ohlc_h7.png",
+      " M results/notebook_comparison_v1/figures/rmse_ratio_vs_rw_bars.png",
+      " M results/notebook_comparison_v1/intervals_validation.csv",
+      " M results/notebook_comparison_v1/metrics_interval.csv",
+      " M results/notebook_comparison_v1/metrics_point.csv",
+      " M results/notebook_comparison_v1/predictions_prevalidation.parquet",
+      " M results/notebook_comparison_v1/predictions_validation.csv",
+      " M results/notebook_comparison_v1/scored_validation.csv",
+      " M results/notebook_comparison_v1/selections.json",
+      " M results/notebook_comparison_v1/tuning_all_candidates.csv",
+      "?? C_Quant_modeling.ipynb",
+      "?? results/notebook_comparison_v1/figures/model_CatBoost_rel_exploratory_plus_h1.png",
+      "?? results/notebook_comparison_v1/figures/model_CatBoost_rel_exploratory_plus_h1_3_7.png",
+      "?? results/notebook_comparison_v1/figures/model_CatBoost_rel_exploratory_plus_h2.png",
+      "?? results/notebook_comparison_v1/figures/model_CatBoost_rel_exploratory_plus_h3.png",
+      "?? results/notebook_comparison_v1/figures/model_CatBoost_rel_exploratory_plus_h4.png",
+      "?? results/notebook_comparison_v1/figures/model_CatBoost_rel_exploratory_plus_h5.png",
+      "?? results/notebook_comparison_v1/figures/model_CatBoost_rel_exploratory_plus_h6.png",
+      "?? results/notebook_comparison_v1/figures/model_CatBoost_rel_exploratory_plus_h7.png",
+      "?? results/notebook_comparison_v1/figures/model_CatBoost_rel_exploratory_replace_ohlc_h1.png",
+      "?? results/notebook_comparison_v1/figures/model_CatBoost_rel_exploratory_replace_ohlc_h1_3_7.png",
+      "?? results/notebook_comparison_v1/figures/model_CatBoost_rel_exploratory_replace_ohlc_h2.png",
+      "?? results/notebook_comparison_v1/figures/model_CatBoost_rel_exploratory_replace_ohlc_h3.png",
+      "?? results/notebook_comparison_v1/figures/model_CatBoost_rel_exploratory_replace_ohlc_h4.png",
+      "?? results/notebook_comparison_v1/figures/model_CatBoost_rel_exploratory_replace_ohlc_h5.png",
+      "?? results/notebook_comparison_v1/figures/model_CatBoost_rel_exploratory_replace_ohlc_h6.png",
+      "?? results/notebook_comparison_v1/figures/model_CatBoost_rel_exploratory_replace_ohlc_h7.png"
+    ]
+  },
+  "packages": {
+    "python": "3.11.13",
+    "platform": "macOS-26.0.1-arm64-arm-64bit",
+    "numpy": "2.4.6",
+    "pandas": "2.3.3",
+    "scipy": "1.17.1",
+    "statsmodels": "0.15.0",
+    "arch": "9.0.0",
+    "lightgbm": "4.7.0",
+    "catboost": "1.2.10",
+    "xgboost": "3.2.0",
+    "scikit-learn": "1.9.1",
+    "matplotlib": "3.11.2",
+    "pyarrow": "23.0.1",
+    "nbconvert": "7.17.2"
+  },
+  "seed": 240112,
+  "n_jobs": 8,
+  "input_sha256": {
+    "data/processed/model_dataset_usdrubf_all_features_v2.csv": "da5b582e622ce5d3efb6fb619c0b9258dc15fc7d18b6d76860ce5fb021107103",
+    "data/processed/features_daily_v1.csv": "95ff7cc95f3cbd08db994bbc6e098b12d06019cfc5e8b593fd647cd9606df792",
+    "data/processed/features_daily_v1_metadata.csv": "3e398df07ee63852b43752082364a03082b81997bab217c6740b5c2eae24c92f",
+    "data/processed/USDRUBF_baseline_2026-11-18.csv": "0f87d1e573ba85f859a27628e25f1fbc07c4d585f9ab7ba3ec4e05cd76ad9c05",
+    "data/processed/usdrubf_trading_days.csv": "deb6c6ffecfb267e31f7bb8d50a2d32684f67f061e70fbd285fede5032ea86f5",
+    "configs/benchmark_config.yaml": "028bb81a3116c171fe12f72caa52483aea08b72dd4a632e4c62cd66c4c8392fb",
+    "configs/ridge_experiments.json": "9c05a890c3c2e14a23499a59d3e6dec09ff63cf61ba3bf05e65644651b41b2d5",
+    "configs/ridge_experiments_v2.json": "1f92e4d5dcd28f5127b836d81803fad5774d7a667d440618badec3133a9ca09e",
+    "configs/rw_drift_experiment.json": "cc27a11d89c534608ba1ebff254953f33785d1ec98be059eeeb594db2e03fbf9",
+    "configs/catboost_experiment.json": "b2d00cb108805ba5049f3e81feb99149a83bd63547031559390b4be40848e5db",
+    "configs/catboost_core_v2_proposal.json": "cb2f0d839b766fe6d33d73bea0ca042d4aa35a4f62c97c168ea74fa566dcf7a8",
+    "configs/xgboost_core_v2.json": "1ac18f400f43f5337b1677142f07153f9a2447b2f84617ad7837fb48941d0734",
+    "configs/feature_scenarios_v1.json": "5511440a790aa2ac5dc7f8d4d7d5bf2aa477e3397c2af19c8747ba7effa92bc9"
+  },
+  "implementation_sha256_lf": {
+    "benchmarks/new_models.py": "a117521ee6b7f1e4927698be62c1444cdb5245ce106312bce75227e63df21af1",
+    "benchmarks/comparison_plots.py": "21fdde324d6e16681c5c503f3c4a0af15f4cc0f908a1f52762a7a84c44d022fe"
+  },
+  "note_notebook_hash": "the notebook hash is not stored: it changes when outputs are written",
+  "data_cutoff": "2025-12-30",
+  "validation_targets": [
+    "2025-01-01",
+    "2025-12-31"
+  ],
+  "models": [
+    "RW",
+    "AR1",
+    "RW_Drift",
+    "Ridge_v1_R1",
+    "Ridge_v1_R2",
+    "Ridge_v2_Price_preq",
+    "Ridge_v2_Core_preq",
+    "Ridge_v2_Core_frozen",
+    "CatBoost_Core_v2",
+    "XGBoost_Core_v2",
+    "ARIMA_BIC",
+    "UC_Kalman",
+    "RW_GARCH",
+    "LGBM_Quantile",
+    "AR1_tuned",
+    "RW_Drift_tuned",
+    "CatBoost_tuned",
+    "H10_CatBoost_level",
+    "H10_Ridge_level",
+    "CatBoost_rel_exploratory_plus",
+    "CatBoost_rel_exploratory_replace_ohlc",
+    "Combo_RW_CatBoost_Ridge"
+  ],
+  "selections": {
+    "AR1_tuned": {
+      "window": null
+    },
+    "RW_Drift_tuned": {
+      "window": null
+    },
+    "ARIMA_BIC": {
+      "window": null
+    },
+    "UC_Kalman": {
+      "level": "llevel",
+      "window": 250
+    },
+    "RW_GARCH": {
+      "vol": "GARCH",
+      "dist": "normal"
+    },
+    "LGBM_Quantile": {
+      "1": {
+        "params": {
+          "max_depth": 2,
+          "learning_rate": 0.05,
+          "n_estimators": 100
+        }
+      },
+      "2": {
+        "params": {
+          "max_depth": 2,
+          "learning_rate": 0.02,
+          "n_estimators": 250
+        }
+      },
+      "3": {
+        "params": {
+          "max_depth": 2,
+          "learning_rate": 0.02,
+          "n_estimators": 250
+        }
+      },
+      "4": {
+        "params": {
+          "max_depth": 2,
+          "learning_rate": 0.02,
+          "n_estimators": 250
+        }
+      },
+      "5": {
+        "params": {
+          "max_depth": 2,
+          "learning_rate": 0.05,
+          "n_estimators": 100
+        }
+      },
+      "6": {
+        "params": {
+          "max_depth": 2,
+          "learning_rate": 0.02,
+          "n_estimators": 250
+        }
+      },
+      "7": {
+        "params": {
+          "max_depth": 2,
+          "learning_rate": 0.02,
+          "n_estimators": 250
+        }
+      }
+    },
+    "CatBoost_tuned": {
+      "1": {
+        "params": {
+          "depth": 2,
+          "l2_leaf_reg": 30
+        },
+        "window": null
+      },
+      "2": {
+        "params": {
+          "depth": 3,
+          "l2_leaf_reg": 30
+        },
+        "window": null
+      },
+      "3": {
+        "params": {
+          "depth": 2,
+          "l2_leaf_reg": 30
+        },
+        "window": null
+      },
+      "4": {
+        "params": {
+          "depth": 3,
+          "l2_leaf_reg": 30
+        },
+        "window": null
+      },
+      "5": {
+        "params": {
+          "depth": 2,
+          "l2_leaf_reg": 30
+        },
+        "window": null
+      },
+      "6": {
+        "params": {
+          "depth": 2,
+          "l2_leaf_reg": 30
+        },
+        "window": null
+      },
+      "7": {
+        "params": {
+          "depth": 2,
+          "l2_leaf_reg": 30
+        },
+        "window": null
+      }
+    },
+    "CatBoost_rel_exploratory_plus": {
+      "1": {
+        "params": {
+          "depth": 2,
+          "l2_leaf_reg": 30
+        }
+      },
+      "2": {
+        "params": {
+          "depth": 2,
+          "l2_leaf_reg": 30
+        }
+      },
+      "3": {
+        "params": {
+          "depth": 2,
+          "l2_leaf_reg": 30
+        }
+      },
+      "4": {
+        "params": {
+          "depth": 2,
+          "l2_leaf_reg": 30
+        }
+      },
+      "5": {
+        "params": {
+          "depth": 2,
+          "l2_leaf_reg": 30
+        }
+      },
+      "6": {
+        "params": {
+          "depth": 2,
+          "l2_leaf_reg": 30
+        }
+      },
+      "7": {
+        "params": {
+          "depth": 2,
+          "l2_leaf_reg": 30
+        }
+      }
+    },
+    "CatBoost_rel_exploratory_replace_ohlc": {
+      "1": {
+        "params": {
+          "depth": 3,
+          "l2_leaf_reg": 30
+        }
+      },
+      "2": {
+        "params": {
+          "depth": 3,
+          "l2_leaf_reg": 30
+        }
+      },
+      "3": {
+        "params": {
+          "depth": 3,
+          "l2_leaf_reg": 30
+        }
+      },
+      "4": {
+        "params": {
+          "depth": 3,
+          "l2_leaf_reg": 30
+        }
+      },
+      "5": {
+        "params": {
+          "depth": 2,
+          "l2_leaf_reg": 30
+        }
+      },
+      "6": {
+        "params": {
+          "depth": 2,
+          "l2_leaf_reg": 30
+        }
+      },
+      "7": {
+        "params": {
+          "depth": 2,
+          "l2_leaf_reg": 30
+        }
+      }
+    },
+    "H10_Ridge_level": {
+      "1": 0.1,
+      "2": 1,
+      "3": 1,
+      "4": 10,
+      "5": 10,
+      "6": 10,
+      "7": 1
+    },
+    "H10_CatBoost_level": {
+      "1": {
+        "depth": 2,
+        "l2_leaf_reg": 30
+      },
+      "2": {
+        "depth": 3,
+        "l2_leaf_reg": 30
+      },
+      "3": {
+        "depth": 2,
+        "l2_leaf_reg": 30
+      },
+      "4": {
+        "depth": 3,
+        "l2_leaf_reg": 30
+      },
+      "5": {
+        "depth": 2,
+        "l2_leaf_reg": 30
+      },
+      "6": {
+        "depth": 2,
+        "l2_leaf_reg": 30
+      },
+      "7": {
+        "depth": 2,
+        "l2_leaf_reg": 30
+      }
+    },
+    "CatBoost_Core_v2": {
+      "1": {
+        "depth": 2,
+        "l2_leaf_reg": 30
+      },
+      "2": {
+        "depth": 3,
+        "l2_leaf_reg": 30
+      },
+      "3": {
+        "depth": 2,
+        "l2_leaf_reg": 30
+      },
+      "4": {
+        "depth": 3,
+        "l2_leaf_reg": 30
+      },
+      "5": {
+        "depth": 2,
+        "l2_leaf_reg": 30
+      },
+      "6": {
+        "depth": 2,
+        "l2_leaf_reg": 30
+      },
+      "7": {
+        "depth": 2,
+        "l2_leaf_reg": 30
+      }
+    },
+    "XGBoost_Core_v2": {
+      "1": {
+        "max_depth": 2,
+        "reg_lambda": 30
+      },
+      "2": {
+        "max_depth": 2,
+        "reg_lambda": 30
+      },
+      "3": {
+        "max_depth": 2,
+        "reg_lambda": 30
+      },
+      "4": {
+        "max_depth": 2,
+        "reg_lambda": 30
+      },
+      "5": {
+        "max_depth": 2,
+        "reg_lambda": 30
+      },
+      "6": {
+        "max_depth": 2,
+        "reg_lambda": 30
+      },
+      "7": {
+        "max_depth": 2,
+        "reg_lambda": 30
+      }
+    }
+  },
+  "checks": {
+    "panel_max_date_before_2026": true,
+    "ridge_v1_v2_frames_before_2026": true,
+    "price_loader_before_2026": true,
+    "all_origins_before_2026": true,
+    "all_targets_before_2026": true,
+    "training_label_end_before_2026": true,
+    "training_label_end_not_after_origin": true,
+    "tuning_targets_before_validation": true,
+    "metrics_targets_in_2025": true,
+    "interval_targets_in_2025": true,
+    "conformal_uses_matured_errors_only": true,
+    "plotted_actuals_in_2025": true,
+    "common_keys_254_per_h": true,
+    "protected_files_unchanged": true
+  },
+  "reproduction_all_within_1e_6": true,
+  "reproduction_report_tables_match": true,
+  "boosting_selections_match_saved": {
+    "CatBoost_Core_v2": true,
+    "XGBoost_Core_v2": true
+  },
+  "timings_seconds": {
+    "design registered": 0.3,
+    "RW / AR(1) / Drift": 1.6,
+    "Ridge v1 / v2": 11.5,
+    "CatBoost_Core_v2 replay": 82.5,
+    "XGBoost_Core_v2 replay": 119.0,
+    "AR1_tuned tuning": 119.9,
+    "RW_Drift_tuned tuning": 120.7,
+    "ARIMA_BIC tuning": 125.2,
+    "UC_Kalman tuning": 139.4,
+    "RW_GARCH tuning": 144.9,
+    "LGBM_Quantile tuning": 169.4,
+    "CatBoost_tuned tuning": 234.3,
+    "CatBoost_rel_exploratory_plus tuning": 316.8,
+    "CatBoost_rel_exploratory_replace_ohlc tuning": 383.2,
+    "H10 setup": 383.2,
+    "selections sealed": 383.2,
+    "AR1_tuned forecast": 383.9,
+    "RW_Drift_tuned forecast": 384.6,
+    "ARIMA_BIC forecast": 390.5,
+    "UC_Kalman forecast": 393.6,
+    "RW_GARCH forecast": 396.2,
+    "LGBM_Quantile forecast": 452.1,
+    "CatBoost_tuned forecast": 475.1,
+    "CatBoost_rel_exploratory_plus forecast": 503.8,
+    "CatBoost_rel_exploratory_replace_ohlc forecast": 537.6,
+    "H10 forecasts": 562.5,
+    "conformal intervals": 570.2,
+    "metrics and tests": 571.1,
+    "figures 5.1": 593.0,
+    "figures 5.2": 595.6
+  },
+  "final_test_used": false,
+  "pit_status": "conditional EOD / pseudo-PIT; swaprate_current ASSUMED_AVAILABLE",
+  "output_sha256": {
+    "conformal_window_tuning.csv": "dd911f6f88a8f5985a0a1727f456ea236fe5d9da2b86e23a55681afc55dfdd1d",
+    "design.json": "aab8cd7dd710a1079732aeef293b7e39d74edc9576129ea66558649126b0a0f1",
+    "dm_tests.csv": "a85efc611156f41102d9688edb91f055dd3ca281c1d07d5ef82b0627ee9e80cf",
+    "intervals_validation.csv": "b06d66d81b5ae07fbbc25d0221e36a750e2e45eced801160280ed58c1f72431f",
+    "metrics_interval.csv": "aa258a3fdb8c53fd7225023912db0d86f94d7c6a50ced7f34bcae14e48785020",
+    "metrics_point.csv": "81e412f7ef5e527a74009350c36d73ff72499612d96e203fdc4dfac56c0a0a03",
+    "predictions_prevalidation.parquet": "651873d64001211f2b1fffe8843e0933f8042e98e82700d7a67165df895c6cc6",
+    "predictions_validation.csv": "bb1d8c8b3b2d44df66ee28901e4bae8b5573621655eaac28b022e8c210ec954d",
+    "reproduction_check.csv": "c697056b83cfc700615b46b6165db81b888a86fc42e2fd6956bfbf0d1847a433",
+    "scored_validation.csv": "6a9e727fd8f5f3bca4e65adb9c514f5299cbe46011070a63a785d09699db826a",
+    "selections.json": "4f067fb9683776fe348b91e8478b28fb7f13b5aa4a6cacf6a71b4c94e73d9924",
+    "tuning_all_candidates.csv": "9e708a5a763df62f2d20addb78200bf8c81af59d0979697d60cbdecc4fedee27"
+  }
+}
