@@ -1,0 +1,147 @@
+{
+  "source_git_sha": "86d4bd9a425802c44b0ef5304e00a148f1494aba",
+  "python": "3.13.5",
+  "packages": {
+    "numpy": "2.1.3",
+    "pandas": "2.3.3",
+    "PyYAML": "6.0.2",
+    "matplotlib": "3.10.0"
+  },
+  "input_sha256": {
+    "results/catboost_core_v2/scored_common_predictions.csv": "e4093323935e72b86500fde3db14a793a308a4c4b22b46865d46d0a0f2c1725f",
+    "results/catboost_core_v2/metrics.csv": "08fabbd0d5e9a95543fb8f8d7d20cc9474e981ee5118f3e543e26da559c45c2d",
+    "data/processed/USDRUBF_baseline_2026-11-18.csv": "0f87d1e573ba85f859a27628e25f1fbc07c4d585f9ab7ba3ec4e05cd76ad9c05",
+    "configs/benchmark_config.yaml": "8cdd0618bdfca7d74d7043074f62d0b72dfbe652469af11ff426992ed9510f33",
+    "data/processed/usdrubf_trading_days.csv": "deb6c6ffecfb267e31f7bb8d50a2d32684f67f061e70fbd285fede5032ea86f5"
+  },
+  "input_schema": {
+    "predictions": {
+      "model_id": "object",
+      "model_version": "object",
+      "origin_date": "object",
+      "target_date": "object",
+      "horizon": "int64",
+      "prediction": "float64",
+      "prediction_target": "float64",
+      "window_id": "object",
+      "train_n": "int64",
+      "train_end_date": "object",
+      "train_origin_end": "object",
+      "split": "object",
+      "scored_status": "object",
+      "forecast_origin": "float64",
+      "forecast_origin_mode": "object",
+      "pit_status": "object",
+      "result_status": "object",
+      "data_version": "object",
+      "depth": "int64",
+      "l2_leaf_reg": "int64",
+      "actual": "float64",
+      "RW": "float64",
+      "AR1": "float64",
+      "RW_DRIFT": "float64",
+      "Ridge_Core_v2": "float64"
+    },
+    "metrics": {
+      "model_id": "object",
+      "horizon": "int64",
+      "n": "int64",
+      "rmse": "float64",
+      "mae": "float64",
+      "bias": "float64",
+      "rmse_ratio_vs_rw": "float64",
+      "origin_min": "object",
+      "origin_max": "object",
+      "target_min": "object",
+      "target_max": "object"
+    },
+    "baseline": {
+      "date": "object",
+      "price": "float64",
+      "volume": "int64",
+      "price_type": "object",
+      "source": "object"
+    },
+    "calendar": {
+      "date": "object"
+    }
+  },
+  "parameters": {
+    "horizons": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "expected_pairs": 254,
+    "rtol": 1e-10,
+    "atol": 1e-08,
+    "error": "prediction - actual",
+    "volatility_window_returns": 20,
+    "volatility_ddof": 1,
+    "volatility_annualized": false,
+    "origin_close_included": true,
+    "threshold_quantiles": [
+      0.3333333333333333,
+      0.6666666666666666
+    ],
+    "threshold_interpolation": "linear",
+    "regime_rule": "low <= q1; q1 < medium <= q2; high > q2",
+    "zero_rule": "delta == 0 exactly, for actual and prediction",
+    "amplitude_std_ddof": 1,
+    "no_training": true,
+    "no_outlier_exclusion": true
+  },
+  "bounds": {
+    "config_train": [
+      "2022-04-26",
+      "2024-12-31"
+    ],
+    "config_validation": [
+      "2025-01-01",
+      "2025-12-31"
+    ],
+    "price_history": [
+      "2022-04-26",
+      "2025-12-30"
+    ],
+    "threshold_volatility_dates": [
+      "2022-05-30",
+      "2024-12-30"
+    ],
+    "threshold_n": 663,
+    "origin": [
+      "2024-12-23",
+      "2025-12-29"
+    ],
+    "target": [
+      "2025-01-03",
+      "2025-12-30"
+    ]
+  },
+  "volatility_thresholds": {
+    "low_medium": 0.007067084191331379,
+    "medium_high": 0.009654573169652854
+  },
+  "calendar_status": "reconstructed_moex_calendar_provisional",
+  "checks": "all alignment and saved metric controls passed",
+  "artifacts": [
+    "amplitude_h1.png",
+    "amplitude_h3.png",
+    "amplitude_h5.png",
+    "amplitude_h7.png",
+    "amplitude_summary.csv",
+    "diagnostic_pairs.csv",
+    "direction_accuracy.csv",
+    "direction_confusion.csv",
+    "direction_metrics.csv",
+    "horizon_metrics.csv",
+    "manifest.json",
+    "quarterly_metrics.csv",
+    "top_errors.csv",
+    "volatility_metrics.csv"
+  ]
+}
