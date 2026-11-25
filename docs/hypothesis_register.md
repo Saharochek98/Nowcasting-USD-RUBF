@@ -78,3 +78,14 @@ B1–B3 создали и объединили в `main` PIT-каталог, с�
 **Дополнительные экспериментальные результаты:** [RW with Drift](../reports/rw_drift_experiment.md) и [XGBoost Core v2](../reports/xgboost_core_v2.md). XGBoost не улучшил RW или CatBoost ни на одном h. Результаты не распространяются на непроверенные семейства моделей и новые признаки.
 
 **Процедура будущих экспериментов:** заранее зафиксировать один контраст, horizon, календарь, признаки и окно, затем train-only/предсказания на созревших метках. Повторное исследование на 2025 — exploratory, final test 2026 остаётся закрытым до preregistration.
+
+## Утверждённые к исполнению гипотезы — 25.11.2026
+
+| ID | Фиксированное сравнение | Главная метрика | Статус |
+|---|---|---|---|
+| **H11-REL-01** | CatBoost Core v2 R0_MATCHED vs R1 = Core v2 + шесть P0 relative features, delta target | 7 парных RMSE и HAC-loss, Holm по 7 h | **PREREGISTERED / NOT_TESTED** |
+| **H13-TRANSFORM-01** | CatBoost Core v2 T_DELTA vs T_LOG на тех же исходных 10 признаках и допустимых train windows | 7 парных ценовых RMSE и HAC-loss, Holm по 7 h | **PREREGISTERED / NOT_TESTED** |
+
+**H10 не заменяется:** он относится к прямому future price level vs delta. H13 — delta vs log-return. **H12 (кросс-активные данные)** предложена в отдельном документе, тогда как ранняя таблица регистра называла H12 DFM/Kalman: оба направления *отложены*, коллизия имён не должна создавать ложных связей.
+
+Исследовательские ограничения: единственный многократно просмотренный validation 2025; `conditional EOD/pseudo-PIT`; `swaprate_current=ASSUMED_AVAILABLE`; всё ещё нет независимого test. [План](two_day_plan.md); [конфигурации H11](../configs/h11_catboost_relative_v1.json), [H13](../configs/h13_catboost_target_v1.json).
