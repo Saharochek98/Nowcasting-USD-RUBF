@@ -1,0 +1,124 @@
+{
+  "status": "PREREGISTERED_NOT_EXECUTED",
+  "registered_at": "2026-11-25",
+  "experiment_stage": "exploratory_validation_2025",
+  "frozen_feature_config": "configs/ridge_experiments_v2.json",
+  "data_path": "data/processed/model_dataset_usdrubf_all_features_v2.csv",
+  "calendar_path": "data/processed/usdrubf_trading_days.csv",
+  "reference_run": "results/catboost_core_v2",
+  "baseline_path": "results/benchmark_calendar_v2",
+  "feature_scenario": "core_v2",
+  "feature_count": 10,
+  "funding_status": "ASSUMED_AVAILABLE",
+  "pit_status": "conditional_EOD_pseudo_PIT",
+  "horizons": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "target_date_split": {
+    "train_end": "2024-12-31",
+    "validation_start": "2025-01-01",
+    "validation_end": "2025-12-31"
+  },
+  "refit": "every_origin_expanding_prequential",
+  "label_maturity": "target_date <= origin_date and label available by origin under conditional EOD",
+  "minimum_train_pairs": 100,
+  "imputer": "median fit on eligible train rows each origin; retain observed zeros; all-missing column error",
+  "catboost_fixed": {
+    "iterations": 100,
+    "learning_rate": 0.03,
+    "loss_function": "RMSE",
+    "bootstrap_type": "No",
+    "random_seed": 240112,
+    "thread_count": 1,
+    "allow_writing_files": false,
+    "verbose": false
+  },
+  "by_h_previously_selected": {
+    "1": {
+      "depth": 2,
+      "l2_leaf_reg": 30
+    },
+    "2": {
+      "depth": 3,
+      "l2_leaf_reg": 30
+    },
+    "3": {
+      "depth": 2,
+      "l2_leaf_reg": 30
+    },
+    "4": {
+      "depth": 3,
+      "l2_leaf_reg": 30
+    },
+    "5": {
+      "depth": 2,
+      "l2_leaf_reg": 30
+    },
+    "6": {
+      "depth": 2,
+      "l2_leaf_reg": 30
+    },
+    "7": {
+      "depth": 2,
+      "l2_leaf_reg": 30
+    }
+  },
+  "new_hyperparameter_search": false,
+  "outer_early_stopping": false,
+  "common_comparison_keys": [
+    "origin_date",
+    "target_date",
+    "horizon"
+  ],
+  "scoring": {
+    "scale": "RUB_per_USD_price",
+    "metrics": [
+      "rmse",
+      "mae",
+      "bias",
+      "n",
+      "rmse_ratio_vs_rw"
+    ],
+    "error": "prediction - actual"
+  },
+  "hac": {
+    "loss": "squared_price_error",
+    "bandwidth": "max(20,h-1)",
+    "correction": "Holm across the seven predeclared paired contrasts",
+    "primary_family_size": 7
+  },
+  "final_test_access": false,
+  "experiment_id": "H13-TRANSFORM-01",
+  "date": "2026-11-26",
+  "output_root": "results/h13_catboost_target_v1",
+  "reason_for_id": "H10 is direct price-level vs delta, H12 has a naming collision; H13 reserved for delta vs log-return",
+  "feature_building": "unmodified core_v2 only; no H11 additions",
+  "arms": {
+    "T_DELTA": {
+      "train_target": "close_target - close_origin",
+      "inverse_to_price": "close_origin + pred"
+    },
+    "T_LOG": {
+      "train_target": "ln(close_target/close_origin)",
+      "inverse_to_price": "close_origin * exp(pred)",
+      "require_strictly_positive_close": true,
+      "jensen_correction": "none; geometric backtransform; not conditional mean of future price"
+    }
+  },
+  "same_train_and_validation_keys": true,
+  "reuse_h_specific_delta_selected_params_for_both": true,
+  "primary_contrast": "T_LOG - T_DELTA",
+  "comparison_with_rw": "context only, not part of predeclared Holm 7",
+  "forbidden": [
+    "H11 feature addition",
+    "new tuning",
+    "test data",
+    "direct future level target"
+  ]
+}
