@@ -133,3 +133,14 @@
 | D33 | Final test 2026 по-прежнему закрыт для любых исследовательских решений; repeated validation 2025 **не** независимое подтверждение | [протокол](backtest_protocol.md) | ACCEPTED |
 
 **Роли:** A — Data Engineer; B — Research Lead & Backtesting; C — Models; D — Uncertainty. Существующие исторические решения и manifest не перезаписывать.
+
+## Финальная предрегистрация спринта — 25.11.2026
+
+| ID | Решение | Статус |
+|---|---|---|
+| D34 | **25.11 — только H11-REL-01:** matched CatBoost Core v2 10 (R0) vs Core v2 + **ровно 6** относительных признаков H11 P0 (R1); прежние h-specific параметры CatBoost, одинаковые train/validation keys | ACCEPTED / NOT_EXECUTED |
+| D35 | **26.11 — только H13-TRANSFORM-01:** неизменный Core v2, CatBoost **delta vs log-return**; обе модели с ранее выбранными delta-параметрами, цена восстанавливается по соответствующей формуле | ACCEPTED / NOT_EXECUTED |
+| D36 | H10 остаётся **direct level vs delta, NOT_TESTED**; H13 — другой контраст (delta vs log). H12 cross-asset и DFM не входят в спринт; конфликт исторических H12-ID подлежит отдельному исправлению, не трактовать как два результата одной гипотезы | ACCEPTED |
+| D37 | Владелец B — Research Lead/backtest; C — реализация; A — проверка источников при запросе. Новый validation 2025 exploratory; **final test 2026 закрыт**, frozen источники/старые результаты не менять | ACCEPTED |
+
+**Канонические задания:** [two_day_plan.md](two_day_plan.md). **Предрегистрация:** [H11 JSON](../configs/h11_catboost_relative_v1.json), [H13 JSON](../configs/h13_catboost_target_v1.json). Это решения, **не проведённые эксперименты**.
