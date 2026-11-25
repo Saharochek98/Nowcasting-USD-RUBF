@@ -1,0 +1,21 @@
+{
+  "python_executable": "C:/Users/EmpathicChild/anaconda3/python.exe",
+  "tests": {
+    "H13 new tests": {"run": 16, "passed": 16, "skipped": 0, "failures": 0, "errors": 0, "elapsed_seconds": 7.350},
+    "Full unittest suite": {"run": 174, "passed": 159, "skipped": 15, "failures": 0, "errors": 0, "elapsed_seconds": 39.098}
+  },
+  "commands": [
+    "python -m unittest discover -s tests -p test_h13_catboost_logreturn.py -v",
+    "python -m unittest discover -s tests -p test_*.py -q",
+    "git diff --check"
+  ],
+  "git_diff_check": "passed",
+  "m0_full_reproduction_pairs": 1778,
+  "m0_max_abs_prediction_difference": 0,
+  "m1_real_data_repeat_pairs": 21,
+  "m1_repeat_scope": "first/middle/last origin at each h; prediction and prediction_target float64 exact",
+  "all_1778_m1_forecasts_retrained_twice": false,
+  "synthetic_future_invariance_and_seeded_repeatability": "passed for both targets",
+  "hac_independent_bartlett_quadratic_form": "passed",
+  "holm_family_size": 7
+}

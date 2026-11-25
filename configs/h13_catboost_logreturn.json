@@ -1,0 +1,29 @@
+{
+  "experiment": "H13 CatBoost delta vs log-return",
+  "feature_config": "configs/ridge_experiments_v2.json",
+  "original_results": "results/catboost_core_v2",
+  "output_root": "results/h13_catboost_logreturn",
+  "horizons": [1, 2, 3, 4, 5, 6, 7],
+  "models": {"M0_DELTA": "delta", "M1_LOGRETURN": "log_return"},
+  "fixed_parameters": {
+    "iterations": 100, "learning_rate": 0.03, "bootstrap_type": "No",
+    "random_seed": 240112, "thread_count": 1, "loss_function": "RMSE",
+    "allow_writing_files": false, "verbose": false
+  },
+  "selection_policy": "reuse original per-h selection.json; no tuning",
+  "training_policy": "expanding prequential; target_date <= origin_date; no warmup exclusion",
+  "invalid_value_policy": "abort entire experiment; no clipping, fallback or dropped pairs",
+  "jensen_correction": false,
+  "validation_targets": ["2025-01-01", "2025-12-31"],
+  "pairs_per_horizon": 254,
+  "comparison_atol": 1e-8,
+  "comparison_rtol": 1e-10,
+  "hac_base_lag": 20,
+  "primary_family": {"contrast": "squared_error(M1_LOGRETURN) - squared_error(M0_DELTA)",
+    "size": 7, "alternative": "two-sided", "adjustment": "Holm jointly across h=1..7",
+    "kernel": "Bartlett", "small_sample_correction": "n/(n-1)", "reference": "normal"},
+  "rw_comparison": "descriptive only; excluded from primary inference family",
+  "direction_zero_rule": "exact delta == 0 for actual and prediction",
+  "final_test_access": false,
+  "research_status": "exploratory; validation 2025 used repeatedly"
+}
