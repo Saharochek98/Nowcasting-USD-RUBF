@@ -125,7 +125,7 @@ def to_price(anchor, value, kind):
     return anchor + value if kind == 'delta' else value
 
 
-# ------------------------------------------------------------------- H11 relative features
+# ------------------- relative features (exploratory notebook set; NOT the preregistered H11-REL-01)
 
 def relative_features(frame):
     """Backward-looking features in trading sessions; row t uses rows <= t only."""

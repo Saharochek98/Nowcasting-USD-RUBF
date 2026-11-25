@@ -118,7 +118,7 @@
       "window": null
     }
   },
-  "H11_CatBoost_core_plus_rel": {
+  "CatBoost_rel_exploratory_plus": {
     "1": {
       "params": {
         "depth": 2,
@@ -162,7 +162,7 @@
       }
     }
   },
-  "H11_CatBoost_rel_replaces_ohlc": {
+  "CatBoost_rel_exploratory_replace_ohlc": {
     "1": {
       "params": {
         "depth": 3,

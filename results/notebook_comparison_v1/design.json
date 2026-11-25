@@ -86,8 +86,8 @@
     "CatBoost_tuned",
     "H10_CatBoost_level",
     "H10_Ridge_level",
-    "H11_CatBoost_core_plus_rel",
-    "H11_CatBoost_rel_replaces_ohlc",
+    "CatBoost_rel_exploratory_plus",
+    "CatBoost_rel_exploratory_replace_ohlc",
     "Combo_RW_CatBoost_Ridge"
   ],
   "grids": {
@@ -272,7 +272,7 @@
         }
       ]
     },
-    "H11_CatBoost_core_plus_rel": {
+    "CatBoost_rel_exploratory_plus": {
       "kind": "catboost",
       "target": "delta",
       "features": "core_v2_plus_rel",
@@ -303,7 +303,7 @@
         }
       ]
     },
-    "H11_CatBoost_rel_replaces_ohlc": {
+    "CatBoost_rel_exploratory_replace_ohlc": {
       "kind": "catboost",
       "target": "delta",
       "features": "rel_replaces_ohlc",
@@ -392,8 +392,8 @@
     "CatBoost_tuned",
     "H10_CatBoost_level",
     "H10_Ridge_level",
-    "H11_CatBoost_core_plus_rel",
-    "H11_CatBoost_rel_replaces_ohlc",
+    "CatBoost_rel_exploratory_plus",
+    "CatBoost_rel_exploratory_replace_ohlc",
     "Combo_RW_CatBoost_Ridge"
   ],
   "selection_rule": "pooled inner price RMSE; ties -> simpler (earlier) candidate; GARCH: mean inner interval score",
@@ -468,11 +468,11 @@
         "RW"
       ],
       [
-        "H11_CatBoost_core_plus_rel",
+        "CatBoost_rel_exploratory_plus",
         "RW"
       ],
       [
-        "H11_CatBoost_rel_replaces_ohlc",
+        "CatBoost_rel_exploratory_replace_ohlc",
         "RW"
       ],
       [
@@ -495,11 +495,11 @@
         "Ridge_v2_Core_preq"
       ],
       [
-        "H11_CatBoost_core_plus_rel",
+        "CatBoost_rel_exploratory_plus",
         "CatBoost_Core_v2"
       ],
       [
-        "H11_CatBoost_rel_replaces_ohlc",
+        "CatBoost_rel_exploratory_replace_ohlc",
         "CatBoost_Core_v2"
       ]
     ],
