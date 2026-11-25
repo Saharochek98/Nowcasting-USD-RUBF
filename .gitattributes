@@ -39,3 +39,11 @@
 /reports/catboost_core_v2.md text eol=lf
 /reports/catboost_go_no_go.md text eol=lf
 /configs/catboost_core_v2_proposal.json text eol=lf
+# H13 output hashes must survive Windows checkouts unchanged.
+/results/h13_catboost_logreturn/** text eol=lf
+/results/h13_catboost_logreturn/*.png -text
+/benchmarks/catboost_target_ablation.py text eol=lf
+/configs/h13_catboost_logreturn.json text eol=lf
+/scripts/run_h13_catboost_logreturn.py text eol=lf
+/tests/test_h13_catboost_logreturn.py text eol=lf
+/reports/h13_catboost_logreturn.md text eol=lf
