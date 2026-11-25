@@ -1,0 +1,140 @@
+{
+  "status": "PREREGISTERED_NOT_EXECUTED",
+  "registered_at": "2026-11-25",
+  "experiment_stage": "exploratory_validation_2025",
+  "frozen_feature_config": "configs/ridge_experiments_v2.json",
+  "data_path": "data/processed/model_dataset_usdrubf_all_features_v2.csv",
+  "calendar_path": "data/processed/usdrubf_trading_days.csv",
+  "reference_run": "results/catboost_core_v2",
+  "baseline_path": "results/benchmark_calendar_v2",
+  "feature_scenario": "core_v2",
+  "feature_count": 10,
+  "funding_status": "ASSUMED_AVAILABLE",
+  "pit_status": "conditional_EOD_pseudo_PIT",
+  "horizons": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "target_date_split": {
+    "train_end": "2024-12-31",
+    "validation_start": "2025-01-01",
+    "validation_end": "2025-12-31"
+  },
+  "refit": "every_origin_expanding_prequential",
+  "label_maturity": "target_date <= origin_date and label available by origin under conditional EOD",
+  "minimum_train_pairs": 100,
+  "imputer": "median fit on eligible train rows each origin; retain observed zeros; all-missing column error",
+  "catboost_fixed": {
+    "iterations": 100,
+    "learning_rate": 0.03,
+    "loss_function": "RMSE",
+    "bootstrap_type": "No",
+    "random_seed": 240112,
+    "thread_count": 1,
+    "allow_writing_files": false,
+    "verbose": false
+  },
+  "by_h_previously_selected": {
+    "1": {
+      "depth": 2,
+      "l2_leaf_reg": 30
+    },
+    "2": {
+      "depth": 3,
+      "l2_leaf_reg": 30
+    },
+    "3": {
+      "depth": 2,
+      "l2_leaf_reg": 30
+    },
+    "4": {
+      "depth": 3,
+      "l2_leaf_reg": 30
+    },
+    "5": {
+      "depth": 2,
+      "l2_leaf_reg": 30
+    },
+    "6": {
+      "depth": 2,
+      "l2_leaf_reg": 30
+    },
+    "7": {
+      "depth": 2,
+      "l2_leaf_reg": 30
+    }
+  },
+  "new_hyperparameter_search": false,
+  "outer_early_stopping": false,
+  "common_comparison_keys": [
+    "origin_date",
+    "target_date",
+    "horizon"
+  ],
+  "scoring": {
+    "scale": "RUB_per_USD_price",
+    "metrics": [
+      "rmse",
+      "mae",
+      "bias",
+      "n",
+      "rmse_ratio_vs_rw"
+    ],
+    "error": "prediction - actual"
+  },
+  "hac": {
+    "loss": "squared_price_error",
+    "bandwidth": "max(20,h-1)",
+    "correction": "Holm across the seven predeclared paired contrasts",
+    "primary_family_size": 7
+  },
+  "final_test_access": false,
+  "experiment_id": "H11-REL-01",
+  "date": "2026-11-25",
+  "target_transform": "delta",
+  "target_formula": "close_target - close_origin",
+  "output_root": "results/h11_relative_catboost_v1",
+  "feature_building": {
+    "base_columns": [
+      "open",
+      "high",
+      "low",
+      "close",
+      "volume",
+      "cbr_usdrub_effective",
+      "swaprate_prev_session",
+      "swaprate_current",
+      "key_rate_pct_effective",
+      "spread_close_minus_cbr"
+    ],
+    "added_features": {
+      "logret_1": "ln(close[t]/close[t-1])",
+      "logret_3": "ln(close[t]/close[t-3])",
+      "logret_7": "ln(close[t]/close[t-7])",
+      "range_rel": "(high[t]-low[t])/open[t]",
+      "volume_ratio_20": "volume[t]/mean(volume[t-19:t])",
+      "distance_sma20": "(close[t]-mean(close[t-19:t]))/mean(close[t-19:t])"
+    },
+    "lag_unit": "observed trading sessions from provisional full calendar, do not compress missing dates",
+    "rolling_includes_origin_bar": true,
+    "incomplete_warmup": "NaN, not backfilled",
+    "matched_training": "same eligible windows for R0 and R1; exclude initial 19 sessions from both train histories",
+    "positive_denominator_required": true
+  },
+  "arms": {
+    "R0_MATCHED": "core_v2 10 features and identical H11 training eligibility",
+    "R1": "core_v2 10 plus six registered features, identical R0_MATCHED eligibility"
+  },
+  "primary_contrast": "R1 - R0_MATCHED",
+  "forbidden": [
+    "R2 replacement",
+    "hyperparameter search",
+    "other H11 candidates",
+    "final test"
+  ]
+}
