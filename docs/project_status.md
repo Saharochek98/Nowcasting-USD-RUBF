@@ -50,3 +50,9 @@ RMSE (RUB/USD) на одинаковых прогнозных датах:
 **Открытые ограничения:** historical `available_at` свечей и funding не проверены; календарь provisional; внешние vintages не гарантированы; расхождение target USDRUBF и официального курса ЦБ в исходной постановке требует согласования. Final test 2026 — только после preregistration выбранного протокола и моделей.
 
 История и детали: [Decision Log](decision_log.md), [Hypothesis Register](hypothesis_register.md), [Benchmark Specification](benchmark_spec.md), [текущие задания](two_day_plan.md).
+
+## Последнее решение (25.11.2026): зафиксирован финальный двухдневный план
+
+**Все исходные RW/AR/Ridge/CatBoost/XGBoost результаты, код и raw/frozen datasets без изменений.** После изучения результатов выбран один feature experiment **25 ноября H11-REL-01** и один target experiment **26 ноября H13-TRANSFORM-01**; ни один из них **пока не выполнен**. Исполнитель C, ревью и единый scoring — Research Lead B; A — поддержка данных при необходимости, D — отдельная работа с интервалами.
+
+H11: matched CatBoost Core v2 против Core v2 + шесть relative features с одинаковыми train windows и старой по-h конфигурацией. H13: на **чистом Core v2** сравнить delta и log-return, не добавляя H11 признаки. New parameter tuning/XGBoost/DFM/H12 data expansion исключены из двухдневного плана. [Задачи/DoD](two_day_plan.md), [H11 config](../configs/h11_catboost_relative_v1.json), [H13 config](../configs/h13_catboost_target_v1.json).
