@@ -135,11 +135,11 @@
   "implementation_sha256_lf": {
     "configs/h13_catboost_logreturn.json": "87bfccc3bd1455ff6c74bbe6a6296ef080089b3d1faff853dbc24f31ebb5d4e2",
     "benchmarks/catboost_target_ablation.py": "3717dd25ae74f40ae6128f40db7281315ca8da5aef75397926ffa3c14155a7ae",
-    "scripts/run_h13_catboost_logreturn.py": "30189136e907781d91a9e83c6056a8f709d57eaf4e97634c80b35df66f610a8d",
+    "scripts/run_h13_catboost_logreturn.py": "ca363bd38b50ba88efc8f7011d488b721edcd490f8ccdad1b0349c86d6a54ccd",
     "benchmarks/catboost_direct.py": "1f5832a0d1ff485e862904bc097726fbd50cfb7397655201d95ecbb300c6ef0d",
     "benchmarks/ridge.py": "69f30ce6a1860c4dc19eb5a9d0744f403d6883a5bedc2afa634e7bef9aad51fe",
     "benchmarks/ridge_v2.py": "56ce7ce113beea5bdabbed44952ea223961034cfbf7b9384c8a343a9d1e12fb6",
-    "tests/test_h13_catboost_logreturn.py": "e1268b0451d50ca078fc7fa13c55ffdf88eca4c9c35e3bb19472ba614f0c7967",
+    "tests/test_h13_catboost_logreturn.py": "1598b59ea2147e7309e06ddee24cf6570755e5fc9f38198de1e5ecd7b5be9806",
     ".gitattributes": "e5df7cecff540d1eefe2680412724ef34409ab1e434e9e07aacaa454e99f3e77"
   },
   "protected_sha256": {
@@ -725,7 +725,7 @@
     "metrics.csv": "a457b3bf439180f8bdbd8a566b29bb26029c40d8f7b28712ff6f5ecc22f965f1",
     "paired_predictions.csv": "7d555cd0c18b8e02747bbd26aa6eee93b065eaac95128093aad8973c773814ea",
     "predictions_oos.csv": "c6cabfcb8e599d5999b53337d6044e9f66ea27b4aa30ef55b4cf914990d0afb2",
-    "report.md": "01f6f3f4501663fd829f44ca48e405b82bb56604d076bff191d4b1a4aa2df951",
+    "report.md": "1ca44f02bf7ddd0f7d00bd5e144ff099a0976e19e32566c4079b2c1b7181d25d",
     "scatter_h1.png": "cea61b534acc5fd78282adfe2bae9ba712d096b3f837d2568647c2501a555fba",
     "scatter_h3.png": "e1f1566e0c19fda202d5e50eb7c3c538d6cb47802c0804f42402516de863d071",
     "scatter_h5.png": "7fcad0de3e1df1b8d7b8699b53d6e26df736f52f2b6324aa0aa5f6fc6cc5552a",

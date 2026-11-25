@@ -21,7 +21,7 @@ CONFIG = ROOT / 'configs/h13_catboost_logreturn.json'
 
 
 def json_write(value, path):
-    path.write_text(json.dumps(value, indent=2, ensure_ascii=False, allow_nan=False)+'\n', encoding='utf-8')
+    path.write_text(json.dumps(value, indent=2, ensure_ascii=False, allow_nan=False)+'\n', encoding='utf-8', newline='\n')
 
 
 def write(frame, path):
@@ -160,8 +160,8 @@ python scripts/run_h13_catboost_logreturn.py --report-only
         text += f"git diff --check: {validation['git_diff_check']}. Воспроизведены все 1778 M0 и 21 M1 (первый/средний/последний origin каждого h); эти 21 M1 совпали побитно как float64, включая prediction_target. Дополнительно проверена повторяемость обеих моделей и неизменность прогноза после изменения данных позже origin на синтетической панели.\n"
     else:
         text += 'Результаты запуска тестов ещё не внесены в validation.json.\n'
-    (output/'report.md').write_text(text.replace('../results/h13_catboost_logreturn/', ''), encoding='utf-8')
-    (ROOT/'reports/h13_catboost_logreturn.md').write_text(text, encoding='utf-8')
+    (output/'report.md').write_text(text.replace('../results/h13_catboost_logreturn/', ''), encoding='utf-8', newline='\n')
+    (ROOT/'reports/h13_catboost_logreturn.md').write_text(text, encoding='utf-8', newline='\n')
 
 
 def report_only():

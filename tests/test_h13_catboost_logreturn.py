@@ -250,6 +250,8 @@ class SavedExperimentTests(unittest.TestCase):
             self.assertEqual(runner.digest(ROOT/name), value, name)
         for name, value in self.manifest['output_sha256'].items():
             self.assertEqual(runner.digest(OUTPUT/name), value, name)
+            if Path(name).suffix in {'.csv', '.json', '.md'}:
+                self.assertNotIn(b'\r\n', (OUTPUT/name).read_bytes(), name)
         self.assertEqual(runner.protected_hashes(), self.manifest['protected_sha256'])
 
 
