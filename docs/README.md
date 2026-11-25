@@ -1,11 +1,11 @@
 # USDRUBF — Research Documentation
 
-**Актуально:** 2026-11-24, после merge Ridge v1/v2, RW Drift, CatBoost и XGBoost. Режим — **conditional EOD / pseudo-PIT**. Final test 2026 пока закрыт.
+**Актуально:** 2026-11-25, после merge Ridge v1/v2, RW Drift, CatBoost и XGBoost и утверждения финального плана. Режим — **conditional EOD / pseudo-PIT**. Final test 2026 пока закрыт.
 
 ## Начать здесь
 
 1. [Project Status](project_status.md) — выполненные исследования, таблица основных RMSE, открытые ограничения.
-2. [План команды](two_day_plan.md) — актуальные задачи A/B/C/D и следующие гипотезы.
+2. [План команды 25–26 ноября](two_day_plan.md) — **зафиксированный спринт B/C**: день 1 H11-REL-01, день 2 CatBoost delta vs log-return (H13-TRANSFORM-01).
 3. [Backtest Protocol](backtest_protocol.md), [Benchmark Specification](benchmark_spec.md), [Hypothesis Register](hypothesis_register.md), [Decision Log](decision_log.md) — методология, модели и история решений.
 4. [Data handoff](data_handoff_to_modeling.md), [Features B3](features_daily_v1.md) — frozen данные, сценарии и PIT-ограничения.
 
@@ -35,3 +35,10 @@
 - **DFM + Kalman** — отдельная не реализованная пока проверка динамических скрытых факторов; **RW intervals 90/95%** — задача D.
 
 **Команда:** A — Data Engineer; B — Research Lead & Backtesting; C — Models; D — Uncertainty. Код/метрики новых тестов не заменяют исходные результаты. Final test 2026 открывается только по заранее зарегистрированному конечному протоколу. Расхождение между официальным USD/RUB в первоначальной постановке и USDRUBF требует согласования с наставниками.
+
+## Финальный план исследовательских экспериментов (25–26.11)
+
+- **25 ноября:** H11-REL-01 — CatBoost Core v2 vs тот же Core v2 + шесть относительных ценовых признаков; **target delta**.
+- **26 ноября:** H13-TRANSFORM-01 — на неизменном Core v2 сравнить CatBoost **delta** и **log-return**; на обоих горизонтах восстановить цену, оценить едиными ценовыми метриками.
+- **B — Research Lead/Backtesting:** контролирует конфигурации, зрелость меток, common-pair evaluation и выводы. **C — Models:** реализует и выполняет оба прогона. A — Data Engineer support; D — интервальные модели отдельно.
+- Конфигурации: [H11](../configs/h11_catboost_relative_v1.json), [H13](../configs/h13_catboost_target_v1.json). **Статус обоих — запланированы, ещё не проверены.** Старые исходные результаты сохранены. Результаты на 2025 остаются exploratory; test 2026 не открывать.
